@@ -78,24 +78,26 @@ export default function Header() {
                 className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 shadow "
               >
                 <li>
-                  <a>Collections</a>
+                  <Link to="/cars">Collections</Link>
                 </li>
                 <li>
-                  <a>Order History</a>
+                  <Link to="/order">Order History</Link>
                 </li>
                 <li>
-                  <a>Contact Us</a>
+                  <Link to="about">Contact Us</Link>
                 </li>
               </ul>
             </div>
-            <img src={img} className="w-16" />
-            <p
-              className={` text-base-100 ${
-                scrolled ? "text-black" : "text-base-100"
-              }`}
-            >
-              RevUp
-            </p>
+            <Link to="/" className="flex">
+              <img src={img} className="w-16" />
+              <p
+                className={` mt-5 text-base-100 ${
+                  scrolled ? "text-black" : "text-base-100"
+                }`}
+              >
+                RevUp
+              </p>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul
@@ -104,13 +106,13 @@ export default function Header() {
               }`}
             >
               <li>
-                <a>Collections</a>
+                <Link to="/cars">Collections</Link>
               </li>
               <li>
-                <a>Order History</a>
+                <Link to="/order">Order History</Link>
               </li>
               <li>
-                <a>Contact Us</a>
+                <Link to="about">Contact Us</Link>
               </li>
             </ul>
           </div>
