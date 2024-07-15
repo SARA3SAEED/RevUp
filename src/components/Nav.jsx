@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import img from "../assets/car-logo1.png";
 
 export default function Nav() {
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div
+        className={`navbar bg-base-200 fixed top-0 w-full z-10 transition-colors duration-300`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,38 +28,48 @@ export default function Nav() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 shadow "
             >
               <li>
-                <a>Collections</a>
+                <Link to="/cars">Collections</Link>
               </li>
               <li>
-                <a>Features</a>
+                <Link to="/order">Order History</Link>
               </li>
               <li>
-                <a>Contact Us</a>
+                <Link to="/about">Contact Us</Link>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">RevUp</a>
+          <Link to="/" className="flex">
+            <img src={img} className="w-16" />
+            <p className="text-neutral mt-4">RevUp</p>
+          </Link>
         </div>
-
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className={`menu menu-horizontal px-1 text-black `}>
             <li>
-              <a>Collections </a>
+              <Link to="/cars" className={` text-neutral `}>
+                Collections
+              </Link>
             </li>
             <li>
-              <a>Features</a>
+              <Link to="/order" className={` text-neutral `}>
+                Order History
+              </Link>
             </li>
             <li>
-              <a>Contact Us</a>
+              <Link to="/about" className={` text-neutral `}>
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn m-2">Sing Up</a>
-          <Link to="/login" className="btn m-2">
+          <Link to="/singup" className="btn m-2 hover:bg-primary">
+            Sign Up
+          </Link>
+          <Link to="/login" className="btn m-2 hover:bg-primary">
             Log In
           </Link>
         </div>

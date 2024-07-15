@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
@@ -19,13 +20,13 @@ export default function Banner() {
             Explore the world of cars through our community{" "}
           </p>
           <p className="text-2xl mb-10 leading-none"></p>
-          <a
-            href="#"
+          <Link
+            to="/about"
             className="bg-primary py-4 px-8 text-base-100 font-bold uppercase text-xs 
                         rounded hover:bg-info hover:text-neutral"
           >
             Contact us
-          </a>
+          </Link>
         </div>
       </div>
     </>
