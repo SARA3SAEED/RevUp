@@ -4,23 +4,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBodyColor } from "../redux/Slices/ColorsSlice";
 
 export default function Details() {
-  const carBodyColor = useSelector((state) => state.carColors.carBodyColor);
+  const carBodyColor = useSelector((state) => state.carColors.camera);
   console.log(carBodyColor);
   const dispatch = useDispatch();
-  const colorChanger = (e) => {
-    dispatch(setBodyColor(e));
+  const bodyColorChanger = (e) => {
+    dispatch(
+      setBodyColor({
+        color: e,
+        fov: 45,
+        position: [4.5, 1.6, 4.3],
+      })
+    );
   };
   return (
     <div className="w-full h-screen flex justify-between">
       <div className="w-1/2 h-full">
         <DetailsForGTR />
       </div>
-      <div className=" flex gap-8">
-        <button onClick={() => colorChanger("#ff0000")}>red</button>
-        <button onClick={() => colorChanger("#00ff00")}>green</button>
-        <button onClick={() => colorChanger("#0000ff")}>blue</button>
-        <button onClick={() => colorChanger("#ffffff")}>white</button>
-        <button onClick={() => colorChanger("#000000")}>black</button>
+      <div className=" flex w-1/2 h-full gap-8">
+        <button onClick={() => bodyColorChanger("#ff0000")}>red</button>
+        <button onClick={() => bodyColorChanger("#00ff00")}>green</button>
+        <button onClick={() => bodyColorChanger("#0000ff")}>blue</button>
+        <button onClick={() => bodyColorChanger("#ffffff")}>white</button>
+        <button onClick={() => bodyColorChanger("#000000")}>black</button>
       </div>
     </div>
   );
