@@ -1,0 +1,23 @@
+.your-component {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.your-component.is-visible {
+  opacity: 1;
+}
+@keyframes examble {
+  from {
+    width: 30rem;
+  }
+  to {
+    width: 32rem;
+  }
+}
+/* .smallCom {
+  transition: transform 0.3s ease-in-out;
+} */
+.smallCom.animated {
+  animation: examble 1s ease-in-out;
+  /* transform: scale(0.8); */
+}

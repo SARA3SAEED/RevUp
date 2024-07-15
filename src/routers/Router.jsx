@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Cars from "../pages/Cars";
 import Details from "../pages/Details";
 import Checkout from "../pages/Checkout";
+import History from "../pages/History";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 
@@ -17,6 +18,7 @@ export default function Router() {
     { path: "/cars", element: <Cars /> },
     { path: "/det", element: <Details /> },
     { path: "/checkout", element: <Checkout /> },
+    { path: "/order", element: <History /> },
     { path: "/about", element: <About /> },
     { path: "/*", element: <NotFound /> },
   ]);

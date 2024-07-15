@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import nessan from "../assets/Nissan-GTR.png";
 import pursh from "../assets/pursh.png";
 import genesis from "../assets/genesis.png";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import "../App.css";
 
 export default function Cars() {
   const arrayOfImages = [nessan, pursh, genesis];
@@ -13,6 +14,26 @@ export default function Cars() {
     third: arrayOfImages[2],
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
+
+  // const animation = useSpring({
+  //   opacity: isVisible ? 1 : 0,
+  //   from: { opacity: 0 },
+  //   config: { duration: 1000 }, // Adjust animation duration
+  // });
+
+  useEffect(() => {
+    //   const handleScroll = () => {
+    //     const scrollTop = window.scrollY;
+    //     const isVisible = scrollTop > 200; // Adjust this threshold as needed
+    //     setIsVisible(isVisible);
+    //   };
+
+    //   window.addEventListener('scroll', handleScroll);
+    //   return () => window.removeEventListener('scroll', handleScroll);
+    return () => setIsAnimated(false);
+  }, []);
 
   const goPrev = () => {
     const copyOfArr = content;
@@ -21,6 +42,7 @@ export default function Cars() {
       second: copyOfArr.first,
       third: copyOfArr.second,
     });
+    setIsAnimated(true);
   };
 
   const goForward = () => {
@@ -30,10 +52,14 @@ export default function Cars() {
       second: copyOfArr.third,
       third: copyOfArr.first,
     });
+    setIsAnimated(true);
+    setTimeout(() => {
+      setIsAnimated(false);
+    }, 2000);
   };
   return (
     !isLoading && (
-      <div className="min-w-screen min-h-screen flex flex-col items-center">
+      <div className="min-w-screen min-h-screen flex flex-col justify-between items-center">
         <Nav></Nav>
         <h1 className="font-bold text-3xl text-start w-full p-4">
           Model overview
@@ -41,7 +67,12 @@ export default function Cars() {
         <div className="carousel carousel-center bg-base-100 rounded-box w-full space-x-8 p-4 m-auto transition ease-in-out duration-500">
           <div
             id="item1"
-            className="carousel-item rounded-xl flex items-center justify-between w-[30rem] bg-base-100 shadow-lg  transition ease-in-out duration-500 scale-50"
+            className={
+              // "carousel-item rounded-xl flex items-center justify-between w-[30rem] bg-base-100 shadow-lg  transition ease-in-out duration-500 scale-50 smallCom" +
+              isAnimated
+                ? "carousel-item rounded-xl flex items-center justify-between w-[30rem] bg-base-100 shadow-lg  transition ease-in-out duration-500 scale-50 smallCom animated"
+                : "carousel-item rounded-xl flex items-center justify-between w-[30rem] bg-base-100 shadow-lg  transition ease-in-out duration-500 scale-50 smallCom"
+            }
           >
             <img className="w-[27rem]" src={content.first} />
           </div>
