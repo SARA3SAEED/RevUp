@@ -4,7 +4,7 @@ export default {
   daisyui: {
     themes: [
       {
-        light: {
+				light: {
           primary: "#5051FB",
 
           secondary: "#C879FF",
@@ -42,6 +42,7 @@ export default {
 
         //   error: "#ff0000",
         // },
+
       },
     ],
   },

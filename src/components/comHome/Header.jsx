@@ -1,9 +1,27 @@
-import React from 'react';
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import img from '../../assets/car-logo1.png';
+import React, { useState, useEffect } from 'react';
+
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <>
       <div className="relative">
@@ -30,7 +48,8 @@ export default function Header() {
             </div>
           </div>
         </section>
-        <div className="navbar bg-transparent absolute top-0 w-full z-10">
+
+        <div className={`navbar ${scrolled ? 'bg-info' : 'bg-transparent'} fixed top-0 w-full z-10 transition-colors duration-300`}>
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
