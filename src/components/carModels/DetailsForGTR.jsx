@@ -4,6 +4,7 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { setCamera } from "../../redux/Slices/ColorsSlice";
 import { NissanSkyline } from "../carModels/NissanSkyline";
 import { OrbitControls } from "@react-three/drei";
+import { DirectionalLight } from "three";
 
 const CameraController = () => {
   const { camera, gl } = useThree();
@@ -48,6 +49,8 @@ export default function DetailsForGTR() {
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
+      <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
+      <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
       <NissanSkyline />
       <CameraController />
       <OrbitControls />
