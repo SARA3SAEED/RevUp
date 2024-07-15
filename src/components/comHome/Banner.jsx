@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Banner() {
   return (
@@ -11,12 +11,14 @@ export default function Banner() {
           muted
           loop
         ></video>
-        <div className="absolute inset-0 bg-neutral opacity-50"></div> 
+
+        <div className="absolute inset-0 bg-neutral opacity-50"></div>
         <div className="relative md:w-1/2">
           <p className="font-bold text-sm uppercase text-secondary">Services</p>
-          <p className="text-3xl font-bold">Explore the world of cars through our community </p>
-          <p className="text-2xl mb-10 leading-none">
+          <p className="text-3xl font-bold">
+            Explore the world of cars through our community{" "}
           </p>
+          <p className="text-2xl mb-10 leading-none"></p>
           <a
             href="#"
             className="bg-primary py-4 px-8 text-base-100 font-bold uppercase text-xs 
@@ -27,5 +29,5 @@ export default function Banner() {
         </div>
       </div>
     </>
-  )
+  );
 }
