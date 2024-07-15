@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/comHome/Header";
-import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Brand from "../components/comHome/Brand";
 import Banner from "../components/comHome/Banner";
