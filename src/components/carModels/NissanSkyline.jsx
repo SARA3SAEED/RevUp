@@ -5,8 +5,12 @@ Command: npx gltfjsx@6.4.1 .\public\models\scene.glb
 
 import React from "react";
 import { useGLTF } from "@react-three/drei";
+import { useSelector } from "react-redux";
+import { MeshStandardMaterial } from "three";
 
 export function NissanSkyline(props) {
+  const cbc = useSelector((state) => state.carColors.carBodyColor);
+  const carBodyColor = new MeshStandardMaterial({ color: cbc });
   const { nodes, materials } = useGLTF("./models/nissanSkyline.glb");
   return (
     <group {...props} dispose={null}>
@@ -248,7 +252,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS105_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -568,7 +572,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS19_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -588,7 +592,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS23_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -608,7 +612,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS27_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -643,7 +647,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS34_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -688,7 +692,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS43_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
@@ -763,7 +767,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS59_body_0.geometry}
-              material={materials.body}
+              material={carBodyColor}
               scale={5872.146}
             />
             <mesh
