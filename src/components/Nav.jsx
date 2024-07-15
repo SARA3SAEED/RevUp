@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-
+import carLogo from "../assets/car-logo1.png";
 
 export default function Nav() {
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-neutral text-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -14,43 +14,57 @@ export default function Nav() {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16" />
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
               </svg>
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a>Collections</a></li>
-              <li><a>Features</a></li>
-              <li><a>Contact Us</a></li>
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a>Collections</a>
+              </li>
+              <li>
+                <a>Features</a>
+              </li>
+              <li>
+                <a>Contact Us</a>
+              </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">RevUp</a>
+          <div className="flex flex-row items-center justify-center h-full btn btn-ghost text-xl">
+            <img className="w-16 h-16" src={carLogo} />
+            <p>RevUp</p>
+          </div>
         </div>
-
-
-
-
-
-
 
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><a>Collections </a></li>
-            <li><a>Features</a></li>
-            <li><a>Contact Us</a></li>
+            <li>
+              <a>Collections </a>
+            </li>
+            <li>
+              <a>Features</a>
+            </li>
+            <li>
+              <a>Contact Us</a>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
           <a className="btn m-2">Sing Up</a>
-          <Link to="/login" className="btn m-2">Log In</Link>
+          <Link to="/login" className="btn m-2">
+            Log In
+          </Link>
         </div>
       </div>
     </>
-  )
+  );
 }
