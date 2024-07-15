@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import img from '../../assets/car-logo1.png';
 import React, { useState, useEffect } from 'react';
@@ -47,6 +48,7 @@ export default function Header() {
             </div>
           </div>
         </section>
+
         <div className={`navbar ${scrolled ? 'bg-info' : 'bg-transparent'} fixed top-0 w-full z-10 transition-colors duration-300`}>
           <div className="navbar-start">
             <div className="dropdown">
