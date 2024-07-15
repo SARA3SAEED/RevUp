@@ -48,7 +48,7 @@ export default function Header() {
         </section>
         <div
           className={`navbar ${
-            scrolled ? "bg-base-200" : "bg-transparent"
+            scrolled ? "bg-neutral" : "bg-transparent"
           } fixed top-0 w-full z-10 transition-colors duration-300`}
         >
           <div className="navbar-start">
@@ -92,7 +92,7 @@ export default function Header() {
               <img src={img} className="w-16" />
               <p
                 className={` mt-5 text-base-100 ${
-                  scrolled ? "text-black" : "text-base-100"
+                  scrolled ? "text-base-100" : "text-base-100"
                 }`}
               >
                 RevUp
@@ -102,7 +102,7 @@ export default function Header() {
           <div className="navbar-center hidden lg:flex">
             <ul
               className={`menu menu-horizontal px-1 text-base-100 ${
-                scrolled ? "text-black" : "text-base-100"
+                scrolled ? "text-base-100" : "text-base-100"
               }`}
             >
               <li>

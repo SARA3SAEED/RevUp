@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <section className="py-14">
+      {/* <section className="py-14">
         <div className="max-w-screen-xl mx-auto px-4 justify-between items-center gap-12 md:px-8 md:flex">
           <div className="flex-1 max-w-xl">
             <h3 className="text-3xl font-bold">
@@ -52,8 +52,8 @@ export default function Footer() {
             </form>
           </div>
         </div>
-      </section>
-      <footer className="bg-base-100 mt-8 text-center0 lg:text-left">
+      </section> */}
+      <footer className="bg-neutral mt-auto text-base-100 w-full text-center0 lg:text-left">
         <div className="bg-black/5 p-4 text-center text-surface ">
           © 2023 Copyright:
           <Link to="/" className="font-medium text-sm ">
