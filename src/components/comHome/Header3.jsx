@@ -6,7 +6,7 @@ export default function Header3() {
     <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 my-6 mx-7" >
       <div className="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
         <svg
-          className="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block"
+          className="absolute left-0 hidden h-full text-base-100 transform -translate-x-1/2 lg:block"
           viewBox="0 0 100 100"
           fill="currentColor"
           preserveAspectRatio="none slice"
@@ -24,11 +24,11 @@ export default function Header3() {
           <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-primary uppercase rounded-full bg-base-100">
             Brand new
           </p>
-          <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+          <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-neutral sm:text-4xl sm:leading-none">
             Everything you
             <br className="hidden md:block" />
             can imagine{' '}
-            <span className="inline-block text-deep-purple-accent-400">
+            <span className="inline-block">
               is real
             </span>
           </h2>

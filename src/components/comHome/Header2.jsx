@@ -19,7 +19,7 @@ export default function Header2() {
                 Brand new
               </p>
             </div>
-            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-neutral sm:text-4xl sm:leading-none">
             Cars and driving experiences through video clips.
             
             </h2>

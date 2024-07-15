@@ -36,7 +36,7 @@ export default function Header() {
 
 
           <div className="absolute inset-0 bg-neutral opacity-50"></div>
-          <div className="relative w-full max-w-7xl mx-auto px-4 lg:px-8 text-white text-center">
+          <div className="relative w-full max-w-7xl mx-auto px-4 lg:px-8 text-base-100 text-center">
             <div className="w-full max-w-4xl mx-auto sm:px-12 mb-10 lg:mb-20">
               <h1 className="font-manrope font-bold text-4xl leading-snug sm:text-5xl mb-5">
                 Explore Our 3D Car Website
@@ -47,7 +47,7 @@ export default function Header() {
             </div>
           </div>
         </section>
-        <div className={`navbar ${scrolled ? 'bg-info' : 'bg-transparent'} fixed top-0 w-full z-10 transition-colors duration-300`}>
+        <div className={`navbar ${scrolled ? 'bg-base-200' : 'bg-transparent'} fixed top-0 w-full z-10 transition-colors duration-300`}>
           <div className="navbar-start">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -68,16 +68,16 @@ export default function Header() {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ">
                 <li><a>Collections</a></li>
-                <li><a>Features</a></li>
+                <li><a>Order History</a></li>
                 <li><a>Contact Us</a></li>
               </ul>
             </div>
-              <img src={img} className='w-16' /><p className='text-white'>RevUp</p>
+              <img src={img} className='w-16' /><p className='text-base-100'>RevUp</p>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-white">
+            <ul className="menu menu-horizontal px-1 text-base-100">
               <li><a>Collections</a></li>
-              <li><a>Features</a></li>
+              <li><a>Order History</a></li>
               <li><a>Contact Us</a></li>
             </ul>
           </div>

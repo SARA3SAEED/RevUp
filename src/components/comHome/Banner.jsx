@@ -3,7 +3,7 @@ import React from 'react';
 export default function Banner() {
   return (
     <>
-      <div className="relative h-auto text-white py-24 px-10">
+      <div className="relative h-auto text-base-100 py-24 px-10">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src="https://videos.pexels.com/video-files/5309381/5309381-hd_1920_1080_25fps.mp4"
@@ -19,8 +19,8 @@ export default function Banner() {
           </p>
           <a
             href="#"
-            className="bg-primary py-4 px-8 text-white font-bold uppercase text-xs 
-                        rounded hover:bg-gray-200 hover:text-neutral"
+            className="bg-primary py-4 px-8 text-base-100 font-bold uppercase text-xs 
+                        rounded hover:bg-info hover:text-neutral"
           >
             Contact us
           </a>
