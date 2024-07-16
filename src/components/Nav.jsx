@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <>
       <div
-        className={`navbar bg-neutral text-base-100 fixed top-0 w-full z-10 transition-colors duration-300`}
+        className={`navbar bg-neutral text-base-100 fixed top-0 w-full transition-colors duration-300 z-50`}
       >
         <div className="navbar-start">
           <div className="dropdown">
