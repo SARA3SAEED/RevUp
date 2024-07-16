@@ -11,24 +11,18 @@ export default function Main() {
                 About Us
               </h2>
               <p className="mt-4 text-gray-600 text-lg">
-                We seek to be the largest authorized car distributor in the
-                Kingdom for more than one popular brand to develop its car
-                fleet, in addition to hundreds of thousands of customers. We
-                seek to create added value in the car selling sector and to be a
+                We seek to create added value in the car selling sector and to be a
                 purchasing advisor to customers, as we seek To build their
                 confidence and provide after-sales services in a new way and a
                 modern and advanced vision with the aim of building a
-                sustainable relationship with the customer, relying in this on
-                an experienced work team whose primary mission is to overcome
-                obstacles and provide everything necessary to serve our
-                customers.
+                sustainable relationship with the customer.
               </p>
             </div>
             <div className="mt-12 md:mt-0">
               <img
                 alt="About Us Image"
-                className="object-cover rounded-lg shadow-md"
-                src="https://images.pexels.com/photos/63294/autos-technology-vw-multi-storey-car-park-63294.jpeg?auto=compress&cs=tinysrgb&w=600"
+                className="object-cover rounded shadow-md"
+                src="https://images.pexels.com/photos/10343804/pexels-photo-10343804.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
               />
             </div>
           </div>

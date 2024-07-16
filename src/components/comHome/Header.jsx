@@ -35,7 +35,7 @@ export default function Header() {
           ></video>
           <a
             href="#feature-section"
-            className="absolute bottom-10 btn btn-base-100 text-neutral font-bold text-xl rounded-full animate-bounce z-10"
+            className="absolute bottom-10 text-base-100 font-bold text-xl  animate-bounce z-10"
           >
             ⯆
           </a>
@@ -53,6 +53,7 @@ export default function Header() {
             </div>
           </div>
         </section>
+
 
         <div
           className={`navbar ${
@@ -125,10 +126,10 @@ export default function Header() {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link to="/singup" className="btn m-2 hover:bg-primary">
+            <Link to="/singup" className="menu  px-1 text-base-100 mx-2 ">
               Sign Up
             </Link>
-            <Link to="/login" className="btn m-2 hover:bg-primary">
+            <Link to="/login" className="menu px-1 text-base-100  mx-2 ">
               Log In
             </Link>
           </div>

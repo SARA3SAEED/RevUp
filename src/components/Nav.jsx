@@ -74,10 +74,10 @@ export default function Nav() {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/singup" className="btn m-2 hover:bg-primary">
+          <Link to="/singup" className="menu  px-1 text-base-100 mx-2">
             Sign Up
           </Link>
-          <Link to="/login" className="btn m-2 hover:bg-primary">
+          <Link to="/login" className="menu  px-1 text-base-100 mx-2">
             Log In
           </Link>
         </div>
