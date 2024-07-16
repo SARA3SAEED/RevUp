@@ -20,6 +20,8 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+
   return (
     <>
       <div className="relative">
@@ -31,7 +33,12 @@ export default function Header() {
             muted
             loop
           ></video>
-
+          <a
+            href="#feature-section"
+            className="absolute bottom-10 btn btn-base-100 text-neutral font-bold text-xl rounded-full animate-bounce z-10"
+          >
+            ⯆
+          </a>
           <div className="absolute inset-0 bg-neutral opacity-50"></div>
           <div className="relative w-full max-w-7xl mx-auto px-4 lg:px-8 text-base-100 text-center">
             <div className="w-full max-w-4xl mx-auto sm:px-12 mb-10 lg:mb-20">
@@ -46,6 +53,7 @@ export default function Header() {
             </div>
           </div>
         </section>
+
         <div
           className={`navbar ${
             scrolled ? "bg-neutral" : "bg-transparent"

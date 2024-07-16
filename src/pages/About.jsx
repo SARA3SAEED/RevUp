@@ -15,7 +15,6 @@ export default function About() {
       <Team />
       <Contact />
       <Bannar />
-      {/* <SectionFooter /> */}
       <Footer />
     </>
   );
