@@ -4,7 +4,6 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { setCamera } from "../../redux/Slices/ColorsSlice";
 import { NissanSkyline } from "../carModels/NissanSkyline";
 import { OrbitControls } from "@react-three/drei";
-import { DirectionalLight } from "three";
 
 const CameraController = () => {
   const { camera, gl } = useThree();
@@ -19,14 +18,20 @@ const CameraController = () => {
     }
   }, [camera, cam?.fov, cam?.position]);
 
-  useFrame(() => {
+  useEffect(() => {
     dispatch(
       setCamera({
         fov: camera.fov,
         position: [camera.position.x, camera.position.y, camera.position.z],
       })
     );
-  });
+  }, [
+    camera.fov,
+    camera.position.x,
+    camera.position.y,
+    camera.position.z,
+    dispatch,
+  ]);
 
   return null;
 };
