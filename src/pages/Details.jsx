@@ -52,7 +52,7 @@ export default function Details() {
               <DetailsForGTR />
               <button
                 onClick={cameraSetter}
-                className="z-50 absolute right-2 -top-6"
+                className="z-50 absolute right-2 top-2"
               >
                 interur
               </button>
