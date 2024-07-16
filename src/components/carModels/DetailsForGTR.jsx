@@ -18,14 +18,20 @@ const CameraController = () => {
     }
   }, [camera, cam?.fov, cam?.position]);
 
-  useFrame(() => {
+  useEffect(() => {
     dispatch(
       setCamera({
         fov: camera.fov,
         position: [camera.position.x, camera.position.y, camera.position.z],
       })
     );
-  });
+  }, [
+    camera.fov,
+    camera.position.x,
+    camera.position.y,
+    camera.position.z,
+    dispatch,
+  ]);
 
   return null;
 };
@@ -48,6 +54,8 @@ export default function DetailsForGTR() {
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
+      <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
+      <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
       <NissanSkyline />
       <CameraController />
       <OrbitControls />
