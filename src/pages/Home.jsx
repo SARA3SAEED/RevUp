@@ -16,8 +16,9 @@ export default function Home() {
       </div>
       <Header3 />
       <Header2 />
-      <Brand />
       <Banner />
+      <Brand />
+      <hr/>
       <SectionFooter />
       <Footer />
     </>
