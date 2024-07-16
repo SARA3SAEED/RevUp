@@ -83,7 +83,7 @@ export default function Cars() {
         ></video>
         <a
           href="#carsContainer"
-          className="absolute bottom-10 btn btn-base-100 text-neutral font-bold text-xl rounded-full animate-bounce z-10"
+          className="absolute bottom-10 btn btn-base-100 text-neutral font-bold text-xl rounded-full animate-bounce z-10 max-sm:hidden "
         >
           ⯆
         </a>
@@ -91,8 +91,8 @@ export default function Cars() {
           id="carsContainer"
           className={
             isVisible
-              ? "carousel carousel-center bg-base-100 rounded-box w-full space-x-8 p-4 m-auto transition ease-in-out duration-500 h-[90vh] is-visible"
-              : "carousel carousel-center bg-base-100 rounded-box w-full space-x-8 p-4 m-auto transition ease-in-out duration-500 h-[90vh]"
+              ? "carousel carousel-center bg-base-100 rounded-box w-full space-x-8 p-4 m-auto transition ease-in-out duration-500 h-[90vh] max-sm:h-full max-sm:m-0 is-visible"
+              : "carousel carousel-center bg-base-100 rounded-box w-full space-x-8 p-4 m-auto transition ease-in-out duration-500 h-[90vh] max-sm:h-full max-sm:m-0 max-sm: is-visible"
           }
         >
           <div
@@ -110,8 +110,8 @@ export default function Cars() {
             id="item2"
             className={
               isAnimated
-                ? "carousel-item rounded-xl flex items-center justify-between w-[50rem] shadow-lg bg-base-100 transition ease-in-out duration-500 z-10"
-                : "carousel-item rounded-xl flex items-center justify-between w-[50rem] shadow-lg bg-base-100 transition ease-in-out duration-500 z-10 smallCom"
+                ? "carousel-item rounded-xl flex items-center justify-between w-[50rem] shadow-lg bg-base-100 transition ease-in-out duration-500 z-10 max-sm:scale-50"
+                : "carousel-item rounded-xl flex items-center justify-between w-[50rem] shadow-lg bg-base-100 transition ease-in-out duration-500 z-10 smallCom max-sm:scale-50"
             }
           >
             <a
@@ -146,12 +146,6 @@ export default function Cars() {
             }
           >
             <img className="w-[42rem] h-[18rem]" src={content.third} />
-          </div>
-        </div>
-        <div className="w-full relative overflow-hidden h-fit mt-auto self-end">
-          <div className="flex flex-row items-center justify-center self-end relative -right-full animataion">
-            <img src={Lamburgini} className="w-36" alt="car moves" />
-            <div className="w-[100vw] h-6 bg-gradient-to-r from-primary to-base-100 rounded-xl"></div>
           </div>
         </div>
         <Footer />
