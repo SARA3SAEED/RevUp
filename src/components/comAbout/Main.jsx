@@ -3,7 +3,7 @@ import React from "react";
 export default function Main() {
   return (
     <>
-      <section className="bg-gray-100 mt-12">
+      <section className="bg-gray-100 -mt-4">
         <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div className="max-w-lg">
@@ -11,13 +11,17 @@ export default function Main() {
                 About Us
               </h2>
               <p className="mt-4 text-gray-600 text-lg">
-              We seek to be the largest authorized car distributor in the Kingdom for more than one 
-              popular brand to develop its car fleet, in addition to hundreds of thousands of customers.
-              We seek to create added value in the car selling sector and to be a purchasing advisor to 
-              customers, as we seek To build their confidence and provide after-sales services in a 
-              new way and a modern and advanced vision with the aim of building a sustainable relationship 
-              with the customer, relying in this on an experienced work team whose 
-              primary mission is to overcome obstacles and provide everything necessary to serve our customers.
+                We seek to be the largest authorized car distributor in the
+                Kingdom for more than one popular brand to develop its car
+                fleet, in addition to hundreds of thousands of customers. We
+                seek to create added value in the car selling sector and to be a
+                purchasing advisor to customers, as we seek To build their
+                confidence and provide after-sales services in a new way and a
+                modern and advanced vision with the aim of building a
+                sustainable relationship with the customer, relying in this on
+                an experienced work team whose primary mission is to overcome
+                obstacles and provide everything necessary to serve our
+                customers.
               </p>
             </div>
             <div className="mt-12 md:mt-0">
