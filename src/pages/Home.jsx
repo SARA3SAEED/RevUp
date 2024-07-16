@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Feature />
+      <div id="feature-section" className="">
+        <Feature />
+      </div>
       <Header3 />
       <Header2 />
       <Brand />
