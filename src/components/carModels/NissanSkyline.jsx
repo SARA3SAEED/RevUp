@@ -10,7 +10,9 @@ import { MeshStandardMaterial } from "three";
 
 export function NissanSkyline(props) {
   const cbc = useSelector((state) => state.carColors.carBodyColor);
+  const inc = useSelector((state) => state.carColors.InteriorColor);
   const carBodyColor = new MeshStandardMaterial({ color: cbc });
+  const interiorColor = new MeshStandardMaterial({ color: inc });
   const { nodes, materials } = useGLTF("./models/nissanSkyline.glb");
   return (
     <group {...props} dispose={null}>
@@ -317,7 +319,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS117_bump_leather_0.geometry}
-              material={materials.bump_leather}
+              material={interiorColor}
               scale={5872.146}
             />
             <mesh
@@ -357,12 +359,12 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS126_leather_0.geometry}
-              material={materials.leather}
+              material={interiorColor}
               scale={5872.146}
             />
             <mesh
               geometry={nodes.NIS127_metal_0.geometry}
-              material={materials.metal}
+              material={interiorColor}
               scale={5872.146}
             />
             <mesh
@@ -382,6 +384,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS130_plastic_0.geometry}
+              //interuer
               material={materials.plastic}
               scale={5872.146}
             />
@@ -442,7 +445,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS154_bump_leather2_0.geometry}
-              material={materials.bump_leather2}
+              material={interiorColor}
               scale={5872.146}
             />
             <mesh
@@ -982,6 +985,7 @@ export function NissanSkyline(props) {
             <group position={[-0.008, 9.037, -10.434]}>
               <mesh
                 geometry={nodes.Object_4.geometry}
+                //seat
                 material={materials.seat}
                 position={[-0.096, 0, 0]}
               />
@@ -1033,6 +1037,7 @@ export function NissanSkyline(props) {
             <group position={[-0.008, 9.037, -10.434]}>
               <mesh
                 geometry={nodes.Object_4001.geometry}
+                //seat
                 material={materials["seat.001"]}
               />
               <mesh
