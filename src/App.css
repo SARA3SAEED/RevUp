@@ -1,18 +1,45 @@
-.your-component {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+:root {
+  scroll-behavior: smooth;
 }
-
-.your-component.is-visible {
-  opacity: 1;
+@keyframes carMoves {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
 }
 @keyframes examble {
   from {
-    width: 30rem;
+    width: 45rem;
   }
   to {
-    width: 32rem;
+    width: 50rem;
   }
+}
+@keyframes opc {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.carousel {
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  scroll-behavior: smooth;
+}
+.smallCom.animated > img {
+  opacity: 0;
+  animation: opc 1s ease-out;
+}
+.smallCom > img {
+  opacity: 1;
+  animation: opacity 1s ease-out;
+}
+.carousel.is-visible {
+  opacity: 1;
 }
 /* .smallCom {
   transition: transform 0.3s ease-in-out;
@@ -20,4 +47,11 @@
 .smallCom.animated {
   animation: examble 1s ease-in-out;
   /* transform: scale(0.8); */
+}
+.animataion {
+  animation: 7s linear 1s infinite carMoves;
+}
+.carousel-item {
+  height: 30rem;
+  margin: auto;
 }
