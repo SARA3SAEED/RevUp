@@ -99,8 +99,9 @@ export default function Cars() {
           >
             <Slider {...settings}>
               {arrayOfImages.map((item, index) => (
-                <div
+                <button
                   key={index}
+                  onClick={() => navigate("../det")}
                   className={
                     index == slideIndex
                       ? "slide slide-active flex flex-col items-center justify-center bg-accent rounded-lg p-2 bg-opacity-20"
@@ -109,13 +110,13 @@ export default function Cars() {
                 >
                   <img src={item.src} alt={item} />
                   <h1
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate("/det")}
+                    // style={{ cursor: "pointer" }}
+                    // onClick={() => navigate("/det")}
                     className="text-xl font-semibold text-center py-3"
                   >
                     {item.name}
                   </h1>
-                </div>
+                </button>
               ))}
             </Slider>
           </div>
