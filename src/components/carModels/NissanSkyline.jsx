@@ -11,8 +11,10 @@ import { MeshStandardMaterial } from "three";
 export function NissanSkyline(props) {
   const cbc = useSelector((state) => state.carColors.carBodyColor);
   const inc = useSelector((state) => state.carColors.InteriorColor);
+  const rim = useSelector((state) => state.carColors.rimColor);
   const carBodyColor = new MeshStandardMaterial({ color: cbc });
   const interiorColor = new MeshStandardMaterial({ color: inc });
+  const rimColor = new MeshStandardMaterial({ color: rim });
   const { nodes, materials } = useGLTF("./models/nissanSkyline.glb");
   return (
     <group {...props} dispose={null}>
@@ -71,7 +73,7 @@ export function NissanSkyline(props) {
                 />
                 <mesh
                   geometry={nodes.NIS183_brake_0_6.geometry}
-                  material={materials.material}
+                  material={rimColor}
                 />
                 <mesh
                   geometry={nodes.NIS183_brake_0_7.geometry}
@@ -119,7 +121,7 @@ export function NissanSkyline(props) {
                 />
                 <mesh
                   geometry={nodes.NIS198_brake_0_7.geometry}
-                  material={materials.material}
+                  material={rimColor}
                 />
                 <mesh
                   geometry={nodes.NIS198_brake_0_8.geometry}
@@ -274,6 +276,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS109_misc_0.geometry}
+              //wing
               material={materials.misc}
               scale={5872.146}
             />
@@ -339,6 +342,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS120_carbon_fiber_0.geometry}
+              //back belt
               material={materials["Material.001"]}
               scale={5872.146}
             />
@@ -515,7 +519,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS169_rim_0.geometry}
-              material={materials.material}
+              material={rimColor}
               scale={5872.146}
             />
             <mesh
@@ -540,7 +544,7 @@ export function NissanSkyline(props) {
             />
             <mesh
               geometry={nodes.NIS174_rim_0.geometry}
-              material={materials.material}
+              material={rimColor}
               scale={5872.146}
             />
             <mesh
