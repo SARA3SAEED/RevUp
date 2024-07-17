@@ -43,8 +43,8 @@ export default function Home() {
   return (
     <>
       <Header />
-    
-      <motion.div
+
+      {/* <motion.div
         id="feature-section"
         ref={featureRef}
         variants={fadeInUp}
@@ -52,8 +52,8 @@ export default function Home() {
         animate={featureInView ? "visible" : "hidden"}
       >
         <Feature />
-      </motion.div>
-    
+      </motion.div> */}
+
       <motion.div
         ref={header3Ref}
         variants={fadeInUp}
@@ -62,7 +62,7 @@ export default function Home() {
       >
         <Header3 />
       </motion.div>
-  
+
       <motion.div
         ref={header2Ref}
         variants={fadeInUp}
@@ -80,7 +80,7 @@ export default function Home() {
       >
         <Banner />
       </motion.div>
-  
+
       <motion.div
         ref={brandRef}
         variants={fadeInUp}
