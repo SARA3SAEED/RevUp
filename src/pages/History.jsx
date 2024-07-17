@@ -20,7 +20,7 @@ export default function History() {
           <div className="collapse-content flex flex-row items-center justify-between p-2 bg-base-100 border-b">
             <div className="w-1/3 flex- flex-col items-center justify-center text-center text-xl font-semibold">
               <img className="mb-4" src={Poesche} alt={Poesche} />
-              <h1>Porsch 911</h1>
+              <h1>Porsche 911</h1>
             </div>
             <div className="flex flex-col w-1/2 text-start gap-2">
               <p className="w-full">
