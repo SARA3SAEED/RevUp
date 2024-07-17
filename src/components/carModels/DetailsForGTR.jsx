@@ -3,8 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { setCamera } from "../../redux/Slices/ColorsSlice";
 import { NissanSkyline } from "../carModels/NissanSkyline";
-import { OrbitControls } from "@react-three/drei";
-
+import {
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 const CameraController = () => {
   const { camera, gl } = useThree();
   const dispatch = useDispatch();
@@ -47,11 +50,8 @@ export default function DetailsForGTR() {
   }, [cam?.fov, cam?.position]);
 
   return (
-    <Canvas
-      className="w-full h-full"
-      camera={cameraProps}
-      gl={{ antialias: true }}
-    >
+    <Canvas className="w-full h-full">
+      <PerspectiveCamera camera={cameraProps} gl={{ antialias: true }} />
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
