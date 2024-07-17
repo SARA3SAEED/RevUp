@@ -63,16 +63,15 @@ export default function Team() {
                   <h4 className="text-gray-700 font-semibold sm:text-lg">
                     Amer Al-Ghamdi
                   </h4>
-                  <p className="text-indigo-600">Developer & designer</p>
+                  <p className="text-indigo-600">Web Developer</p>
                   <p className="text-gray-600 mt-2 h-20">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesettin industry.
+                    Highly motivated and results-oriented Web Developer
                   </p>
                   <div className="mt-4 flex justify-center gap-4 text-gray-400">
-                    <Link to="">
+                    <Link to="https://github.com/Akom07">
                       <ImGithub size={23} />
                     </Link>
-                    <Link to="">
+                    <Link to="https://www.linkedin.com/in/amer-ali-alghamdi/">
                       <AiFillLinkedin size={25} />
                     </Link>
                   </div>

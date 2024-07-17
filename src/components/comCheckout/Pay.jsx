@@ -63,12 +63,12 @@ export default function Pay() {
             </label>
           </div>
           <div className="flex flex-row">
-            <p className="w-1/12 flex-shrink-0 rounded-md border bg-base-100 border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
+            <p className="w-2/12 flex-shrink-0 rounded-md border bg-base-100 border-gray-200  py-3 text-center text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
               +966
             </p>
             {/* <div className="relative w-7/12 flex-shrink-0"> */}
             <input
-              className="relative w-7/12 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+              className="relative w-6/12 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
               id="card-no"
               name="card-no"
               placeholder="5xx-xxx-xxx"
@@ -174,12 +174,17 @@ export default function Pay() {
             <p className="text-2xl font-semibold text-neutral">$408.00</p>
           </div> */}
         </div>
-        <button
-          onClick={() => document.getElementById("my_modal_1").showModal()}
-          className="mt-4 mb-8 w-full rounded-md bg-primary px-6 py-3 font-medium text-base-100"
-        >
-          Book An Appointment
-        </button>
+        <div className="w-full flex justify-between gap-2">
+          <button className="mt-4 mb-8 w-1/2 rounded-md bg-info px-6 py-3 font-medium text-base-100">
+            back
+          </button>
+          <button
+            onClick={() => document.getElementById("my_modal_1").showModal()}
+            className="mt-4 mb-8 w-1/2 rounded-md bg-primary px-6 py-3 font-medium text-base-100"
+          >
+            Book An Appointment
+          </button>
+        </div>
         <dialog id="my_modal_1" className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Warning!</h3>
