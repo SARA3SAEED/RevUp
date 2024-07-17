@@ -13,7 +13,7 @@ export default function About() {
       <Nav />
       <Main />
       <Team />
-      <Contact />
+      {/* <Contact /> */}
       <Bannar />
       <Footer />
     </>
