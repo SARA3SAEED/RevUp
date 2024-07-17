@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import img from "../assets/car-logo1.png";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.get(
+        "https://66980ca602f3150fb66fe5dc.mockapi.io/user"
+      );
+      const users = response.data;
+
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (user) {
+        console.log("Login successful");
+        localStorage.setItem("user", user.id);
+        navigate("/cars");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      console.error("Error logging in", error);
+      setError("Error logging in. Please try again.");
+    }
+  };
+
   return (
     <>
       <div className="my-12 ">
-        <main className="w-full h-screen flex flex-col items-center justify-center  sm:px-4">
+        <main className="w-full h-screen flex flex-col items-center justify-center sm:px-4">
           <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
             <div className="text-center">
               <Link to="/">
@@ -20,21 +52,24 @@ export default function Login() {
                 <p className="">
                   Don't have an account?{" "}
                   <Link
-                    to="/singup"
+                    to="/signup"
                     className="font-medium text-primary hover:text-primary"
                   >
-                    Sgin Up
+                    Sign Up
                   </Link>
                 </p>
               </div>
             </div>
             <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+              <form onSubmit={handleLogin} className="space-y-5">
+                {error && <p className="text-red-500">{error}</p>}
                 <div>
                   <label className="font-medium">Email</label>
                   <input
                     type="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border
                      focus:border-primary shadow-sm rounded-lg"
                   />
@@ -44,20 +79,21 @@ export default function Login() {
                   <input
                     type="password"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border
                      focus:border-primary shadow-sm rounded-lg"
                   />
                 </div>
-                <Link to="/cars">
-                  <button
-                    className="w-full px-4 py-2 text-white font-medium bg-primary
+                <button
+                  type="submit"
+                  className="w-full px-4 py-2 text-white font-medium bg-primary
                  hover:bg-info hover:text-neutral active:bg-primary rounded-lg duration-150 mt-5"
-                  >
-                    Create account
-                  </button>
-                </Link>
+                >
+                  Login
+                </button>
               </form>
-              <div className="mt-5">
+              {/* <div className="mt-5">
                 <button
                   className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border 
                 rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
@@ -65,7 +101,7 @@ export default function Login() {
                   <FcGoogle size={20} />
                   Continue with Google
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </main>
