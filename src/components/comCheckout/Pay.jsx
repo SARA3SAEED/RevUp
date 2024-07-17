@@ -1,10 +1,12 @@
 import React from "react";
 import { BiSolidRename } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export default function Pay() {
+  const navigate = useNavigate();
   return (
     <>
-      <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0 rounded-xl">
+      <div className="mt-10 bg-accent bg-opacity-10 px-4 pt-8 lg:mt-0 rounded-xl">
         <p className="text-xl font-medium">Payment Details</p>
         <p className="text-gray-400">
           Complete your order by booking an appointment.
@@ -124,7 +126,7 @@ export default function Pay() {
             className="mt-4 mb-2 block text-sm font-medium"
             htmlFor="billing-address"
           >
-            Billing Address
+            Address
           </label>
           <div className="flex flex-col sm:flex-row">
             <div className="relative flex-shrink-0 sm:w-7/12">
@@ -157,7 +159,7 @@ export default function Pay() {
               type="text"
             />
           </div>
-          <div className="mt-6 border-t border-b py-2">
+          {/* <div className="mt-6 border-t border-b py-2">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-neutral">Subtotal</p>
               <p className="font-semibold text-neutral">$399.00</p>
@@ -170,11 +172,34 @@ export default function Pay() {
           <div className="mt-6 flex items-center justify-between">
             <p className="text-sm font-medium text-neutral">Total</p>
             <p className="text-2xl font-semibold text-neutral">$408.00</p>
-          </div>
+          </div> */}
         </div>
-        <button className="mt-4 mb-8 w-full rounded-md bg-primary px-6 py-3 font-medium text-base-100">
-          Place Order
+        <button
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+          className="mt-4 mb-8 w-full rounded-md bg-primary px-6 py-3 font-medium text-base-100"
+        >
+          Book An Appointment
         </button>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Warning!</h3>
+            <p className="py-4">
+              Are you sure you want to book this appointment?
+            </p>
+            <div className="modal-action">
+              <form method="dialog" className="flex flex-row gap-2">
+                {/* if there is a button in form, it will close the modal */}
+                <button
+                  className="btn btn-primary text-base-100"
+                  onClick={() => navigate("/order")}
+                >
+                  Book
+                </button>
+                <button className="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </>
   );

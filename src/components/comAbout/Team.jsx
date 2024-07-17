@@ -1,6 +1,7 @@
 import React from "react";
 import { IoPersonOutline } from "react-icons/io5";
 import { AiFillLinkedin } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { ImGithub } from "react-icons/im";
 
 export default function Team() {
@@ -40,12 +41,12 @@ export default function Team() {
                     system processes.
                   </p>
                   <div className="mt-4 flex justify-center gap-4 text-gray-400">
-                    <a href="https://github.com/SARA3SAEED">
+                    <Link to="https://github.com/SARA3SAEED">
                       <ImGithub size={23} />
-                    </a>
-                    <a href="https://www.linkedin.com/in/sara-almutairi33">
+                    </Link>
+                    <Link to="https://www.linkedin.com/in/sara-almutairi33">
                       <AiFillLinkedin size={25} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -68,12 +69,12 @@ export default function Team() {
                     typesettin industry.
                   </p>
                   <div className="mt-4 flex justify-center gap-4 text-gray-400">
-                    <a href="">
+                    <Link to="">
                       <ImGithub size={23} />
-                    </a>
-                    <a href="">
+                    </Link>
+                    <Link to="">
                       <AiFillLinkedin size={25} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -91,18 +92,18 @@ export default function Team() {
                   <h4 className="text-gray-700 font-semibold sm:text-lg">
                     Fatimah Al-shawmari
                   </h4>
-                  <p className="text-indigo-600">Developer & designer</p>
+                  <p className="text-indigo-600">Front-End Developer</p>
                   <p className="text-gray-600 mt-2 h-20">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesettin industry.
+                    is a web developer have an experience in Front-End
+                    Development
                   </p>
                   <div className="mt-4 flex justify-center gap-4 text-gray-400">
-                    <a href="">
+                    <Link to="https://github.com/FatimahHabib84">
                       <ImGithub size={23} />
-                    </a>
-                    <a href="">
+                    </Link>
+                    <Link to="https://www.linkedin.com/in/fatimah-alshawmari-83797227b/">
                       <AiFillLinkedin size={25} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
