@@ -1,10 +1,58 @@
 import React from "react";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Poesche from "../assets/porsche.png";
 
 export default function History() {
   return (
-    <>
+    <div className="flex flex-col items-center justify-between min-h-screen">
       <Nav />
-    </>
+      <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
+        Orders
+      </h1>
+      <div className="flex flex-col">
+        <div className="collapse bg-secondary bg-opacity-20">
+          <input type="checkbox" />
+          <div className="collapse-title text-xl font-medium flex justify-between max-sm:flex-col">
+            <p className="max-sm:pb-2">#2879fnk8568s00v99</p>
+            <p>{new Date().toLocaleString("en-US")}</p>
+          </div>
+          <div className="collapse-content flex flex-row items-center justify-between p-2 bg-base-100 border-b">
+            <div className="w-1/3 flex- flex-col items-center justify-center text-center text-xl font-semibold">
+              <img className="mb-4" src={Poesche} alt={Poesche} />
+              <h1>Porsch 911</h1>
+            </div>
+            <div className="flex flex-col w-1/2 text-start gap-2">
+              <p className="w-full">
+                <span className="font-bold pr-2">Appointment date: </span>
+                {new Date().toLocaleString("en-US")}
+              </p>
+              <p className="w-full">
+                <span className="font-bold pr-2">Orders: </span>
+                <br />
+                <ul className="pl-4">
+                  <li>
+                    <span className="font-bold pr-2">External Color: </span>
+                    Black
+                  </li>
+                  <li>
+                    <span className="font-bold pr-2">Body Color: </span>
+                    Red
+                  </li>
+                  <li>
+                    <span className="font-bold pr-2">Gear Color: </span>
+                    Black
+                  </li>
+                </ul>
+              </p>
+              <p className="w-fit  px-2 rounded-full bg-primary text-base-100  ">
+                <span className="font-bold pr-2">Status: </span>pending
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
   );
 }
