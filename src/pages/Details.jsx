@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setBodyColor,
   setCamera,
+  setTarget,
   setInteriorColor,
   setRimColor,
 } from "../redux/Slices/ColorsSlice";
@@ -27,74 +28,84 @@ export default function Details() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const bodyColorChanger = (e) => {
+    dispatch(setTarget({ target: [0, 0, 0] }));
     dispatch(
       setBodyColor({
         color: e,
-        target: [0, 0, 0],
+        fov: 30,
         position: [4.5, 1.6, 4.3],
       })
     );
   };
   const interiorColorChanger = (e) => {
+    dispatch(setTarget({ target: [-0.2481118437, 0.242335258, 0.0375993858] }));
     dispatch(
       setInteriorColor({
         color: e,
-        target: [0, 0, 0],
-        position: [0.1487268292, 0.484143883, -0.6101339379],
+        fov: 29,
+        position: [-0.406305301, 0.3560049557, -0.35479985],
       })
     );
   };
   const rimColorChanger = (e) => {
     dispatch(
+      setTarget({ target: [-0.0415685503, -0.223913118, 0.9978187492] })
+    );
+    dispatch(
       setRimColor({
         color: e,
-        target: [0, 0, 0],
+        fov: 25,
         position: [-2.3294932994, 0.0127804534, 1.0361409115],
       })
     );
   };
   const cameraSetter = (e) => {
     if (e == 1) {
+      dispatch(setTarget({ target: [0, 0, 0] }));
       dispatch(
         setCamera({
-          target: [0, 0, 0],
+          fov: 30,
           position: [4.5, 1.6, 4.3],
         })
       );
     } else if (e == 2) {
       dispatch(
+        setTarget({ target: [-0.0415685503, -0.223913118, 0.9978187492] })
+      );
+      dispatch(
         setCamera({
-          target: [0, 0, 0],
+          fov: 25,
           position: [-2.3294932994, 0.0127804534, 1.0361409115],
         })
       );
     } else if (e == 3) {
       dispatch(
+        setTarget({ target: [-0.2481118437, 0.242335258, 0.0375993858] })
+      );
+      dispatch(
         setCamera({
-          target: [0, 0, 0],
-          position: [0.1271644018, 0.4528997581, -0.5879844349],
+          fov: 29,
+          position: [-0.406305301, 0.3560049557, -0.35479985],
         })
       );
     }
   };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState("");
 
-  useEffect(() => {
-    const userId = localStorage.getItem("user");
-    const role = localStorage.getItem("role");
-    if (userId) {
-      setIsLoggedIn(true);
-      setUserRole(role);
-    } else {
-      setIsLoggedIn(false);
-      setUserRole("");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userId = localStorage.getItem("user");
+  //   const role = localStorage.getItem("role");
+  //   if (userId) {
+  //     setIsLoggedIn(true);
+  //     setUserRole(role);
+  //   } else {
+  //     setIsLoggedIn(false);
+  //     setUserRole("");
+  //   }
+  // }, []);
 
   return (
     <div className="flex flex-col w-full  h-screen justify-between ">
-      <div>{isLoggedIn ? <NavLog role={userRole} /> : <Nav />}</div>
+      {/* <div>{isLoggedIn ? <NavLog role={userRole} /> : <Nav />}</div> */}
       <div className="flex flex-col items-center  w-full">
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
           <div className="w-full h-full flex flex-col flex-1">
