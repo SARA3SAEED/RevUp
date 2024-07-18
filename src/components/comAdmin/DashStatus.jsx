@@ -2,14 +2,14 @@ import React from "react";
 
 export default function DashStatus() {
   return (
-    <>
+    <div className="overflow-x-auto">
       <table
         aria-describedby="info-popup"
         aria-label="open tickets"
-        className="border-t w-full min-h-0 h-full flex flex-col"
+        className="border-t min-w-full h-full table-auto"
       >
-        <thead className="flex w-full flex-col px-4">
-          <tr className="border-b flex">
+        <thead className="w-full px-4">
+          <tr className="border-b flex flex-wrap md:flex-no-wrap">
             <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
               <input type="checkbox" name="" id="" />
             </th>
@@ -34,10 +34,10 @@ export default function DashStatus() {
           </tr>
         </thead>
 
-        <tbody className="flex w-full flex-col flex-1 min-h-0 overflow-hidden px-4">
+        <tbody className="w-full px-4">
           {/* In progress */}
-          <tr className="border-b flex">
-            <th className="bg-gray-100 text-left px-3 py-2 flex-1" colSpan={7}>
+          <tr className="border-b flex flex-wrap md:flex-no-wrap">
+            <th className="bg-gray-100 text-left px-3 py-2 w-full" colSpan={7}>
               <h2 className="text-sm">
                 <span className="font-normal mr-1">Priority</span>
                 <span>In progress</span>
@@ -46,7 +46,7 @@ export default function DashStatus() {
           </tr>
           <tr
             role="row"
-            className="hover:bg-blue-100 border-b flex cursor-pointer"
+            className="hover:bg-blue-100 border-b flex flex-wrap md:flex-no-wrap cursor-pointer"
           >
             <td
               role="cell"
@@ -66,53 +66,6 @@ export default function DashStatus() {
                 >
                   O
                 </span>
-                {/* dropdown */}
-                <span className="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
-                  <article>
-                    <header>
-                      <div>
-                        <span className="px-3 py-1 uppercase text-xs leading-none rounded-sm bg-red-600 text-white">
-                          Open
-                        </span>
-                        <span className="ml-2 text-gray-700">
-                          Incident #12534
-                        </span>
-                        <span className="ml-1">(Low)</span>
-                      </div>
-                    </header>
-                    <section className="mt-5">
-                      <h1 className="text-sm font-semibold mt-3">
-                        Quo laudantium error corporis accusamus unde, labore
-                        quidem non officiis.
-                      </h1>
-                      <p className="mt-3">
-                        Hi Team,
-                        <br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Error accusantium molestias fugit commodi doloremque.{" "}
-                        <br />
-                        <br />
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit? ...
-                      </p>
-                    </section>
-                    <footer className="mt-4">
-                      <p className="text-gray-600">Latest Comments</p>
-                      <hr className="mt-1" />
-                      <div className="flex mt-3">
-                        <p className="font-semibold">Nico Braun</p>
-                        <p className="ml-auto text-gray-700 text-sm">
-                          Yesterday 10:33
-                        </p>
-                      </div>
-                      <p className="mt-2">
-                        Dolore odio error inventore sint et dolorum asperiores
-                        exercitationem, quisquam esse.
-                      </p>
-                    </footer>
-                  </article>
-                </span>
-                {/* end dropdown */}
               </div>
             </td>
             <td className="py-3 px-1 w-24">#12534</td>
@@ -122,53 +75,6 @@ export default function DashStatus() {
                   Quo laudantium error corporis accusamus unde, labore quidem
                   non officiis.
                 </p>
-                {/* dropdown */}
-                <span className="hidden group-hover:block ml-4 mt-10 w-screen max-w-lg absolute top-0 border shadow-lg p-6 bg-white rounded-md z-50 text-gray-900">
-                  <article>
-                    <header>
-                      <div>
-                        <span className="px-3 py-1 uppercase text-xs leading-none rounded-sm bg-red-600 text-white">
-                          Open
-                        </span>
-                        <span className="ml-2 text-gray-700">
-                          Incident #12534
-                        </span>
-                        <span className="ml-1">(Low)</span>
-                      </div>
-                    </header>
-                    <section className="mt-5">
-                      <h1 className="text-sm font-semibold mt-3">
-                        Quo laudantium error corporis accusamus unde, labore
-                        quidem non officiis.
-                      </h1>
-                      <p className="mt-3">
-                        Hi Team,
-                        <br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Error accusantium molestias fugit commodi doloremque.{" "}
-                        <br />
-                        <br />
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit? ...
-                      </p>
-                    </section>
-                    <footer className="mt-4">
-                      <p className="text-gray-600">Latest Comments</p>
-                      <hr className="mt-1" />
-                      <div className="flex mt-3">
-                        <p className="font-semibold">Nico Braun</p>
-                        <p className="ml-auto text-gray-700 text-sm">
-                          Yesterday 10:33
-                        </p>
-                      </div>
-                      <p className="mt-2">
-                        Dolore odio error inventore sint et dolorum asperiores
-                        exercitationem, quisquam esse.
-                      </p>
-                    </footer>
-                  </article>
-                </span>
-                {/* end dropdown */}
               </div>
             </td>
             <td className="py-3 px-1 flex-1 truncate">Marla Darsuz</td>
@@ -178,17 +84,18 @@ export default function DashStatus() {
           </tr>
 
           {/* Done */}
-          <tr className="border-b flex">
-            <th className="bg-gray-100 text-left px-3 py-2 flex-1" colSpan={7}>
+          <tr className="border-b flex flex-wrap md:flex-no-wrap">
+            <th className="bg-gray-100 text-left px-3 py-2 w-full" colSpan={7}>
               <h2 className="text-sm">
                 <span className="font-normal mr-1">Priority</span>
                 <span>Done</span>
               </h2>
             </th>
           </tr>
+
           <tr
             role="row"
-            className="hover:bg-blue-100 border-b flex cursor-pointer"
+            className="hover:bg-blue-100 border-b flex flex-wrap md:flex-no-wrap cursor-pointer"
           >
             <td
               role="cell"
@@ -225,9 +132,22 @@ export default function DashStatus() {
                 </span>
               </div>
             </td>
+            <td className="py-3 px-1 w-24">#12534</td>
+            <td className="py-3 px-1 w-full max-w-xs xl:max-w-lg">
+              <div className="relative group w-full">
+                <p className="w-full truncate">
+                  Quo laudantium error corporis accusamus unde, labore quidem
+                  non officiis.
+                </p>
+              </div>
+            </td>
+            <td className="py-3 px-1 flex-1 truncate">Marla Darsuz</td>
+            <td className="py-3 px-1 flex-1 truncate">Tuesday 09:56</td>
+            <td className="py-3 px-1 flex-1 truncate">UK Support</td>
+            <td className="py-3 px-1 flex-1 truncate">Nico Braun</td>
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
