@@ -60,9 +60,7 @@ export default function DashboardAdmin() {
           `,
         }}
       />
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white">
-        <Sidebar />
         <div className="flex-1 flex flex-col">
           {/* section body header */}
           <header

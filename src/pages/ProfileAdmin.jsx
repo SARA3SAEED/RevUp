@@ -4,6 +4,8 @@ import Sidebar from "../components/comAdmin/Sidebar";
 import CardPro from "../components/comProfile/CardPro";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
+import DashboardAdmin from '../pages/DashboardAdmin';
+
 
 export default function ProfileAdmin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,8 +34,9 @@ export default function ProfileAdmin() {
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
 
       <div className="h-full w-full flex items-center overflow-hidden antialiased text-gray-800 bg-white">
-        <Sidebar />
-        {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />}
+        {/* <Sidebar />
+        {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />} */}
+        <DashboardAdmin />
       </div>
     </>
   );
