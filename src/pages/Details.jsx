@@ -30,7 +30,7 @@ export default function Details() {
     dispatch(
       setBodyColor({
         color: e,
-        fov: 30,
+        target: [0, 0, 0],
         position: [4.5, 1.6, 4.3],
       })
     );
@@ -39,7 +39,7 @@ export default function Details() {
     dispatch(
       setInteriorColor({
         color: e,
-        fov: 30,
+        target: [0, 0, 0],
         position: [0.1487268292, 0.484143883, -0.6101339379],
       })
     );
@@ -48,7 +48,7 @@ export default function Details() {
     dispatch(
       setRimColor({
         color: e,
-        fov: 40,
+        target: [0, 0, 0],
         position: [-2.3294932994, 0.0127804534, 1.0361409115],
       })
     );
@@ -57,21 +57,21 @@ export default function Details() {
     if (e == 1) {
       dispatch(
         setCamera({
-          fov: 30,
+          target: [0, 0, 0],
           position: [4.5, 1.6, 4.3],
         })
       );
     } else if (e == 2) {
       dispatch(
         setCamera({
-          fov: 40,
+          target: [0, 0, 0],
           position: [-2.3294932994, 0.0127804534, 1.0361409115],
         })
       );
     } else if (e == 3) {
       dispatch(
         setCamera({
-          fov: 30,
+          target: [0, 0, 0],
           position: [0.1271644018, 0.4528997581, -0.5879844349],
         })
       );
