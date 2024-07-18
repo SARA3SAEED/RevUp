@@ -3,7 +3,7 @@ import React from "react";
 export default function Profile() {
   return (
     <>
-      <section className="py-10 ">
+      <section className="py-10 m-auto ">
         <div className=" mx-auto flex gap-4">
           <div className="lg:w-[88%] md:w-[80%] sm:w-[88%] xs:w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center dark:bg-gray-800/40">
             {/*  */}
@@ -111,8 +111,19 @@ export default function Profile() {
                   />
                 </div>
 
+                <div className="flex items-center py-3 text-sm mt-3 divide-y rounded bg-gray-100 py-2 px-3 text-gray-600 shadow-sm">
+                  <span>Status</span>
+                  <span className="ml-auto">
+                    <select className="rounded-full py-1 px-2 text-xs font-medium">
+                      <option value="open">Open for </option>
+                      <option value="scripe">Scripe</option>
+                      <option value="cancel">Cancel</option>
+                    </select>
+                  </span>
+                </div>
+
                 <div className="w-full rounded-lg bg-primary mt-4 text-white text-lg font-semibold">
-                  <button type="submit" className="w-full p-4">
+                  <button type="submit" className="w-full p-2">
                     Submit
                   </button>
                 </div>

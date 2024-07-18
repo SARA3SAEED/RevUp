@@ -124,8 +124,8 @@ export default function Cars() {
                   onClick={() => navigate("../det")}
                   className={
                     index == slideIndex
-                      ? "slide slide-active flex flex-col items-center justify-center bg-accent rounded-lg p-2 bg-opacity-20"
-                      : "slide flex flex-col items-center justify-center bg-accent rounded-lg p-2 bg-opacity-20"
+                      ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "
+                      : "slide flex flex-col items-center justify-center rounded-lg p-2 "
                   }
                 >
                   <img src={item.src} alt={item} />

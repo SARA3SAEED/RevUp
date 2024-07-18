@@ -4,12 +4,12 @@ import { IoPersonOutline } from "react-icons/io5";
 export default function CardPro({ onEditClick }) {
   return (
     <>
-      <div className="m-10 max-w-sm">
+      <div className="m-auto p-2 ">
         <div className="rounded-lg border bg-white px-4 pt-8 pb-10 shadow-lg">
           <div className="relative mx-auto w-36 rounded-full">
-            <div className="mx-auto h-auto w-full rounded-full ">
+            {/* <div className="mx-auto h-auto w-full rounded-full ">
               <IoPersonOutline size={130} color="gray" />
-            </div>
+            </div> */}
           </div>
           <h1 className="my-1 text-center text-xl font-bold leading-8 text-gray-900">
             Michael Simbal
@@ -36,9 +36,13 @@ export default function CardPro({ onEditClick }) {
               <span> Address</span>
               <span className="ml-auto">Street Address</span>
             </li>
+            <li className="flex items-center py-3 text-sm">
+              <span> Status</span>
+              <span className="ml-auto">subscripe</span>
+            </li>
           </ul>
           <div className="w-full rounded-lg bg-primary mt-4 text-white text-lg font-semibold">
-            <button type="submit" className="w-full p-4" onClick={onEditClick}>
+            <button type="submit" className="w-full p-2" onClick={onEditClick}>
               Edit
             </button>
           </div>
