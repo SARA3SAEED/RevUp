@@ -26,7 +26,7 @@ export default function Checkout() {
     <>
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
 
-      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 my-28 max-sm:my-16 ">
+      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-16 my-28 max-sm:my-16 gap-4 ">
         <Bill />
         <Pay />
       </div>
