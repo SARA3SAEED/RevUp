@@ -9,7 +9,7 @@ import pursh from "../assets/porsche.png";
 import genesis from "../assets/Lotus-Emira.png";
 import carMoves from "../assets/carMoves.gif";
 import videoCar from "../assets/videoCar.mp4";
-import Lamburgini from "../assets/Lamburgini.png";
+import Lamborghini from "../assets/Lamborghini.png";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../App.css";
@@ -21,6 +21,7 @@ export default function Cars() {
     { name: "Nissan-GTR", src: nessan },
     { name: "Pursche 911", src: pursh },
     { name: "Lotus-Emira", src: genesis },
+    { name: "Lamborghini", src: Lamborghini },
   ];
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -57,6 +58,7 @@ export default function Cars() {
     centerMode: true,
     vertical: isSmall,
     verticalSwiping: isSmall,
+    arrows: false,
     // prevArrow: "►",
   };
 

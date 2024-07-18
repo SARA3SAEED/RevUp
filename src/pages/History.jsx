@@ -10,18 +10,14 @@ export default function History() {
       <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
         Orders
       </h1>
-      <div className="flex flex-col">
+      <div className="flex flex-col p-2">
         <div className="collapse bg-secondary bg-opacity-20">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium flex justify-between max-sm:flex-col">
             <p className="max-sm:pb-2">#2879fnk8568s00v99</p>
             <p>{new Date().toLocaleString("en-US")}</p>
           </div>
-          <div className="collapse-content flex flex-row items-center justify-between p-2 bg-base-100 border-b">
-            <div className="w-1/3 flex- flex-col items-center justify-center text-center text-xl font-semibold">
-              <img className="mb-4" src={Poesche} alt={Poesche} />
-              <h1>Porsche 911</h1>
-            </div>
+          <div className="collapse-content flex flex-row items-center justify-around p-2 bg-base-100 border-b">
             <div className="flex flex-col w-1/2 text-start gap-2">
               <p className="w-full">
                 <span className="font-bold pr-2">Appointment date: </span>
@@ -46,8 +42,12 @@ export default function History() {
                 </ul>
               </p>
               <p className="w-fit  px-2 rounded-full bg-primary text-base-100  ">
-                <span className="font-bold pr-2">Status: </span>pending
+                <span className="font-bold pr-2">Status: </span>in progress
               </p>
+            </div>
+            <div className="w-1/3 flex- flex-col items-start justify-start text-center text-xl font-semibold">
+              <img className="mb-4" src={Poesche} alt={Poesche} />
+              <h1>Porsche 911</h1>
             </div>
           </div>
         </div>
