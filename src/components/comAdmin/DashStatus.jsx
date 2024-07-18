@@ -1,38 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
+import { GrStatusGoodSmall } from "react-icons/gr";
 
 export default function DashStatus() {
   return (
-    <div className="overflow-x-auto">
-      <table
-        aria-describedby="info-popup"
-        aria-label="open tickets"
-        className="border-t min-w-full h-full table-auto"
-      >
-        <thead className="w-full px-4">
-          <tr className="border-b flex flex-wrap md:flex-no-wrap">
-            <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
-              <input type="checkbox" name="" id="" />
-            </th>
-            <th className="font-semibold text-left py-3 px-1 w-24 truncate">
-              ID
-            </th>
-            <th className="font-semibold text-left py-3 px-1 w-full max-w-xs xl:max-w-lg truncate">
-              Subject
-            </th>
-            <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-              Requester
-            </th>
-            <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-              Requester updated
-            </th>
-            <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-              Group
-            </th>
-            <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-              Assignee
-            </th>
-          </tr>
-        </thead>
+    <>
+      <div className="overflow-x-auto">
+        <table
+          aria-describedby="info-popup"
+          aria-label="open tickets"
+          className="border-t min-w-full h-full table-auto"
+        >
+          <thead className="w-full px-4">
+            <tr className="border-b flex flex-wrap md:flex-no-wrap">
+              <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
+                <input type="checkbox" name="" id="" />
+              </th>
+              <th className="font-semibold text-left py-3 px-1 w-24 truncate">
+                ID
+              </th>
+              <th className="font-semibold text-left py-3 px-1 w-full max-w-xs xl:max-w-lg truncate">
+                Car Name
+              </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Requester
+              </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Status Request
+              </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Date of Request
+              </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Delete
+              </th>
+            </tr>
+          </thead>
 
         <tbody className="w-full px-4">
           {/* In progress */}
@@ -149,5 +152,6 @@ export default function DashStatus() {
         </tbody>
       </table>
     </div>
+    </>
   );
 }

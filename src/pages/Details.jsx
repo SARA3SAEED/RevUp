@@ -93,13 +93,10 @@ export default function Details() {
   }, []);
 
   return (
-
     <div className="flex flex-col w-full  h-screen justify-between ">
       <div>{isLoggedIn ? <NavLog role={userRole} /> : <Nav />}</div>
       <div className="flex flex-col items-center  w-full">
-
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
-
           <div className="w-full h-full flex flex-col flex-1">
             <div className="relative h-full bg-accent ">
               <DetailsForGTR />

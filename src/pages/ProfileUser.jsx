@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import Profile from "../components/comProfile/Profile";
-import CardStatus from "../components/comProfile/CardStatus";
+// import CardStatus from "../components/comProfile/CardStatus";
 import CardPro from "../components/comProfile/CardPro";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
@@ -30,9 +30,9 @@ export default function ProfileUser() {
   return (
     <>
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-      <div className="flex justify-center">
+      <div className="flex flex-col justify-center">
       {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />}
-      <CardStatus />
+      {/* <CardStatus /> */}
       </div>
       {/* <Profile /> */}
     </>
