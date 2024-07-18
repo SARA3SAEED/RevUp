@@ -78,18 +78,18 @@ export default function Details() {
   };
 
   return (
-    <div className="flex flex-col w-full  h-screen justify-between ">
+    <div className="flex flex-col w-full bg-accent h-screen justify-between ">
       <div>
         <Nav />
       </div>
-      <div className="flex flex-col items-center  w-full">
+      <div className="flex bg-accent flex-col items-center  w-full">
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
           <div className="w-full h-full ">
-            <div className="relative h-full bg-slate-300 ">
+            <div className="relative h-full bg-accent ">
               <DetailsForGTR />
               <div className="flex absolute top-1 justify-center w-full">
                 {isOpen && (
-                  <div className="flex gap-8 justify-center">
+                  <div className="flex gap-8 justify-center mt-2">
                     <button
                       onClick={() =>
                         tabIndex == 1

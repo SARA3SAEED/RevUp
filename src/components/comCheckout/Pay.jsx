@@ -175,7 +175,10 @@ export default function Pay() {
           </div> */}
         </div>
         <div className="w-full flex justify-between gap-2">
-          <button className="mt-4 mb-8 w-1/2 rounded-md bg-info px-6 py-3 font-medium text-base-100">
+          <button
+            onClick={() => navigate("../det")}
+            className="mt-4 mb-8 w-1/2 rounded-md bg-info px-6 py-3 font-medium text-base-100"
+          >
             back
           </button>
           <button

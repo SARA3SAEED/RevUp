@@ -66,14 +66,14 @@ export default function Singup() {
                   </button>
                 </Link>
               </form>
-              <div className="mt-5">
-                <button
+              <div className="">
+                {/* <button
                   className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border 
                   rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
                 >
                   <FcGoogle size={20} />
                   Continue with Google
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

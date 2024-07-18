@@ -48,7 +48,7 @@ export default function Login() {
                      focus:border-primary shadow-sm rounded-lg"
                   />
                 </div>
-                <Link to="/cars">
+                <Link to="/">
                   <button
                     className="w-full px-4 py-2 text-white font-medium bg-primary
                  hover:bg-info hover:text-neutral active:bg-primary rounded-lg duration-150 mt-5"
@@ -57,14 +57,14 @@ export default function Login() {
                   </button>
                 </Link>
               </form>
-              <div className="mt-5">
-                <button
+              <div className="">
+                {/* <button
                   className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border 
                 rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
                 >
                   <FcGoogle size={20} />
                   Continue with Google
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
