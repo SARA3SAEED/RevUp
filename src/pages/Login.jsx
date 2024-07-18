@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import img from "../assets/car-logo1.png";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -95,7 +94,6 @@ export default function Login() {
                   Login
                 </button>
               </form>
-          
             </div>
           </div>
         </main>
