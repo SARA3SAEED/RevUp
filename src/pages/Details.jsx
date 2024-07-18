@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import DetailsForGTR from "../components/carModels/DetailsForGTR";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,6 +8,7 @@ import {
   setRimColor,
 } from "../redux/Slices/ColorsSlice";
 import Nav from "../components/Nav";
+import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -76,12 +77,24 @@ export default function Details() {
       );
     }
   };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+
+  useEffect(() => {
+    const userId = localStorage.getItem("user");
+    const role = localStorage.getItem("role");
+    if (userId) {
+      setIsLoggedIn(true);
+      setUserRole(role);
+    } else {
+      setIsLoggedIn(false);
+      setUserRole("");
+    }
+  }, []);
 
   return (
     <div className="flex flex-col w-full  h-screen justify-between ">
-      <div>
-        <Nav />
-      </div>
+      <div>{isLoggedIn ? <NavLog role={userRole} /> : <Nav />}</div>
       <div className="flex flex-col items-center  w-full">
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
           <div className="w-full h-full ">

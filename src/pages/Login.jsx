@@ -26,6 +26,8 @@ export default function Login() {
       if (user) {
         console.log("Login successful");
         localStorage.setItem("user", user.id);
+        localStorage.setItem("role", user.role);
+
         navigate("/cars");
       } else {
         setError("Invalid email or password");
@@ -93,15 +95,7 @@ export default function Login() {
                   Login
                 </button>
               </form>
-              {/* <div className="mt-5">
-                <button
-                  className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border 
-                rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
-                >
-                  <FcGoogle size={20} />
-                  Continue with Google
-                </button>
-              </div> */}
+          
             </div>
           </div>
         </main>

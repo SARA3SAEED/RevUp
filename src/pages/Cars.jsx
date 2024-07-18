@@ -13,6 +13,7 @@ import Lamburgini from "../assets/Lamburgini.png";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../App.css";
+import NavLog from "../components/NavLog";
 // import { Center } from "@react-three/drei";
 // import { current } from "@reduxjs/toolkit";
 
@@ -60,10 +61,27 @@ export default function Cars() {
     // prevArrow: "►",
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+
+  useEffect(() => {
+    const userId = localStorage.getItem("user");
+    const role = localStorage.getItem("role");
+    if (userId) {
+      setIsLoggedIn(true);
+      setUserRole(role);
+    } else {
+      setIsLoggedIn(false);
+      setUserRole("");
+    }
+  }, []);
+
   return (
     !isLoading && (
       <div className="min-w-screen min-h-screen flex flex-col items-center justify-between">
-        <Nav></Nav>
+        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+
+        {/* {userId ? <NavLog /> : <Nav />} */}
         <h1 className="absolute z-30 top-1/2 text-center text-neutral font-bold text-5xl w-full p-4">
           Discover the new Models
         </h1>

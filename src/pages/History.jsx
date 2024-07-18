@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState, useEffect, Component } from "react";
 import Nav from "../components/Nav";
+import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
 import Poesche from "../assets/porsche.png";
 
 export default function History() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+
+  useEffect(() => {
+    const userId = localStorage.getItem("user");
+    const role = localStorage.getItem("role");
+    if (userId) {
+      setIsLoggedIn(true);
+      setUserRole(role);
+    } else {
+      setIsLoggedIn(false);
+      setUserRole("");
+    }
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-between min-h-screen">
-      <Nav />
-      <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
+        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+        <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
         Orders
       </h1>
       <div className="flex flex-col">

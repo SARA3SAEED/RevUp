@@ -9,6 +9,11 @@ import Checkout from "../pages/Checkout";
 import History from "../pages/History";
 import About from "../pages/About";
 import NotFound from "../pages/NotFound";
+import ProfileAdmin from "../pages/ProfileAdmin";
+import ProfileUser from "../pages/ProfileUser";
+import Subscribe from "../pages/Subscribe";
+import DashboardAdmin from '../pages/DashboardAdmin';
+import ListUser from '../pages/ListUser';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -19,6 +24,11 @@ export default function Router() {
     { path: "/det", element: <Details /> },
     { path: "/checkout", element: <Checkout /> },
     { path: "/order", element: <History /> },
+    { path: "/profile-admin", element: <ProfileAdmin /> },
+    { path: "/dashboard-admin", element: <DashboardAdmin /> },
+    { path: "/list-user", element: <ListUser /> },
+    { path: "/profile-user", element: <ProfileUser /> },
+    { path: "/subscribe", element: <Subscribe /> },
     { path: "/about", element: <About /> },
     { path: "/*", element: <NotFound /> },
   ]);
