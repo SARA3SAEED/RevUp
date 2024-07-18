@@ -4,25 +4,24 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { setCamera } from "../../redux/Slices/ColorsSlice";
 import { NissanSkyline } from "../carModels/NissanSkyline";
 import { OrbitControls } from "@react-three/drei";
-import { DirectionalLightShadow } from "three";
 
 export default function DetailsForGTR() {
   const cam = useSelector((state) => state.carColors.camera);
   const orbitControlsRef = useRef(null);
   console.log(orbitControlsRef);
 
-  const controls = useMemo(() => {
-    const controls = new OrbitControls(camera, renderer.domElement);
-    // Initial configuration based on cam
-    return controls;
-  }, [camera, renderer, cam]);
+  // const controls = useMemo(() => {
+  //   const controls = new OrbitControls(camera, renderer.domElement);
+  //   // Initial configuration based on cam
+  //   return controls;
+  // }, [camera, renderer, cam]);
 
-  useEffect(() => {
-    // Update OrbitControls properties based on cam
-    controls.target.set(...cam.target);
-    controls.position.set(...cam.position);
-    // Other property updates as needed
-  }, [cam, controls]);
+  // useEffect(() => {
+  //   // Update OrbitControls properties based on cam
+  //   controls.target.set(...cam.target);
+  //   controls.position.set(...cam.position);
+  //   // Other property updates as needed
+  // }, [cam, controls]);
 
   return (
     <Canvas className="w-full h-full">
