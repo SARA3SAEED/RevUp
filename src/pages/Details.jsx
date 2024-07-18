@@ -97,7 +97,7 @@ export default function Details() {
       <div>{isLoggedIn ? <NavLog role={userRole} /> : <Nav />}</div>
       <div className="flex flex-col items-center  w-full">
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
-          <div className="w-full h-full ">
+          <div className="w-full h-full flex flex-col flex-1">
             <div className="relative h-full bg-slate-300 ">
               <DetailsForGTR />
               <div className="flex absolute top-1 justify-center w-full">
@@ -166,10 +166,10 @@ export default function Details() {
                   </div>
                 )}
               </div>
-              <div className=" flex absolute right-1 w-20 top-2 h-5/6  ">
-                <div className="absolute right-24 top-0">
+              <div className=" flex absolute sm:right-1 sm:w-20 sm:top-2 sm:h-5/6 max-sm:-bottom-20 max-sm:w-full  ">
+                <div className="absolute sm:right-24 sm:top-0 max-sm:top-10 ">
                   {isOpen && (
-                    <div className="w-24 h-24 flex flex-col bg-slate-200 rounded-xl items-center justify-center gap-4 border p-2">
+                    <div className="w-24 h-24 flex sm:flex-col bg-slate-200 rounded-xl items-center justify-center gap-4 border p-2">
                       <h1>VIP ONLY</h1>
                       <div className="overflow-hidden w-10 h-10 rounded-full">
                         <input
@@ -189,7 +189,7 @@ export default function Details() {
                     </div>
                   )}
                 </div>
-                <ul className="menu bg-base-200 gap-4  rounded-box">
+                <ul className="menu max-sm:menu-horizontal bg-base-200 gap-4 max-sm:w-full rounded-box">
                   <li>
                     <button
                       className="tooltip tooltip-left"
