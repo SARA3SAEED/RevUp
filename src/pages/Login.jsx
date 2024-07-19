@@ -53,7 +53,7 @@ export default function Login() {
                 <p className="">
                   Don't have an account?{" "}
                   <Link
-                    to="/signup"
+                    to="/singup"
                     className="font-medium text-primary hover:text-primary"
                   >
                     Sign Up

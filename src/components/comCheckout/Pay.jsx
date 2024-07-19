@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BiSolidRename } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Pay() {
+  // useStates and useNavigate consts
   const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [modification, setModification] = useState({
@@ -12,12 +16,19 @@ export default function Pay() {
     status: "in progress",
     appointmentDate: "",
     id: uuidv4(),
-    carName: "",
-    bodyColor: "",
-    chairColor: "",
-    wheelColor: "",
+    carName: useSelector((state) => state.carColors.carName),
+    bodyColor: useSelector((state) => state.carColors.carBodyColor),
+    chairColor: useSelector((state) => state.carColors.InteriorColor),
+    wheelColor: useSelector((state) => state.carColors.rimColor),
   });
 
+  // other varibles
+  // const carName = useSelector((state) => state.carColors.carName);
+  // const bodyColor = useSelector((state) => state.carColors.carBodyColor);
+  // const chairColor = useSelector((state) => state.carColors.InteriorColor);
+  // const wheelColor = useSelector((state) => state.carColors.rimColor);
+
+  // useEffect
   useEffect(() => {
     axios
       .get(
@@ -30,10 +41,38 @@ export default function Pay() {
       });
   }, []);
 
+  // functions
   const bookAppoinment = () => {
-    console.log(modification);
-    console.log(user);
-    // navigate("/order")
+    const newArr = user.modification;
+    newArr.push(modification);
+    setUser({ ...user, modification: newArr });
+    // console.log(newArr);
+    // console.log(user);
+    axios
+      .put(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`,
+        {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          role: user.role,
+          isVIP: user.isVIP,
+          fullName: user.fullName,
+          modification: newArr,
+          mobile: user.mobile,
+          salary: user.salary,
+          bank: user.bank,
+          address: user.address,
+          state: user.state,
+          zip: user.zip,
+        }
+      )
+      .then(function (res) {
+        navigate("/order");
+      });
   };
 
   return (

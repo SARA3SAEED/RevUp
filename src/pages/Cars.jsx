@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import { setCarName } from "../redux/Slices/ColorsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import nessan from "../assets/Nissan.png";
 import pursh from "../assets/porsche.png";
 import genesis from "../assets/Lotus-Emira.png";
@@ -29,6 +31,7 @@ export default function Cars() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isSmall, setIsSmall] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +81,11 @@ export default function Cars() {
     }
   }, []);
 
+  const handleClick = (carName) => {
+    dispatch(setCarName({ carName: carName }));
+    navigate("../det");
+  };
+
   return (
     !isLoading && (
       <div className="min-w-screen min-h-screen flex flex-col items-center justify-between">
@@ -121,7 +129,7 @@ export default function Cars() {
               {arrayOfImages.map((item, index) => (
                 <button
                   key={index}
-                  onClick={() => navigate("../det")}
+                  onClick={() => handleClick(item.name)}
                   className={
                     index == slideIndex
                       ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "

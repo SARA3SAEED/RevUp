@@ -11,10 +11,9 @@ export default function Singup() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-
   const handleSignup = async (e) => {
     e.preventDefault();
-    
+
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       setError("Email must contain '@' and a '.'");
@@ -26,12 +25,24 @@ export default function Singup() {
     }
     const role = email.includes("@revup") ? "admin" : "user";
     try {
-      const response = await axios.post("https://66980ca602f3150fb66fe5dc.mockapi.io/user", {
-        username,
-        email,
-        password,
-        role,
-      });
+      const response = await axios.post(
+        "https://66980ca602f3150fb66fe5dc.mockapi.io/user",
+        {
+          username,
+          email,
+          password,
+          role,
+          isVIP: false,
+          modification: [],
+          fullName: "",
+          mobile: "",
+          salary: "",
+          bank: "",
+          address: "",
+          state: "",
+          zip: "",
+        }
+      );
       console.log(response.data);
       navigate("/login");
     } catch (error) {
