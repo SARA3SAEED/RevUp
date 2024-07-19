@@ -44,7 +44,7 @@ const CameraController = () => {
 
   return null;
 };
-export default function DetailsForGTR() {
+export default function CameraSetting() {
   const { fov, position, target } = useSelector(
     (state) => state.carColors.camera
   );
