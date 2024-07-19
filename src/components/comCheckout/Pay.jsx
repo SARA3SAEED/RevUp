@@ -44,35 +44,53 @@ export default function Pay() {
   // functions
   const bookAppoinment = () => {
     const newArr = user.modification;
-    newArr.push(modification);
-    setUser({ ...user, modification: newArr });
-    // console.log(newArr);
-    // console.log(user);
-    axios
-      .put(
-        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
-          "user"
-        )}`,
-        {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          password: user.password,
-          role: user.role,
-          isVIP: user.isVIP,
-          fullName: user.fullName,
-          modification: newArr,
-          mobile: user.mobile,
-          salary: user.salary,
-          bank: user.bank,
-          address: user.address,
-          state: user.state,
-          zip: user.zip,
-        }
-      )
-      .then(function (res) {
-        navigate("/order");
-      });
+    const moblieValide = /^5[0-9]{8}$/;
+    if (
+      user.email === "" ||
+      user.fullName === "" ||
+      user.mobile === "" ||
+      user.address === "" ||
+      user.zip === ""
+    ) {
+      toast.error("Please fill all information!");
+    } else if (!moblieValide.test(user.mobile)) {
+      toast.error("Please add Valid mobile number!");
+    } else if (user.zip.length !== 5) {
+      toast.error("ZIP code must contain 5 numbers!");
+    } else if (user.state === "State" || user.state === "") {
+      toast.error("Choose your state!");
+    } else {
+      newArr.push(modification);
+      setUser({ ...user, modification: newArr });
+      // console.log(newArr);
+      // console.log(user);
+      axios
+        .put(
+          `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+            "user"
+          )}`,
+          {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            password: user.password,
+            role: user.role,
+            isVIP: user.isVIP,
+            fullName: user.fullName,
+            modification: newArr,
+            mobile: user.mobile,
+            salary: user.salary,
+            bank: user.bank,
+            address: user.address,
+            state: user.state,
+            zip: user.zip,
+          }
+        )
+        .then(function () {
+          toast.success("order Booked successfuly!");
+          navigate("/order");
+        });
+    }
   };
 
   return (
@@ -321,6 +339,7 @@ export default function Pay() {
             </div>
           </div>
         </dialog>
+        <ToastContainer position="top-left" theme="light" />
       </div>
     </>
   );
