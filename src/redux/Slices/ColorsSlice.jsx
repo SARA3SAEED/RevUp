@@ -5,8 +5,9 @@ const initialState = {
   InteriorColor: "#000000",
   rimColor: "#000000",
   camera: {
-    target: [0, 0, 0],
+    fov: 30,
     position: [4.5, 1.6, 4.3],
+    target: [0, 0, 0],
   },
 };
 
@@ -16,26 +17,34 @@ const ColorsSlice = createSlice({
   reducers: {
     setBodyColor: (state, action) => {
       state.carBodyColor = action.payload.color;
-      state.camera.target = action.payload.target;
+      state.camera.fov = action.payload.fov;
       state.camera.position = action.payload.position;
     },
     setCamera: (state, action) => {
-      state.camera.target = action.payload.target;
+      state.camera.fov = action.payload.fov;
       state.camera.position = action.payload.position;
+    },
+    setTarget: (state, action) => {
+      state.camera.target = action.payload.target;
     },
     setInteriorColor: (state, action) => {
       state.InteriorColor = action.payload.color;
-      state.camera.target = action.payload.target;
+      state.camera.fov = action.payload.fov;
       state.camera.position = action.payload.position;
     },
     setRimColor: (state, action) => {
       state.rimColor = action.payload.color;
-      state.camera.target = action.payload.target;
+      state.camera.fov = action.payload.fov;
       state.camera.position = action.payload.position;
     },
   },
 });
 
-export const { setBodyColor, setRimColor, setInteriorColor, setCamera } =
-  ColorsSlice.actions;
+export const {
+  setBodyColor,
+  setRimColor,
+  setTarget,
+  setInteriorColor,
+  setCamera,
+} = ColorsSlice.actions;
 export default ColorsSlice.reducer;

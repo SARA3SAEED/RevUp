@@ -29,8 +29,7 @@ export default function About() {
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       <Main />
       <Team />
-      <Contact />
-      <Bannar />
+      {/* <Contact /> */}
       <Footer />
     </>
   );

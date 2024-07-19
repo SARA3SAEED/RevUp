@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../components/comAdmin/Sidebar";
 import DashStatus from "../components/comAdmin/DashStatus";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
@@ -62,9 +61,7 @@ export default function DashboardAdmin() {
       />
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white">
-        <Sidebar />
         <div className="flex-1 flex flex-col">
-          {/* section body header */}
           <header
             aria-label="page caption"
             className="flex-none flex h-16 bg-gray-100 border-t px-4 items-center"
@@ -74,7 +71,6 @@ export default function DashboardAdmin() {
             </h1>
           </header>
 
-          {/* main content */}
           <main className="flex-grow flex min-h-0 border-t">
             <section
               aria-label="main content"
