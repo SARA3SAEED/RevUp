@@ -48,7 +48,7 @@ export default function Cars() {
     dots: true,
     speed: 500,
     beforeChange: (current, next) => setSlideIndex(next),
-    // className: "center",
+    className: "center",
     infinite: true,
     lazyLoad: true,
     centerPadding: 0,

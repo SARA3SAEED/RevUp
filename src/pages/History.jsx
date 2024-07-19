@@ -22,12 +22,12 @@ export default function History() {
 
   return (
     <div className="flex flex-col items-center justify-between min-h-screen">
-        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-        <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
+      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+      <h1 className="text-center text-neutral font-bold text-3xl w-full p-4 py-8">
         Orders
       </h1>
       <div className="flex flex-col p-2">
-        <div className="collapse bg-secondary bg-opacity-20">
+        <div className="collapse collapse-arrow bg-secondary bg-opacity-20">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium flex justify-between max-sm:flex-col">
             <p className="max-sm:pb-2">#2879fnk8568s00v99</p>
