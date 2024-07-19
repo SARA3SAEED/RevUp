@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Component } from "react";
-import DetailsForGTR from "../components/carModels/DetailsForGTR";
+import DetailsForGTR from "../components/carModels/CameraSetting";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setBodyColor,
