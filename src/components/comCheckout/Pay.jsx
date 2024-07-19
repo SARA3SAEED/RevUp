@@ -177,13 +177,13 @@ export default function Pay() {
         <div className="w-full flex justify-between gap-2">
           <button
             onClick={() => navigate("../det")}
-            className="mt-4 mb-8 w-1/2 rounded-md bg-info px-6 py-3 font-medium text-base-100"
+            className="mt-4 mb-8 w-1/2 rounded-md btn btn-neutral px-6 py-3 font-medium text-base-100"
           >
             back
           </button>
           <button
             onClick={() => document.getElementById("my_modal_1").showModal()}
-            className="mt-4 mb-8 w-1/2 rounded-md bg-primary px-6 py-3 font-medium text-base-100"
+            className="btn mt-4 mb-8 w-1/2 rounded-md btn-primary px-6 py-3 font-medium text-base-100"
           >
             Book An Appointment
           </button>
