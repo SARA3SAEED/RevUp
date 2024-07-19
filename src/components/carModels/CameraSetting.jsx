@@ -11,6 +11,7 @@ import {
 } from "@react-three/drei";
 import { ToyotaSupra } from "./ToyotaSupra";
 import { useParams } from "react-router-dom";
+import { LotusEmira } from "./LotusEmira";
 
 const CameraController = () => {
   const { camera, gl } = useThree();
@@ -74,12 +75,10 @@ export default function CameraSetting() {
       <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
       <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
 
-
-      {carid == 1 ? <NissanSkyline /> : carid == 2 ? <Porsche911 /> : carid == 3 ? <ToyotaSupra /> : ''}
-
-
-
-
+      {carid == 1 && <NissanSkyline />}
+      {carid == 2 && <Porsche911 />}
+      {carid == 3 && <LotusEmira />}
+      {carid == 4 && <ToyotaSupra />}
 
 
       <CameraController />
