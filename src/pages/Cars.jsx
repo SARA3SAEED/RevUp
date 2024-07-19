@@ -83,6 +83,8 @@ export default function Cars() {
 
   const handleClick = (carr) => {
     dispatch(setCarName({ carName: carr.name }));
+    localStorage.setItem('displayid', carr.id)
+    localStorage.setItem('displayName', carr.name)
     navigate(`../det/${carr.id}`);
   };
 

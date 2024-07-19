@@ -7,9 +7,13 @@ import { GiCarSeat } from "react-icons/gi";
 import { Float, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { NissanSkyline } from "../carModels/NissanSkyline";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useParams } from "react-router-dom";
+import { Porsche911 } from "../carModels/Porsche911";
+import { ToyotaSupra } from "../carModels/ToyotaSupra";
 
 export default function Bill() {
-  const carName = useSelector((state) => state.carColors.carName);
+  const carName = localStorage.getItem('displayName');
+  const carid = localStorage.getItem('displayid')
 
   return (
     <>
@@ -28,8 +32,9 @@ export default function Bill() {
             <directionalLight intensity={2} position={[1.83, -0.25, 0.93]} />
             <directionalLight intensity={2} position={[-1.97, -0.002, -0.97]} />
             {/* the car model */}
-            <NissanSkyline />
-            {/* ^^^^^^^^^ */}
+            {carid == 1 && <NissanSkyline />}
+            {carid == 2 && <Porsche911 />}
+            {carid == 3 && <ToyotaSupra />}
             <OrbitControls
               autoRotate={true}
               enableZoom={false}

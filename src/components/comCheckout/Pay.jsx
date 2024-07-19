@@ -289,7 +289,7 @@ export default function Pay() {
         </div>
         <div className="w-full flex justify-between gap-2">
           <button
-            onClick={() => navigate("../det")}
+            onClick={() => navigate(-1)}
             className="mt-4 mb-8 w-1/2 rounded-md btn btn-neutral px-6 py-3 font-medium text-base-100"
           >
             back
