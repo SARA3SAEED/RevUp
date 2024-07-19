@@ -68,7 +68,7 @@ export default function CameraSetting() {
       <pointLight position={[10, 10, 10]} />
       <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
       <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
-      <NissanSkyline />
+      {/* <NissanSkyline /> */}
       {/* <Porsche911 /> */}
 
       <CameraController />
