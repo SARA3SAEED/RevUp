@@ -21,7 +21,7 @@ export default function Router() {
     { path: "/singup", element: <Singup /> },
     { path: "/login", element: <Login /> },
     { path: "/cars", element: <Cars /> },
-    { path: "/det", element: <Details /> },
+    { path: "/det/:carid", element: <Details /> },
     { path: "/checkout", element: <Checkout /> },
     { path: "/order", element: <History /> },
     { path: "/profile-admin", element: <ProfileAdmin /> },
