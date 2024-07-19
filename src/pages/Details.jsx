@@ -26,11 +26,15 @@ import {
 import { BiSend } from "react-icons/bi";
 import aa from "../assets/pexels.jpg";
 import { div } from "three/examples/jsm/nodes/Nodes.js";
+import axios from "axios";
 
 export default function Details() {
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+  const [user, setUser] = useState({});
   const [bgColor, setBgColor] = useState("#fffff");
   const colorsArray = ["white", "#ff0000", "#00ff00", "#0000ff", "black"];
 
@@ -117,6 +121,15 @@ export default function Details() {
     }
   };
   useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUser(res.data);
+      });
     const userId = localStorage.getItem("user");
     const role = localStorage.getItem("role");
     if (userId) {
@@ -211,7 +224,11 @@ export default function Details() {
                         >
                           <div
                             className="color-icon w-14 h-14 shadow-md"
-                            onClick={togglePicker}
+                            onClick={
+                              // user.isVIP == true
+                              togglePicker
+                              // : navigate("../subscribe")
+                            }
                           >
                             <div
                               className="selected-color absolute z-10 w-14 h-14"
@@ -230,13 +247,15 @@ export default function Details() {
                             ref={colorPickerRef}
                             // value="#f4e110"
                             onChange={(e) => {
-                              tabIndex == 1
-                                ? bodyColorChanger(e.target.value)
-                                : tabIndex == 2
-                                ? rimColorChanger(e.target.value)
-                                : tabIndex == 3
-                                ? interiorColorChanger(e.target.value)
-                                : "";
+                              user.isVIP == true
+                                ? tabIndex == 1
+                                  ? bodyColorChanger(e.target.value)
+                                  : tabIndex == 2
+                                  ? rimColorChanger(e.target.value)
+                                  : tabIndex == 3
+                                  ? interiorColorChanger(e.target.value)
+                                  : ""
+                                : navigate("../subscribe");
                               handleColorChange;
                               setBgColor(e.target.value);
                             }}
