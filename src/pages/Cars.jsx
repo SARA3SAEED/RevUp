@@ -21,10 +21,10 @@ import NavLog from "../components/NavLog";
 
 export default function Cars() {
   const arrayOfImages = [
-    { name: "Nissan-GTR", src: nessan },
-    { name: "Pursche 911", src: pursh },
-    { name: "Lotus-Emira", src: genesis },
-    { name: "Lamborghini", src: Lamborghini },
+    { id: 1, name: "Nissan-GTR", src: nessan },
+    { id: 2, name: "Pursche 911", src: pursh },
+    { id: 3, name: "Lotus-Emira", src: genesis },
+    { id: 4, name: "Lamborghini", src: Lamborghini },
   ];
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -81,9 +81,11 @@ export default function Cars() {
     }
   }, []);
 
-  const handleClick = (carName) => {
-    dispatch(setCarName({ carName: carName }));
-    navigate("../det");
+  const handleClick = (carr) => {
+    dispatch(setCarName({ carName: carr.name }));
+    localStorage.setItem('displayid', carr.id)
+    localStorage.setItem('displayName', carr.name)
+    navigate(`../det/${carr.id}`);
   };
 
   return (
@@ -129,7 +131,7 @@ export default function Cars() {
               {arrayOfImages.map((item, index) => (
                 <button
                   key={index}
-                  onClick={() => handleClick(item.name)}
+                  onClick={() => handleClick(item)}
                   className={
                     index == slideIndex
                       ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "

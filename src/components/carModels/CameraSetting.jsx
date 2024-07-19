@@ -10,6 +10,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 import { ToyotaSupra } from "./ToyotaSupra";
+import { useParams } from "react-router-dom";
 
 const CameraController = () => {
   const { camera, gl } = useThree();
@@ -46,6 +47,8 @@ const CameraController = () => {
   return null;
 };
 export default function CameraSetting() {
+  const { carid } = useParams()
+
   const { fov, position, target } = useSelector(
     (state) => state.carColors.camera
   );
@@ -72,10 +75,9 @@ export default function CameraSetting() {
       <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
 
 
+      {carid == 1 ? <NissanSkyline /> : carid == 2 ? <Porsche911 /> : carid == 3 ? <ToyotaSupra /> : ''}
 
-      {/* <NissanSkyline /> */}
-      {/* <Porsche911 /> */}
-      <ToyotaSupra />
+
 
 
 
