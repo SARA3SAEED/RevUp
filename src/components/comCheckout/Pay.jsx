@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BiSolidRename } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Pay() {
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
+  const [modification, setModification] = useState({
+    date: new Date().toLocaleString("en-US"),
+    status: "in progress",
+    appointmentDate: "",
+    id: uuidv4(),
+    carName: "",
+    bodyColor: "",
+    chairColor: "",
+    wheelColor: "",
+  });
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUser(res.data);
+      });
+  }, []);
+
+  const bookAppoinment = () => {
+    console.log(modification);
+    console.log(user);
+    // navigate("/order")
+  };
+
   return (
     <>
       <div className="mt-10 bg-accent bg-opacity-10 px-4 pt-8 lg:mt-0 rounded-xl">
@@ -25,6 +57,8 @@ export default function Pay() {
               name="email"
               placeholder="your.email@gmail.com"
               type="text"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3 text-gray-400">
               @
@@ -43,6 +77,8 @@ export default function Pay() {
               name="card-holder"
               placeholder="Your full name here"
               type="text"
+              value={user.fullName}
+              onChange={(e) => setUser({ ...user, fullName: e.target.value })}
             />
             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
               <BiSolidRename color="#9aa3af" />
@@ -73,10 +109,19 @@ export default function Pay() {
               name="card-no"
               placeholder="5xx-xxx-xxx"
               type="text"
+              value={user.mobile}
+              onChange={(e) => setUser({ ...user, mobile: e.target.value })}
             />
             <select
               className="w-full ml-2 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
               placeholder="Select appointment date"
+              value={modification.appointmentDate}
+              onChange={(e) =>
+                setModification({
+                  ...modification,
+                  appointmentDate: e.target.value,
+                })
+              }
             >
               <option value="25/7/2024">25/7/2024 : 9-12AM</option>
               <option value="25/7/2024">25/7/2024 : 1-4PM</option>
@@ -101,7 +146,11 @@ export default function Pay() {
             </label>
           </div>
           <div className="flex flex-row">
-            <select className="w-1/2 ml-2 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
+            <select
+              value={user.salary}
+              onChange={(e) => setUser({ ...user, salary: e.target.value })}
+              className="w-1/2 ml-2 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+            >
               <option value="Below 5,000SR">5,000SR</option>
               <option value="Between 5,000SR - 10,000SR">
                 Between 5,000SR - 10,000SR
@@ -109,7 +158,11 @@ export default function Pay() {
               <option value="Above 10,000SR">Above 10,000SR</option>
               <option value="Cash deal">Cash Deal</option>
             </select>
-            <select className="w-1/2 ml-2 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
+            <select
+              value={user.bank}
+              onChange={(e) => setUser({ ...user, bank: e.target.value })}
+              className="w-1/2 ml-2 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+            >
               <option value="SNB">Saudi National Bank SNB</option>
               <option value="AlRajhi Bank">AlRajhi Bank</option>
               <option value="Riyad Bank">Riyad Bank</option>
@@ -136,6 +189,8 @@ export default function Pay() {
                 name="billing-address"
                 placeholder="Street Address"
                 type="text"
+                value={user.address}
+                onChange={(e) => setUser({ ...user, address: e.target.value })}
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                 <img
@@ -149,14 +204,33 @@ export default function Pay() {
               className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
               name="billing-state"
               type="text"
+              value={user.state}
+              onChange={(e) => setUser({ ...user, state: e.target.value })}
             >
               <option value="State">State</option>
+              <option value="Riyadh Province">Riyadh Province</option>
+              <option value="Makkah Province">Makkah Province</option>
+              <option value="Eastern Province">Eastern Province</option>
+              <option value="Madinah Province">Madinah Province</option>
+              <option value="Al Baha Province"> Al Baha Province</option>
+              <option value="Al Jawf Province">Al Jawf Province</option>
+              <option value="Northern Borders Province">
+                Northern Borders Province
+              </option>
+              <option value="Qassim Province">Qassim Province</option>
+              <option value="Ha'il Province">Ha'il Province</option>
+              <option value="Tabuk Province">Tabuk Province</option>
+              <option value="Aseer Province">Aseer Province</option>
+              <option value="Jizan Province">Jizan Province</option>
+              <option value="Najran Province">Najran Province</option>
             </select>
             <input
               className="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-secondary focus:ring-secondary"
               name="billing-zip"
               placeholder="ZIP"
               type="text"
+              value={user.zip}
+              onChange={(e) => setUser({ ...user, zip: e.target.value })}
             />
           </div>
           {/* <div className="mt-6 border-t border-b py-2">
@@ -199,7 +273,7 @@ export default function Pay() {
                 {/* if there is a button in form, it will close the modal */}
                 <button
                   className="btn btn-primary text-base-100"
-                  onClick={() => navigate("/order")}
+                  onClick={() => bookAppoinment()}
                 >
                   Book
                 </button>
