@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef,Component } from "react";
+import React, { useState, useEffect, useRef, Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import DetailsForGTR from "../components/carModels/CameraSetting";
+import CameraSetting from "../components/carModels/CameraSetting";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/CarDetStyle.css";
 import Colorwheel from "../assets/colorwheel.png";
@@ -173,7 +173,7 @@ export default function Details() {
         <div className=" flex justify-between w-full h-full min-h-[30rem] ">
           <div className="w-full h-full flex flex-col flex-1">
             <div className="relative h-full  ">
-              <DetailsForGTR />
+              <CameraSetting />
               <div className="flex absolute top-0 justify-center w-full z-50">
                 {isOpen && (
                   <div className="colorCont flex flex-row gap-8 justify-center items-center mt-2 w-56 h-16 ">
@@ -333,7 +333,7 @@ export default function Details() {
                 <ul className="menu max-sm:menu-horizontal bg-base-200 gap-4 max-sm:w-full rounded-box">
                   <li>
                     <button
-                      className="tooltip tooltip-left"
+                      className="tooltip tooltip-left z-[100]"
                       data-tip="Body Color"
                       onClick={() => {
                         setTabIndex(1);
