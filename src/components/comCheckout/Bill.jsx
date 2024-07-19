@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
 import Nissan from "../../assets/Nissan.png";
 import { GiCarDoor } from "react-icons/gi";
 import { GiCarWheel } from "react-icons/gi";
@@ -8,9 +9,7 @@ import { NissanSkyline } from "../carModels/NissanSkyline";
 import { Canvas, useFrame } from "@react-three/fiber";
 
 export default function Bill() {
-
-
-
+  const carName = useSelector((state) => state.carColors.carName);
 
   return (
     <>
@@ -18,10 +17,12 @@ export default function Bill() {
         <p className="text-xl font-medium">Order Summary</p>
         <div className="mt-8 space-y-3 rounded-lg border bg-base-100 px-2 py-4 sm:px-6">
           {/* <img className="mb-4" src={Nissan} alt={Nissan} /> */}
-          <Canvas camera={{
-            fov: 30,
-            position: [4.5, 1.6, 4.3],
-          }}>
+          <Canvas
+            camera={{
+              fov: 30,
+              position: [4.5, 1.6, 4.3],
+            }}
+          >
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <directionalLight intensity={2} position={[1.83, -0.25, 0.93]} />
@@ -35,9 +36,8 @@ export default function Bill() {
               enableRotate={false}
               autoRotateSpeed={1}
             />
-
           </Canvas>
-          <h1 className="text-center text-xl font-semibold">Nissan GTR</h1>
+          <h1 className="text-center text-xl font-semibold">{carName}</h1>
           <div className="flex flex-col w-full text-start gap-2">
             <ul className="pl-4 w-full">
               <li className="my-4 w-full justify-between flex flex-row items-center">

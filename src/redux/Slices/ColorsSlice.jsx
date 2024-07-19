@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  carName: "",
   carBodyColor: "#ffffff",
   InteriorColor: "#000000",
   rimColor: "#000000",
@@ -15,6 +16,9 @@ const ColorsSlice = createSlice({
   name: "carColors",
   initialState,
   reducers: {
+    setCarName: (state, action) => {
+      state.carName = action.payload.carName;
+    },
     setBodyColor: (state, action) => {
       state.carBodyColor = action.payload.color;
       state.camera.fov = action.payload.fov;
@@ -41,6 +45,7 @@ const ColorsSlice = createSlice({
 });
 
 export const {
+  setCarName,
   setBodyColor,
   setRimColor,
   setTarget,
