@@ -17,7 +17,6 @@ export function NissanSkyline(props) {
   const rimColor = new MeshStandardMaterial({ color: rim });
   const { nodes, materials } = useGLTF("./models/nissanSkyline.glb");
   const nodes1 = useGLTF('./models/wheelRims.glb').nodes
-  const materials1 = useGLTF('./models/wheelRims.glb').materials
 
   return (
     <group {...props} dispose={null}>
@@ -92,7 +91,7 @@ export function NissanSkyline(props) {
                 </group> */}
 
 
-                <group position={[-0.04, 0, 0.02]} rotation={[1.5, .01, 1.215]} scale={0.0115}>
+                <group position={[-0.04, 0, 0.02]} rotation={[1.5, 0.01, 1.215]} scale={0.0115}>
                   <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
                   <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
                 </group>
