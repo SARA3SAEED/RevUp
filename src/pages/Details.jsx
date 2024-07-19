@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import DetailsForGTR from "../components/carModels/DetailsForGTR";
+import DetailsForGTR from "../components/carModels/CameraSetting";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/CarDetStyle.css";
 import Colorwheel from "../assets/colorwheel.png";
