@@ -14,6 +14,7 @@ import ProfileUser from "../pages/ProfileUser";
 import Subscribe from "../pages/Subscribe";
 import DashboardAdmin from '../pages/DashboardAdmin';
 import ListUser from '../pages/ListUser';
+import NewDetails from "../pages/NewDetails";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -21,7 +22,8 @@ export default function Router() {
     { path: "/singup", element: <Singup /> },
     { path: "/login", element: <Login /> },
     { path: "/cars", element: <Cars /> },
-    { path: "/det/:carid", element: <Details /> },
+    // { path: "/det/:carid", element: <Details /> },
+    { path: "/det/:carid", element: <NewDetails /> },
     { path: "/checkout", element: <Checkout /> },
     { path: "/order", element: <History /> },
     { path: "/profile-admin", element: <ProfileAdmin /> },

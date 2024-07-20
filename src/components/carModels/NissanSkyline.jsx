@@ -12,6 +12,7 @@ export function NissanSkyline(props) {
   const cbc = useSelector((state) => state.carColors.carBodyColor);
   const inc = useSelector((state) => state.carColors.InteriorColor);
   const rim = useSelector((state) => state.carColors.rimColor);
+  const rimType = useSelector((state) => state.carColors.rimType);
   const carBodyColor = new MeshStandardMaterial({ color: cbc });
   const interiorColor = new MeshStandardMaterial({ color: inc });
   const rimColor = new MeshStandardMaterial({ color: rim });
@@ -75,32 +76,24 @@ export function NissanSkyline(props) {
                 />
 
                 {/* orignal rim */}
-                {/* <mesh
-                  geometry={nodes.NIS183_brake_0_6.geometry}
-                  material={rimColor}
-                /> 
-                 <mesh
-                  geometry={nodes.NIS183_brake_0_7.geometry}
-                  material={materials.inner_rim}
-                /> */}
-                {/* rim1 */}
-                {/* <group position={[-0.05, 0, 0.025]} rotation={[0, -2.8, 0]}
+                {rimType == 1 && <>
+                  <mesh
+                    geometry={nodes.NIS183_brake_0_6.geometry}
+                    material={rimColor}
+                  />
+                  <mesh
+                    geometry={nodes.NIS183_brake_0_7.geometry}
+                    material={materials.inner_rim}
+                  /></>}
+                {rimType == 2 && <group position={[-0.05, 0, 0.025]} rotation={[0, -2.8, 0]}
                   scale={0.59}>
                   <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
                   <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                </group> */}
-
-
-                <group position={[-0.04, 0, 0.02]} rotation={[1.5, 0.01, 1.215]} scale={0.0115}>
+                </group>}
+                {rimType == 3 && <group position={[-0.04, 0, 0.02]} rotation={[1.5, 0.01, 1.215]} scale={0.0115}>
                   <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
                   <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                </group>
-
-
-
-
-
-
+                </group>}
                 <mesh
                   geometry={nodes.NIS183_brake_0_8.geometry}
                   material={materials.chrome_rim}
@@ -134,25 +127,25 @@ export function NissanSkyline(props) {
                   material={materials.Material__6}
                 />
                 {/* original rim */}
-                {/* <mesh
-                  geometry={nodes.NIS198_brake_0_5.geometry}
-                  material={materials.inner_rim}
-                /> 
-                 <mesh
-                  geometry={nodes.NIS198_brake_0_7.geometry}
-                  material={rimColor}
-                /> */}
-                {/* rim1 */}
-                {/* <group position={[0.043, 0, -0.02]} rotation={[0, 0.33, 0]}
+                {rimType == 1 && <>
+                  <mesh
+                    geometry={nodes.NIS198_brake_0_5.geometry}
+                    material={materials.inner_rim}
+                  />
+                  <mesh
+                    geometry={nodes.NIS198_brake_0_7.geometry}
+                    material={rimColor}
+                  />
+                </>}
+                {rimType == 2 && <group position={[0.043, 0, -0.02]} rotation={[0, 0.33, 0]}
                   scale={0.57}>
                   <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
                   <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                </group> */}
-
-                <group position={[0.04, 0, -0.02]} rotation={[1.5, 0.01, -1.92]} scale={0.0115}>
+                </group>}
+                {rimType == 3 && <group position={[0.04, 0, -0.02]} rotation={[1.5, 0.01, -1.92]} scale={0.0115}>
                   <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
                   <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                </group>
+                </group>}
 
 
                 <mesh
@@ -548,27 +541,28 @@ export function NissanSkyline(props) {
               material={materials.plastic}
               scale={5872.146}
             />
-            {/* <mesh
-              geometry={nodes.NIS168_inner_rim_0.geometry}
-              material={materials.inner_rim}
-              scale={5872.146}
-            />
-            <mesh
-              geometry={nodes.NIS169_rim_0.geometry}
-              material={rimColor}
-              scale={5872.146}
-            /> */}
-            {/* rim1 */}
-            {/* 
-            <group position={[3200, 825, -4775]} rotation={[0, 0, 0]}
+
+            {rimType == 1 && <>
+              <mesh
+                geometry={nodes.NIS168_inner_rim_0.geometry}
+                material={materials.inner_rim}
+                scale={5872.146}
+              />
+              <mesh
+                geometry={nodes.NIS169_rim_0.geometry}
+                material={rimColor}
+                scale={5872.146}
+              />
+            </>}
+            {rimType == 2 && <group position={[3200, 825, -4775]} rotation={[0, 0, 0]}
               scale={3400}>
               <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
               <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-            </group> */}
-            <group position={[3150, 825, -4775]} rotation={[1.6, 0, -1.55]} scale={68}>
+            </group>}
+            {rimType == 3 && <group position={[3150, 825, -4775]} rotation={[1.6, 0, -1.55]} scale={68}>
               <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
               <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-            </group>
+            </group>}
 
 
             <mesh
@@ -591,28 +585,35 @@ export function NissanSkyline(props) {
               material={materials.chrome_rim}
               scale={5872.146}
             />
-            {/* <mesh
-              geometry={nodes.NIS174_rim_0.geometry}
-              material={rimColor}
-              scale={5872.146}
-            />
-            <mesh
-              geometry={nodes.NIS176_inner_rim_0.geometry}
-              material={materials.inner_rim}
-              scale={5872.146}
-            /> */}
+            {/*  */}
 
             {/* rim1 */}
-            {/* <group position={[-3200, 825, -4775]} rotation={[0, 3.15, 0]}
+            {/*  */}
+            {/* rim2 */}
+            {/*  */}
+
+            {rimType == 1 && <>
+              <mesh
+                geometry={nodes.NIS174_rim_0.geometry}
+                material={rimColor}
+                scale={5872.146}
+              />
+              <mesh
+                geometry={nodes.NIS176_inner_rim_0.geometry}
+                material={materials.inner_rim}
+                scale={5872.146}
+              />
+            </>}
+            {rimType == 2 && <group position={[-3200, 825, -4775]} rotation={[0, 3.15, 0]}
               scale={3400}>
               <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
               <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-            </group> */}
-            {/* rim2 */}
-            <group position={[-3150, 825, -4775]} rotation={[1.6, 0, 1.55]} scale={68}>
+            </group>}
+            {rimType == 3 && <group position={[-3150, 825, -4775]} rotation={[1.6, 0, 1.55]} scale={68}>
               <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
               <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-            </group>
+            </group>}
+
 
             <mesh
               geometry={nodes.NIS177_outer_rim_0.geometry}

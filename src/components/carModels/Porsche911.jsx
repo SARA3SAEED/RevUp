@@ -12,6 +12,7 @@ export function Porsche911(props) {
   const cbc = useSelector((state) => state.carColors.carBodyColor);
   const inc = useSelector((state) => state.carColors.InteriorColor);
   const rim = useSelector((state) => state.carColors.rimColor);
+  const rimType = useSelector((state) => state.carColors.rimType);
   const carBodyColor = new MeshStandardMaterial({ color: cbc });
   const interiorColor = new MeshStandardMaterial({ color: inc });
   const rimColor = new MeshStandardMaterial({ color: rim });
@@ -171,17 +172,17 @@ export function Porsche911(props) {
           />
         </group>
         <group position={[-0.821, -0.196, -1.333]}>
-          {/* <mesh geometry={nodes.Object_60.geometry} material={rimColor} /> */}
-          <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
+          {rimType == 1 && <mesh geometry={nodes.Object_60.geometry} material={rimColor} />}
+          {rimType == 2 && <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
             <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-          </group>
-
-          {/* rim 2 */}
-          {/* <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
+          </group>}
+          {rimType == 3 && <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
             <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-          </group> */}
+          </group>}
+
+
           <mesh
             geometry={nodes.Object_61.geometry}
             material={materials.tire_mic1}
@@ -209,18 +210,16 @@ export function Porsche911(props) {
           />
         </group>
         <group position={[-0.821, -0.196, 1.241]}>
-          {/* <mesh geometry={nodes.Object_69.geometry} material={rimColor} /> */}
 
-          <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
+          {rimType == 1 && <mesh geometry={nodes.Object_69.geometry} material={rimColor} />}
+          {rimType == 2 && <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
             <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-          </group>
-
-          {/* rim 2 */}
-          {/* <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
+          </group>}
+          {rimType == 3 && <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
             <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-          </group> */}
+          </group>}
           <mesh
             geometry={nodes.Object_70.geometry}
             material={materials.tire_mic1}
@@ -248,16 +247,17 @@ export function Porsche911(props) {
           />
         </group>
         <group position={[0.821, -0.196, -1.333]} scale={[-1, 1, 1]}>
-          {/* <mesh geometry={nodes.Object_78.geometry} material={rimColor} />*/}
-          <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
+
+          {rimType == 1 && <mesh geometry={nodes.Object_78.geometry} material={rimColor} />}
+          {rimType == 2 && <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
             <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-          </group>
-          {/* rim 2 */}
-          {/* <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
+          </group>}
+          {rimType == 3 && <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
             <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-          </group> */}
+          </group>}
+
           <mesh
             geometry={nodes.Object_79.geometry}
             material={materials.tire_mic1}
@@ -285,18 +285,16 @@ export function Porsche911(props) {
           />
         </group>
         <group position={[0.821, -0.196, 1.241]} scale={[-1, 1, 1]}>
-          {/* <mesh geometry={nodes.Object_87.geometry} material={rimColor} /> */}
 
-          <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
+          {rimType == 1 && <mesh geometry={nodes.Object_87.geometry} material={rimColor} />}
+          {rimType == 2 && <group position={[-0.127, 0, 0]} rotation={[0, 3.15, 0]} scale={1.05}>
             <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-          </group>
-
-          {/* rim 2 */}
-          {/* <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
+          </group>}
+          {rimType == 3 && <group position={[-0.11, 0, 0]} rotation={[1.5, 0.01, 1.58]} scale={0.021}>
             <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
             <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-          </group> */}
+          </group>}
           <mesh
             geometry={nodes.Object_88.geometry}
             material={materials.tire_mic1}
