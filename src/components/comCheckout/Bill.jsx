@@ -12,8 +12,11 @@ import { Porsche911 } from "../carModels/Porsche911";
 import { ToyotaSupra } from "../carModels/ToyotaSupra";
 
 export default function Bill() {
-  const carName = localStorage.getItem('displayName');
-  const carid = localStorage.getItem('displayid')
+  const carName = localStorage.getItem("displayName");
+  const carid = localStorage.getItem("displayid");
+  const bodyColor = useSelector((state) => state.carColors.carBodyColor);
+  const chairColor = useSelector((state) => state.carColors.InteriorColor);
+  const wheelColor = useSelector((state) => state.carColors.rimColor);
 
   return (
     <>
@@ -54,7 +57,14 @@ export default function Bill() {
                   <span className="bg-accent p-2 rounded-xl">
                     <GiCarDoor size={30} />
                   </span>
-                  <p className="font-bold ">Green</p>
+                  <div className="font-bold w-7 h-7 rounded-full shadow-lg overflow-hidden border-base-300 border">
+                    <input
+                      type="color"
+                      className="w-20 h-20 -translate-x-1 -translate-y-2"
+                      disabled
+                      value={bodyColor}
+                    />
+                  </div>
                 </div>
                 <span className="font-bold">1000$</span>
 
@@ -73,7 +83,14 @@ export default function Bill() {
                   <span className="bg-accent p-2 rounded-xl">
                     <GiCarWheel size={30} />
                   </span>
-                  <p className="font-bold">Red</p>
+                  <div className="font-bold w-7 h-7 rounded-full shadow-lg overflow-hidden border-base-300 border">
+                    <input
+                      type="color"
+                      className="w-20 h-20 -translate-x-1 -translate-y-2"
+                      disabled
+                      value={chairColor}
+                    />
+                  </div>
                 </div>
                 <span className="font-bold">500$</span>
                 {/* <select className="rounded-md border border-gray-200 px-4 py-2 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
@@ -91,7 +108,14 @@ export default function Bill() {
                   <span className="bg-accent p-2 rounded-xl">
                     <GiCarSeat size={30} />
                   </span>
-                  <p className="font-bold">Blue </p>
+                  <div className="font-bold w-7 h-7 rounded-full shadow-lg overflow-hidden border-base-300 border">
+                    <input
+                      type="color"
+                      className="w-20 h-20 -translate-x-1 -translate-y-2"
+                      disabled
+                      value={wheelColor}
+                    />
+                  </div>
                 </div>
                 <span className="font-bold">750$</span>
                 {/* <select className="rounded-md border border-gray-200 px-4 py-2 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
