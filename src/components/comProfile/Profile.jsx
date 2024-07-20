@@ -15,29 +15,28 @@ export default function Profile() {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [userId, setUserId] = useState("");
- 
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("user"); 
+    const storedUserId = localStorage.getItem("user");
     if (storedUserId) {
       setUserId(storedUserId);
-    axios
-    .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${storedUserId}`)
-    .then((response) => {
-        setFormData({
-          fullName: response.data.fullName,
-          profile: response.data.profile || "",
-          email: response.data.email,
-          mobile: response.data.mobile,
-          address: response.data.address,
-          state: response.data.state,
-          zip: response.data.zip,
-          status: response.data.isVIP ? "vip" : "basic",
+      axios
+        .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${storedUserId}`)
+        .then((response) => {
+          setFormData({
+            fullName: response.data.fullName,
+            profile: response.data.profile || "",
+            email: response.data.email,
+            mobile: response.data.mobile,
+            address: response.data.address,
+            state: response.data.state,
+            zip: response.data.zip,
+            status: response.data.isVIP ? "vip" : "basic",
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
         });
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
     }
   }, []);
 
@@ -63,7 +62,8 @@ export default function Profile() {
         .put(
           `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${userId}`,
           updatedFormData
-        ).then((response) => {
+        )
+        .then((response) => {
           setSuccessMessage("Profile updated successfully!");
           setTimeout(() => setSuccessMessage(""), 3000);
         })
@@ -74,7 +74,7 @@ export default function Profile() {
   };
 
   return (
-    <>
+    <div className="absolute top-full -translate-y-full m-auto">
       <section className="py-10 m-auto">
         <div className="mx-auto flex gap-4">
           <div className="lg:w-[88%] md:w-[80%] sm:w-[88%] xs:w-full mx-auto shadow-2xl p-4 rounded-xl h-fit self-center dark:bg-gray-800/40">
@@ -85,7 +85,7 @@ export default function Profile() {
             <form onSubmit={handleSubmit}>
               <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
                 <div className="w-full">
-                  <label htmlFor="fullName" className="mb-2 dark:text-gray-300">
+                  <label htmlFor="fullName" className="mb-2 text-base-100">
                     Full Name
                   </label>
                   <input
@@ -93,13 +93,13 @@ export default function Profile() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+                    className="w-full bg-base-100 bg-opacity-35 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                     placeholder="Full Name"
                   />
                 </div>
               </div>
-              <div className="w-full mb-4 mt-6">
-                <label htmlFor="profile" className="mb-2 dark:text-gray-300">
+              {/* <div className="w-full mb-4 mt-6">
+                <label htmlFor="profile" className="mb-2 text-base-100">
                   Profile
                 </label>
                 <input
@@ -110,16 +110,16 @@ export default function Profile() {
                   className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                   placeholder="Profile"
                 />
-              </div>
+              </div> */}
               <label
-                className="mt-4 mb-2 block text-sm font-medium"
+                className="mt-4 mb-2 block text-base-100 text-sm font-medium"
                 htmlFor="email"
               >
                 Email
               </label>
               <div className="relative">
                 <input
-                  className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+                  className="w-full bg-base-100 bg-opacity-35 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                   id="email"
                   name="email"
                   value={formData.email}
@@ -127,22 +127,19 @@ export default function Profile() {
                   placeholder="your.email@gmail.com"
                   type="email"
                 />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3 text-gray-400">
-                  @
-                </div>
               </div>
               <label
-                className="mt-4 mb-2 block text-sm font-medium"
+                className="mt-4 mb-2 block text-base-100 text-sm font-medium"
                 htmlFor="mobile"
               >
                 Mobile Number
               </label>
               <div className="flex flex-row">
-                <p className="w-2/12 flex-shrink-0 rounded-md border bg-base-100 border-gray-200 py-3 text-center text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
+                <p className="w-2/12 bg-base-100 bg-opacity-35 flex-shrink-0 rounded-md border border-gray-200 py-3 text-center text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary">
                   +966
                 </p>
                 <input
-                  className="relative w-6/12 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+                  className="relative bg-base-100 bg-opacity-35 w-10/12 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                   id="mobile"
                   name="mobile"
                   value={formData.mobile}
@@ -153,7 +150,7 @@ export default function Profile() {
               </div>
 
               <label
-                className="mt-4 mb-2 block text-sm font-medium"
+                className="mt-4 mb-2 block text-base-100 text-sm font-medium"
                 htmlFor="address"
               >
                 Address
@@ -161,7 +158,7 @@ export default function Profile() {
               <div className="flex flex-col sm:flex-row">
                 <div className="relative flex-shrink-0 sm:w-7/12">
                   <input
-                    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+                    className="w-full bg-base-100 bg-opacity-35 rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                     id="address"
                     name="address"
                     value={formData.address}
@@ -178,7 +175,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <select
-                  className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
+                  className="w-full bg-base-100 bg-opacity-35 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-secondary focus:ring-secondary"
                   name="state"
                   value={formData.state}
                   onChange={handleChange}
@@ -186,7 +183,7 @@ export default function Profile() {
                   <option value="">State</option>
                 </select>
                 <input
-                  className="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-secondary focus:ring-secondary"
+                  className="flex-shrink-0 bg-base-100 bg-opacity-35 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-secondary focus:ring-secondary"
                   name="zip"
                   value={formData.zip}
                   onChange={handleChange}
@@ -195,11 +192,11 @@ export default function Profile() {
                 />
               </div>
 
-              <div className="flex items-center text-sm mt-3 divide-y rounded bg-gray-100 py-2 px-3 text-gray-600 shadow-sm">
+              <div className="flex  bg-base-100 bg-opacity-35 items-center text-sm mt-3 divide-y rounded py-2 px-3 text-neutral shadow-sm">
                 <span>Status</span>
                 <span className="ml-auto">
                   <select
-                    className="rounded-full py-1 px-2 text-xs font-medium"
+                    className="rounded-full bg-base-100 bg-opacity-35 py-1 px-2 text-xs font-medium"
                     name="status"
                     value={formData.status}
                     onChange={handleChange}
@@ -210,20 +207,19 @@ export default function Profile() {
                 </span>
               </div>
               {successMessage && (
-                  <div className="bg-green-100 text-green-800 text-center rounded my-3 p-2">
-                    {successMessage}
-                  </div>
-                )}
+                <div className="bg-green-100 text-green-800 text-center rounded my-3 p-2">
+                  {successMessage}
+                </div>
+              )}
               <div className="w-full rounded-lg bg-primary mt-4 text-white text-lg font-semibold">
                 <button type="submit" className="w-full p-2">
                   Submit
                 </button>
-             
               </div>
             </form>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
