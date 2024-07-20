@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import DashStatus from "../components/comAdmin/DashStatus";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardAdmin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("user");
@@ -18,6 +20,10 @@ export default function DashboardAdmin() {
       setUserRole("");
     }
   }, []);
+
+  const handleButtonClick = () => {
+    navigate("/list-user");
+  };
 
   return (
     <>
@@ -61,15 +67,23 @@ export default function DashboardAdmin() {
       />
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white">
-        <div className="flex-1 flex flex-col">
-          <header
-            aria-label="page caption"
-            className="flex-none flex h-16 bg-gray-100 border-t px-4 items-center"
-          >
-            <h1 id="page-caption" className="font-semibold text-lg">
-              Dashboard
-            </h1>
-          </header>
+        <div className="flex-1 flex flex-col ">
+          <div className="flex justify-between">
+            <header
+              aria-label="page caption"
+              className="flex-none flex h-16 bg-gray-100 border-t px-4 items-center"
+            >
+              <h1 id="page-caption" className="font-semibold text-lg">
+                Dashboard
+              </h1>
+            </header>
+            <button
+              onClick={handleButtonClick}
+              className="mt-4 mr-2 w-40 h-9  bg-blue-500 text-white py-2 px-4 rounded"
+            >
+              List of Massages
+            </button>
+          </div>
 
           <main className="flex-grow flex min-h-0 border-t">
             <section

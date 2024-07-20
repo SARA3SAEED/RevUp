@@ -1,34 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { GrStatusGoodSmall } from "react-icons/gr";
 
 export default function DashStatus() {
-  const [requests, setRequests] = useState([
-    {
-      id: "#12534",
-      carName: "Quo laudantium error corporis accusamus unde",
-      requester: "Marla Darsuz",
-      date: "Tuesday 09:56",
-      status: "IN PROGRESS",
-      selected: false,
-    },
-    {
-      id: "#12534",
-      carName: "Quo laudantium error corporis accusamus unde",
-      requester: "Marla Darsuz",
-      date: "Tuesday 09:56",
-      status: "IN PROGRESS",
-      selected: false,
-    },
-    {
-      id: "#12534",
-      carName: "Quo laudantium error corporis accusamus unde",
-      requester: "Marla Darsuz",
-      date: "Tuesday 09:56",
-      status: "IN PROGRESS",
-      selected: false,
-    },
-  ]);
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [requests, setRequests] = useState([]);
+
+  useEffect(() => {
+    const role = localStorage.getItem("role");
+  
+    if (role === "admin") {
+      axios
+        .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user`)
+        .then((res) => {
+          const users = res.data;
+          
+          const allRequests = [];
+  
+          users.forEach((user) => {
+            if (user.modification) {
+              user.modification.forEach((mod) => {
+                allRequests.push({
+                  id: mod.id,
+                  carName: mod.carName,
+                  requester: user.username,
+                  userId: user.id, 
+                  date: mod.date,
+                  status: mod.status,
+                  selected: false,
+                });
+              });
+            }
+          });
+  
+          setRequests(allRequests);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setIsLoading(false);
+        });
+  
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+      setIsLoading(false);
+    }
+  }, []);
+  
+
+  useEffect(() => {
+    console.log("Requests state updated:", requests);
+  }, [requests]);
 
   const handleCheckboxChange = (index) => {
     const updatedRequests = [...requests];
@@ -36,18 +62,48 @@ export default function DashStatus() {
     setRequests(updatedRequests);
   };
 
+
+
   const handleStatusChange = () => {
-    const updatedRequests = requests.map((request) => {
-      if (request.selected) {
-        return {
-          ...request,
-          status: "DONE",
-        };
-      }
-      return request;
+    const updatedRequests = requests.filter((request) => request.selected);
+  
+    updatedRequests.forEach((request) => {
+      axios
+        .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`)
+        .then((res) => {
+          const user = res.data;
+  
+          const updatedModifications = user.modification.map((mod) =>
+            mod.id === request.id ? { ...mod, status: "Done" } : mod
+          );
+  
+          return axios.put(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`, {
+            modification: updatedModifications,
+          });
+        })
+        .then(() => {
+          console.log(`Status updated for request ${request.id}`);
+          setRequests((prevRequests) =>
+            prevRequests.map((req) =>
+              req.id === request.id ? { ...req, status: "Done" } : req
+            )
+          );
+        })
+        .catch((err) => {
+          console.error(`Error updating status for request ${request.id}:`, err);
+        });
     });
+  };
+  
+  
+  const handleDelete = (id) => {
+    const updatedRequests = requests.filter(request => request.id !== id);
     setRequests(updatedRequests);
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -62,10 +118,10 @@ export default function DashStatus() {
               <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
                 <input type="checkbox" name="" id="" />
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-24 truncate">
+              <th className="font-semibold text-left py-3 px-1 w-96 truncate">
                 ID
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-full max-w-xs xl:max-w-lg truncate">
+              <th className="font-semibold text-left py-3 px-1 w-44 max-w-xs xl:max-w-lg truncate">
                 Car Name
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
@@ -98,16 +154,14 @@ export default function DashStatus() {
                   <div className="ml-auto relative group">
                     <GrStatusGoodSmall
                       size={18}
-                      color={
-                        request.status === "DONE" ? "yellow" : "red"
-                      }
+                      color={request.status === "Done" ? "yellow" : "red"}
                     />
                   </div>
                 </td>
-                <td className="py-3 px-1 w-24">{request.id}</td>
-                <td className="py-3 px-1 w-full max-w-xs xl:max-w-lg">
-                  <div className="relative group w-full">
-                    <p className="w-full truncate">{request.carName}</p>
+                <td className="py-3 px-1 w-96">{request.id}</td>
+                <td className="py-3 px-1 w-44 max-w-xs xl:max-w-lg">
+                  <div className="relative group ">
+                    <p className=" truncate">{request.carName}</p>
                   </div>
                 </td>
                 <td className="py-3 px-1 flex-1 truncate">
@@ -116,21 +170,20 @@ export default function DashStatus() {
                 <td className="py-3 px-1 flex-1 truncate">{request.status}</td>
                 <td className="py-3 px-1 flex-1 truncate">{request.date}</td>
                 <td className="py-3 px-1 flex-1 truncate">
-                  <MdDeleteForever size={23} color="red" />
+                  <button onClick={() => handleDelete(request.id)}>
+                    <MdDeleteForever size={23} color="red" />
+                  </button>
                 </td>
               </tr>
             ))}
-
-        
-         
           </tbody>
         </table>
       </div>
       <button
         onClick={handleStatusChange}
-        className="mt-4 mx-auto w-96 bg-blue-500 text-white py-2 px-4 rounded"
+        className="mt-4 mx-auto w-80 bg-blue-500 text-white py-2 px-4 rounded"
       >
-        Change Status to In Progress
+        Change Status to Done
       </button>
     </>
   );

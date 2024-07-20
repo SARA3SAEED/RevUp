@@ -12,6 +12,7 @@ import {
   setTarget,
   setInteriorColor,
   setRimColor,
+  reseter,
 } from "../redux/Slices/ColorsSlice";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
