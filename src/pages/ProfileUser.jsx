@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import Profile from "../components/comProfile/Profile";
+import Footer from "../components/Footer";
 // import CardStatus from "../components/comProfile/CardStatus";
 import CardPro from "../components/comProfile/CardPro";
 import Nav from "../components/Nav";
@@ -9,7 +10,6 @@ export default function ProfileUser() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState("");
   const [showProfile, setShowProfile] = useState(false);
-
 
   useEffect(() => {
     const userId = localStorage.getItem("user");
@@ -28,13 +28,14 @@ export default function ProfileUser() {
   };
 
   return (
-    <>
+    <div className="h-screen flex flex-col justify-between items-center">
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-      <div className="flex flex-col justify-center">
+      {/* <div className=""> */}
       {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />}
       {/* <CardStatus /> */}
-      </div>
+      {/* </div> */}
       {/* <Profile /> */}
-    </>
+      <Footer />
+    </div>
   );
 }

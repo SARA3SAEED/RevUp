@@ -1,9 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
+import axios from "axios";
+import emailjs from "@emailjs/browser";
 export default function PayCard() {
+  const [user, setUser] = useState({});
+  const [message, setMessage] = useState("");
+  const [securKeyInput, setSecurKeyInput] = useState("");
+  const [secureId, setSecureId] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUser(res.data);
+        setSecureId(`${Math.floor(Math.random() * 1000000)}`);
+      });
+  }, []);
+  emailjs.init("3rLzsWp6lL8ppEyMf");
+  const sendMail = () => {
+    var templateParams = {
+      to_email: message,
+      to_name: user.fullName,
+      message: `${secureId}`,
+    };
+    emailjs.send("service_ngidhmt", "template_y15jrd3", templateParams).then(
+      function (response) {
+        alert("Email sent successfully!", response.status, response.text);
+        document.getElementById("my_modal_1").showModal();
+      },
+      function (error) {
+        alert("Failed to send email.", error);
+      }
+    );
+  };
+  const confirmSubscribe = () => {
+    if (securKeyInput === secureId) {
+      toast.success("You've subscribe successfuly!");
+      axios
+        .put(
+          `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+            "user"
+          )}`,
+          {
+            isVIP: true,
+          }
+        )
+        .then(function (res) {
+          navigate("../order");
+        });
+    } else {
+      document.getElementById("my_modal_1").showModal();
+      toast.error("Wrong secure code!");
+    }
+  };
+  console.log(secureId);
   return (
     <>
-      <div className="relative mx-auto w-full bg-white border border-info rounded p-4">
+      <div className="relative mx-auto w-full bg-base-100 border border-info rounded p-4 mt-2">
         <div className="col-span-full py-6 px-4 sm:py-12 lg:col-span-6 ">
           <div className="mx-auto w-full max-w-lg">
             <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
@@ -22,6 +82,8 @@ export default function PayCard() {
                   type="email"
                   id="email"
                   name="email"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="john.capler@fang.com"
                   className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm
                    placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 
@@ -122,6 +184,7 @@ export default function PayCard() {
               </a>
             </p>
             <button
+              onClick={() => sendMail()}
               type="submit"
               className="mt-4 inline-flex w-full items-center justify-center rounded bg-primary
                py-2.5 px-4 text-white font-semibold tracking-wide 
@@ -133,6 +196,46 @@ export default function PayCard() {
           </div>
         </div>
       </div>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box flex flex-col items-center justify-center">
+          <p className="py-4 text-lg font-semibold">
+            Enter The secure key sended to your email
+          </p>
+          <div className="flex flex-row gap-2 items-end justify-center">
+            <input
+              type="text"
+              placeholder="x x x x x x"
+              value={securKeyInput}
+              onChange={(e) => setSecurKeyInput(e.target.value)}
+              className="w-36 h-12 text-center px-2 outline outline-secondary outline-1 focus:outline-2 focus:outline-primary rounded-xl"
+            />
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button
+                  className="btn btn-primary"
+                  onClick={() => confirmSubscribe()}
+                >
+                  Confirm
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </dialog>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
     </>
   );
 }

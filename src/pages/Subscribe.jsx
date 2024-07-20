@@ -26,12 +26,12 @@ export default function Subscribe() {
       setUserRole("");
     }
   }, []);
-  
+
   return (
     <>
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
 
-      <div className="bg-gradient-to-b from-black to-white flex sm:px-10 lg:px-20 xl:px-32 mb-2 max-sm:my-16 ">
+      <div className="bg-base-100 flex sm:px-10 lg:px-20 xl:px-32 mb-2 max-sm:my-16 max-sm:flex-col px-2 ">
         <Pricing onStartFreeTrialClick={handleStartFreeTrialClick} />
         {showPayCard && <PayCard />}
       </div>
