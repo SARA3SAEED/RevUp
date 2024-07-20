@@ -58,45 +58,45 @@ export default function History() {
               <div className="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
                 {user.modification && user.modification.length > 0 ? (
                   user.modification.map((item) => (
-                    <div key={item.id} className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
-                      <div>
-                          <div className="data">
-                        <p className="font-semibold text-base leading-7 text-black">
-                          Order Id:{" "}
-                          <span className="text-indigo-600 font-medium">
-                            {item.id}
-                          </span>
-                          <p className="text-gray-600">{item.date}</p>
-                        </p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => toggleOrderDetails(item.id)}
-                        className="hs-collapse-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                        id={`hs-basic-collapse-${item.id}`}
-                        data-hs-collapse={`#hs-basic-collapse-heading-${item.id}`}
-                      >
-                        Track Your Order
-                        <svg
-                          className={`hs-collapse-open:rotate-180 flex-shrink-0 size-4 text-white ${
-                            orderDetailsVisibility[item.id] ? "rotate-180" : ""
-                          }`}
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                    <div key={item.id} className="flex flex-col px-6 pb-6 border-b border-gray-200">
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between w-full">
+                        <div className="data">
+                          <p className="font-semibold text-base leading-7 text-black">
+                            Order Id:{" "}
+                            <span className="text-indigo-600 font-medium">
+                              {item.id}
+                            </span>
+                            <p className="text-gray-600">{item.date}</p>
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => toggleOrderDetails(item.id)}
+                          className="hs-collapse-toggle py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                          id={`hs-basic-collapse-${item.id}`}
+                          data-hs-collapse={`#hs-basic-collapse-heading-${item.id}`}
                         >
-                          <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                      </button>
+                          Track Your Order
+                          <svg
+                            className={`hs-collapse-open:rotate-180 flex-shrink-0 size-4 text-white ${
+                              orderDetailsVisibility[item.id] ? "rotate-180" : ""
+                            }`}
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="m6 9 6 6 6-6"></path>
+                          </svg>
+                        </button>
                       </div>
                       {orderDetailsVisibility[item.id] && (
-                        <div className="w-full px-3 min-[400px]:px-6">
+                        <div className="w-full px-3 min-[400px]:px-6 mt-6">
                           <div className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 gap-6 w-full">
                             <div className="img-box w-1/3">
                               <img className="mb-4" src={Poesche} alt="Poesche" />
