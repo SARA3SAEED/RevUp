@@ -38,6 +38,7 @@ export default function Cars() {
       const scrollTop = window.scrollY;
       const isVisible = scrollTop > 20; // Adjust this threshold as needed
       setIsVisible(isVisible);
+      setIsLoading(false);
     };
     window.screen.width > 600 ? setIsSmall(false) : setIsSmall(true);
 
@@ -79,80 +80,80 @@ export default function Cars() {
       setIsLoggedIn(false);
       setUserRole("");
     }
+    setIsLoading(false);
   }, []);
 
   const handleClick = (carr) => {
     dispatch(setCarName({ carName: carr.name }));
-    localStorage.setItem('displayid', carr.id)
-    localStorage.setItem('displayName', carr.name)
+    localStorage.setItem("displayid", carr.id);
+    localStorage.setItem("displayName", carr.name);
     navigate(`../det/${carr.id}`);
   };
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-between">
+      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
 
-  return (
-    !isLoading && (
-      <div className="min-w-screen min-h-screen flex flex-col items-center justify-between">
-        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-
-        {/* {userId ? <NavLog /> : <Nav />} */}
-        <h1 className="absolute z-30 top-1/2 text-center text-neutral font-bold text-5xl w-full p-4">
-          Discover the new Models
+      {/* {userId ? <NavLog /> : <Nav />} */}
+      <h1 className="absolute z-30 top-1/2 text-center text-neutral font-bold text-5xl w-full p-4">
+        Discover the new Models
+      </h1>
+      {/* <div className="relative"></div> */}
+      <video
+        className="relative h-[90vh] w-full object-cover	"
+        // width="100vw"
+        // height="100vh"
+        type="video/mp4"
+        autoPlay
+        loop
+        muted
+      >
+        <source src={videoCar} />
+      </video>
+      <a
+        href="#carsContainer"
+        className="absolute btn btn-base w-14 h-14 bg-opacity-30 border-none bottom-10 text-neutral font-bold text-3xl rounded-full animate-bounce z-10 "
+      >
+        ⯆
+      </a>
+      <div className="w-full flex flex-col items-center justify-center h-[80vh] max-sm:h-screen max-sm:justify-start">
+        <h1 className="text-neutral text-3xl font-bold mt-5 text-start w-[90vw] p-2">
+          Car Models
         </h1>
-        {/* <div className="relative"></div> */}
-        <video
-          className="relative h-[90vh] w-full object-cover	"
-          // width="100vw"
-          // height="100vh"
-          type="video/mp4"
-          autoPlay
-          loop
-          muted
+        <div
+          id="carsContainer"
+          className={
+            isVisible
+              ? "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 visible"
+              : "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0"
+          }
         >
-          <source src={videoCar} />
-        </video>
-        <a
-          href="#carsContainer"
-          className="absolute btn btn-base w-14 h-14 bg-opacity-30 border-none bottom-10 text-neutral font-bold text-3xl rounded-full animate-bounce z-10 "
-        >
-          ⯆
-        </a>
-        <div className="w-full flex flex-col items-center justify-center h-[80vh] max-sm:h-screen max-sm:justify-start">
-          <h1 className="text-neutral text-3xl font-bold mt-5 text-start w-[90vw] p-2">
-            Car Models
-          </h1>
-          <div
-            id="carsContainer"
-            className={
-              isVisible
-                ? "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 visible"
-                : "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0"
-            }
-          >
-            <Slider {...settings}>
-              {arrayOfImages.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleClick(item)}
-                  className={
-                    index == slideIndex
-                      ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "
-                      : "slide flex flex-col items-center justify-center rounded-lg p-2 "
-                  }
+          <Slider {...settings}>
+            {arrayOfImages.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleClick(item)}
+                className={
+                  index == slideIndex
+                    ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "
+                    : "slide flex flex-col items-center justify-center rounded-lg p-2 "
+                }
+              >
+                <img src={item.src} alt={item} />
+                <h1
+                  // style={{ cursor: "pointer" }}
+                  // onClick={() => navigate("/det")}
+                  className="text-xl font-semibold text-center py-3"
                 >
-                  <img src={item.src} alt={item} />
-                  <h1
-                    // style={{ cursor: "pointer" }}
-                    // onClick={() => navigate("/det")}
-                    className="text-xl font-semibold text-center py-3"
-                  >
-                    {item.name}
-                  </h1>
-                </button>
-              ))}
-            </Slider>
-          </div>
+                  {item.name}
+                </h1>
+              </button>
+            ))}
+          </Slider>
         </div>
-        <Footer />
       </div>
-    )
+      <Footer />
+    </div>
   );
 }

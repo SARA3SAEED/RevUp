@@ -5,10 +5,12 @@ import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
 import Bannar from "../components/Bannar";
+import Loader from "../components/Loader";
 
 export default function Checkout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const userId = localStorage.getItem("user");
@@ -20,9 +22,12 @@ export default function Checkout() {
       setIsLoggedIn(false);
       setUserRole("");
     }
+    setIsLoading(false);
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
 
