@@ -16,6 +16,8 @@ export function NissanSkyline(props) {
   const interiorColor = new MeshStandardMaterial({ color: inc });
   const rimColor = new MeshStandardMaterial({ color: rim });
   const { nodes, materials } = useGLTF("./models/nissanSkyline.glb");
+  const nodes1 = useGLTF('./models/wheelRims.glb').nodes
+
   return (
     <group {...props} dispose={null}>
       <group position={[0.551, -0.552, 0.592]} scale={0.02}>
@@ -71,14 +73,34 @@ export function NissanSkyline(props) {
                   geometry={nodes.NIS183_brake_0_5.geometry}
                   material={materials.Material__6}
                 />
-                <mesh
+
+                {/* orignal rim */}
+                {/* <mesh
                   geometry={nodes.NIS183_brake_0_6.geometry}
                   material={rimColor}
-                />
-                <mesh
+                /> 
+                 <mesh
                   geometry={nodes.NIS183_brake_0_7.geometry}
                   material={materials.inner_rim}
-                />
+                /> */}
+                {/* rim1 */}
+                {/* <group position={[-0.05, 0, 0.025]} rotation={[0, -2.8, 0]}
+                  scale={0.59}>
+                  <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                  <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                </group> */}
+
+
+                <group position={[-0.04, 0, 0.02]} rotation={[1.5, 0.01, 1.215]} scale={0.0115}>
+                  <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                  <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                </group>
+
+
+
+
+
+
                 <mesh
                   geometry={nodes.NIS183_brake_0_8.geometry}
                   material={materials.chrome_rim}
@@ -111,17 +133,31 @@ export function NissanSkyline(props) {
                   geometry={nodes.NIS198_brake_0_4.geometry}
                   material={materials.Material__6}
                 />
-                <mesh
+                {/* original rim */}
+                {/* <mesh
                   geometry={nodes.NIS198_brake_0_5.geometry}
                   material={materials.inner_rim}
-                />
+                /> 
+                 <mesh
+                  geometry={nodes.NIS198_brake_0_7.geometry}
+                  material={rimColor}
+                /> */}
+                {/* rim1 */}
+                {/* <group position={[0.043, 0, -0.02]} rotation={[0, 0.33, 0]}
+                  scale={0.57}>
+                  <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                  <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                </group> */}
+
+                <group position={[0.04, 0, -0.02]} rotation={[1.5, 0.01, -1.92]} scale={0.0115}>
+                  <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                  <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                </group>
+
+
                 <mesh
                   geometry={nodes.NIS198_brake_0_6.geometry}
                   material={materials.wheel_black}
-                />
-                <mesh
-                  geometry={nodes.NIS198_brake_0_7.geometry}
-                  material={rimColor}
                 />
                 <mesh
                   geometry={nodes.NIS198_brake_0_8.geometry}
@@ -512,7 +548,7 @@ export function NissanSkyline(props) {
               material={materials.plastic}
               scale={5872.146}
             />
-            <mesh
+            {/* <mesh
               geometry={nodes.NIS168_inner_rim_0.geometry}
               material={materials.inner_rim}
               scale={5872.146}
@@ -521,7 +557,20 @@ export function NissanSkyline(props) {
               geometry={nodes.NIS169_rim_0.geometry}
               material={rimColor}
               scale={5872.146}
-            />
+            /> */}
+            {/* rim1 */}
+            {/* 
+            <group position={[3200, 825, -4775]} rotation={[0, 0, 0]}
+              scale={3400}>
+              <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+              <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+            </group> */}
+            <group position={[3150, 825, -4775]} rotation={[1.6, 0, -1.55]} scale={68}>
+              <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+              <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+            </group>
+
+
             <mesh
               geometry={nodes.NIS17_textured_reflect_0.geometry}
               material={materials.textured_reflect}
@@ -542,7 +591,7 @@ export function NissanSkyline(props) {
               material={materials.chrome_rim}
               scale={5872.146}
             />
-            <mesh
+            {/* <mesh
               geometry={nodes.NIS174_rim_0.geometry}
               material={rimColor}
               scale={5872.146}
@@ -551,7 +600,20 @@ export function NissanSkyline(props) {
               geometry={nodes.NIS176_inner_rim_0.geometry}
               material={materials.inner_rim}
               scale={5872.146}
-            />
+            /> */}
+
+            {/* rim1 */}
+            {/* <group position={[-3200, 825, -4775]} rotation={[0, 3.15, 0]}
+              scale={3400}>
+              <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+              <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+            </group> */}
+            {/* rim2 */}
+            <group position={[-3150, 825, -4775]} rotation={[1.6, 0, 1.55]} scale={68}>
+              <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+              <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+            </group>
+
             <mesh
               geometry={nodes.NIS177_outer_rim_0.geometry}
               material={materials.outer_rim}
@@ -1064,8 +1126,8 @@ export function NissanSkyline(props) {
           </group>
         </group>
       </group>
-    </group>
+    </group >
   );
 }
-
+useGLTF.preload('./models/wheelRims.glb')
 useGLTF.preload("./models/nissanSkyline.glb");

@@ -16,6 +16,8 @@ export function ToyotaSupra(props) {
     const interiorColor = new MeshStandardMaterial({ color: inc });
     const rimColor = new MeshStandardMaterial({ color: rim });
     const { nodes, materials } = useGLTF('./models/toyotaSupra.glb')
+    const nodes1 = useGLTF('./models/wheelRims.glb').nodes
+
     return (
         <group {...props} dispose={null}>
             <group position={[0, -0.505, -0.115]} scale={0.806}>
@@ -44,7 +46,20 @@ export function ToyotaSupra(props) {
                             <mesh geometry={nodes.Plane016_tire_0.geometry} material={materials.tire} />
                             <mesh geometry={nodes.Plane016_metal_0.geometry} material={materials.metal} />
                             <mesh geometry={nodes.Plane016_lambert1_0.geometry} material={materials.lambert1} />
-                            <mesh geometry={nodes.Plane016_GlossBlackpaint_0.geometry} material={rimColor} />
+                            {/* <mesh geometry={nodes.Plane016_GlossBlackpaint_0.geometry} material={rimColor} /> */}
+
+                            <group position={[-107, 39.5, 164.5]} rotation={[1.5, 0, 3.15]} scale={110}>
+                                <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                            </group>
+
+                            {/* rim 2 */}
+                            {/* <group position={[-105, 40, 164]} rotation={[1.5, 0.01, 1.55]} scale={2.2}>
+                                <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                            </group> */}
+
+
                             <mesh geometry={nodes.Plane016_blackplate_metal_0.geometry} material={materials.blackplate_metal} />
                             <mesh geometry={nodes.Plane046_mirror_0.geometry} material={materials.mirror} />
                             <mesh geometry={nodes.Plane037_balck_tint_glass_0.geometry} material={materials.balck_tint_glass} />
@@ -61,7 +76,19 @@ export function ToyotaSupra(props) {
                             <mesh geometry={nodes.Plane020_tire_0.geometry} material={materials.tire} />
                             <mesh geometry={nodes.Plane020_metal_0.geometry} material={materials.metal} />
                             <mesh geometry={nodes.Plane020_lambert1_0.geometry} material={materials.lambert1} />
-                            <mesh geometry={nodes.Plane020_GlossBlackpaint_0.geometry} material={rimColor} />
+                            {/* <mesh geometry={nodes.Plane020_GlossBlackpaint_0.geometry} material={rimColor} /> */}
+
+                            <group position={[-109, 39.5, -131]} rotation={[1.5, 0, 3.15]} scale={110}>
+                                <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                            </group>
+
+                            {/* rem 2  */}
+                            {/* <group position={[-106, 40, -130]} rotation={[1.5, 0.01, 1.55]} scale={2.2}>
+                                <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                            </group> */}
+
                             <mesh geometry={nodes.Plane029_light_0.geometry} material={materials.light} />
                             <mesh geometry={nodes.Plane_lambert1_0.geometry} material={materials.lambert1} />
                             <mesh geometry={nodes.Plane017_brake_0.geometry} material={materials.brake} />
@@ -75,7 +102,18 @@ export function ToyotaSupra(props) {
                             <mesh geometry={nodes.Plane018_tire_0.geometry} material={materials.tire} />
                             <mesh geometry={nodes.Plane018_metal_0.geometry} material={materials.metal} />
                             <mesh geometry={nodes.Plane018_lambert1_0.geometry} material={materials.lambert1} />
-                            <mesh geometry={nodes.Plane018_GlossBlackpaint_0.geometry} material={rimColor} />
+                            {/* <mesh geometry={nodes.Plane018_GlossBlackpaint_0.geometry} material={rimColor} />*/}
+
+                            <group position={[109, 39.5, -131]} rotation={[1.5, 0, 0]} scale={110}>
+                                <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                            </group>
+
+                            {/* rem 2 */}
+                            {/* <group position={[106, 40, -130]} rotation={[1.5, 0.01, -1.55]} scale={2.2}>
+                                <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                            </group> */}
                             <mesh geometry={nodes.Plane018_blackplate_metal_0.geometry} material={materials.blackplate_metal} />
                             <mesh geometry={nodes.Plane004_carpaint_0.geometry} material={carBodyColor} />
                             <mesh geometry={nodes.Plane004_carpaint_0_1.geometry} material={carBodyColor} />
@@ -91,7 +129,16 @@ export function ToyotaSupra(props) {
                             <mesh geometry={nodes.Plane074_tire_0.geometry} material={materials.tire} />
                             <mesh geometry={nodes.Plane074_metal_0.geometry} material={materials.metal} />
                             <mesh geometry={nodes.Plane074_lambert1_0.geometry} material={materials.lambert1} />
-                            <mesh geometry={nodes.Plane074_GlossBlackpaint_0.geometry} material={rimColor} />
+                            {/* <mesh geometry={nodes.Plane074_GlossBlackpaint_0.geometry} material={rimColor} /> */}
+                            <group position={[107, 39.5, 164.5]} rotation={[1.5, 0, 0]} scale={110}>
+                                <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                            </group>
+                            {/* rim 2 */}
+                            {/* <group position={[105, 40, 164]} rotation={[1.5, 0.01, -1.55]} scale={2.2}>
+                                <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                                <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                            </group> */}
                             <mesh geometry={nodes.Plane074_blackplate_metal_0.geometry} material={materials.blackplate_metal} />
                             <mesh geometry={nodes.Plane026_light_0.geometry} material={materials.light} />
                             <mesh geometry={nodes.Plane031_GlossBlackpaint_0.geometry} material={materials.GlossBlackpaint} />
@@ -116,5 +163,6 @@ export function ToyotaSupra(props) {
         </group>
     )
 }
+useGLTF.preload('./models/wheelRims.glb')
 
 useGLTF.preload('./models/toyotaSupra.glb')
