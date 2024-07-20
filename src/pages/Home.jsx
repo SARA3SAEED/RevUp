@@ -55,6 +55,7 @@ export default function Home() {
       </motion.div> */}
 
       <motion.div
+        id="feature-section"
         ref={header3Ref}
         variants={fadeInUp}
         initial="hidden"
