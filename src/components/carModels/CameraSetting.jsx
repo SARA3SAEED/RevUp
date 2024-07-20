@@ -64,7 +64,7 @@ export default function CameraSetting() {
   }, [fov, position, target]);
 
   return (
-    <Canvas className="w-full h-full">
+    <Canvas className="w-full h-full rounded-2xl ">
       <PerspectiveCamera
         camera={(cameraProps.fov, cameraProps.position)}
         gl={{ antialias: true }}

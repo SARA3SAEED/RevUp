@@ -12,6 +12,7 @@ export function LotusEmira(props) {
     const cbc = useSelector((state) => state.carColors.carBodyColor);
     const inc = useSelector((state) => state.carColors.InteriorColor);
     const rim = useSelector((state) => state.carColors.rimColor);
+    const rimType = useSelector((state) => state.carColors.rimType);
     const carBodyColor = new MeshStandardMaterial({ color: cbc });
     const interiorColor = new MeshStandardMaterial({ color: inc });
     const rimColor = new MeshStandardMaterial({ color: rim });
@@ -45,56 +46,54 @@ export function LotusEmira(props) {
                     <mesh geometry={nodes.Object_22.geometry} material={materials.Wheel0011Mtl} />
                     <mesh geometry={nodes.Object_23.geometry} material={materials.Wheel0011Mtl} />
                     <mesh geometry={nodes.Object_24.geometry} material={materials.Wheel0011Mtl} />
-                    {/* <mesh geometry={nodes.Object_25.geometry} material={rimColor} /> */}
-                    {/* rim 1 */}
-                    {/* <group position={[-24.53, 2.59, 1.6]} rotation={[0, 0, 0]} scale={4.5}>
-                        <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                    </group> */}
+                    {rimType == 1 && <>
+                        <mesh geometry={nodes.Object_25.geometry} material={rimColor} />
+                        <mesh geometry={nodes.Object_26.geometry} material={rimColor} />
+                        <mesh geometry={nodes.Object_27.geometry} material={rimColor} />
+                        <mesh geometry={nodes.Object_28.geometry} material={rimColor} />
+                        <mesh geometry={nodes.Object_29.geometry} material={materials.Wheel0031Mtl} />
+                        <mesh geometry={nodes.Object_30.geometry} material={materials.Wheel0031Mtl} />
+                        <mesh geometry={nodes.Object_31.geometry} material={materials.Wheel0031Mtl} />
+                        <mesh geometry={nodes.Object_32.geometry} material={materials.Wheel0031Mtl} />
+                    </>}
+                    {/*  */}
+                    {rimType == 2 && <>
+                        <group position={[-24.53, 2.59, 1.6]} rotation={[0, 0, 0]} scale={4.5}>
+                            <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-24.53, 14.95, 1.6]} rotation={[0, 0, 0]} scale={4.5}>
+                            <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-32.65, 2.58, 1.6]} rotation={[0, 0, 3.12]} scale={4.5}>
+                            <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-32.65, 14.95, 1.6]} rotation={[0, 0, 3.12]} scale={4.5}>
+                            <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
+                        </group>
+                    </>}
+                    {rimType == 3 && <>
+                        <group position={[-24.63, 2.59, 1.6]} rotation={[0, 0, -1.57]} scale={0.093}>
+                            <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-24.63, 14.95, 1.6]} rotation={[0, 0, -1.57]} scale={0.093}>
+                            <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-32.6, 2.59, 1.6]} rotation={[0, 0, 1.57]} scale={0.093}>
+                            <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                        </group>
+                        <group position={[-32.6, 14.95, 1.6]} rotation={[0, 0, 1.57]} scale={0.093}>
+                            <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
+                            <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
+                        </group>
+                    </>}
 
-                    <group position={[-24.63, 2.59, 1.6]} rotation={[0, 0, -1.57]} scale={0.093}>
-                        <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                    </group>
-                    {/* //////////////////////////////// */}
-                    {/* <mesh geometry={nodes.Object_26.geometry} material={rimColor} /> */}
-                    {/* rim 1 */}
-                    {/* <group position={[-24.53, 14.95, 1.6]} rotation={[0, 0, 0]} scale={4.5}>
-                        <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                    </group> */}
-                    <group position={[-24.63, 14.95, 1.6]} rotation={[0, 0, -1.57]} scale={0.093}>
-                        <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                    </group>
-                    {/* ////////////////////////////// */}
-                    {/* <mesh geometry={nodes.Object_27.geometry} material={rimColor} /> */}
-                    {/* <group position={[-32.65, 2.58, 1.6]} rotation={[0, 0, 3.12]} scale={4.5}>
-                        <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                    </group> */}
-                    <group position={[-32.6, 2.59, 1.6]} rotation={[0, 0, 1.57]} scale={0.093}>
-                        <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                    </group>
-                    {/* ////////////////////////////////// */}
-                    {/* <mesh geometry={nodes.Object_28.geometry} material={rimColor} /> */}
-                    {/* rim 1 */}
-                    {/* <group position={[-32.65, 14.95, 1.6]} rotation={[0, 0, 3.12]} scale={4.5}>
-                        <mesh geometry={nodes1.Object_7.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_8.geometry} material={rimColor} />
-                    </group> */}
-
-                    <group position={[-32.6, 14.95, 1.6]} rotation={[0, 0, 1.57]} scale={0.093}>
-                        <mesh geometry={nodes1.Object_4.geometry} material={rimColor} />
-                        <mesh geometry={nodes1.Object_5.geometry} material={rimColor} />
-                    </group>
-
-                    {/* ////////////////////////////////////////// */}
-                    {/* <mesh geometry={nodes.Object_29.geometry} material={materials.Wheel0031Mtl} /> */}
-                    {/* <mesh geometry={nodes.Object_30.geometry} material={materials.Wheel0031Mtl} /> */}
-                    {/* <mesh geometry={nodes.Object_31.geometry} material={materials.Wheel0031Mtl} /> */}
-                    {/* <mesh geometry={nodes.Object_32.geometry} material={materials.Wheel0031Mtl} /> */}
                     <mesh geometry={nodes.Object_33.geometry} material={materials.Wheel0031Mtl} />
                     <mesh geometry={nodes.Object_34.geometry} material={materials.Wheel0041Mtl} />
                     <mesh geometry={nodes.Object_35.geometry} material={materials.Wheel1Mtl} />

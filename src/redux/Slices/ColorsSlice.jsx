@@ -5,6 +5,7 @@ const initialState = {
   carBodyColor: "#ffffff",
   InteriorColor: "#000000",
   rimColor: "#000000",
+  rimType: 1,
   camera: {
     fov: 30,
     position: [4.5, 1.6, 4.3],
@@ -41,10 +42,14 @@ const ColorsSlice = createSlice({
       state.camera.fov = action.payload.fov;
       state.camera.position = action.payload.position;
     },
+    setRimType: (state, action) => {
+      state.rimType = action.payload;
+    },
     reseter: (state) => {
       state.rimColor = "#000000";
       state.InteriorColor = "#000000";
       state.carBodyColor = "#ffffff";
+
 
     }
   },
@@ -55,6 +60,7 @@ export const {
   setCarName,
   setBodyColor,
   setRimColor,
+  setRimType,
   setTarget,
   setInteriorColor,
   setCamera,
