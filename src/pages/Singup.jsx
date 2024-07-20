@@ -4,7 +4,7 @@ import img from "../assets/car-logo1.png";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Singup() {
+export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,8 +23,20 @@ export default function Singup() {
       setError("Password must be more than 8 characters");
       return;
     }
-    const role = email.includes("@revup") ? "admin" : "user";
+
     try {
+      const checkEmailResponse = await axios.get(
+        "https://66980ca602f3150fb66fe5dc.mockapi.io/user"
+      );
+
+      const emailExists = checkEmailResponse.data.filter(user => user.email === email);
+      
+      if (emailExists) {
+        setError("Email is already registered. Please use a different email.");
+        return;
+      }
+
+      const role = email.includes("@revup") ? "admin" : "user";
       const response = await axios.post(
         "https://66980ca602f3150fb66fe5dc.mockapi.io/user",
         {
@@ -43,7 +55,6 @@ export default function Singup() {
           zip: "",
         }
       );
-      console.log(response.data);
       navigate("/login");
     } catch (error) {
       console.error("Error signing up", error);
