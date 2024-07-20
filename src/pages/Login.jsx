@@ -26,8 +26,7 @@ export default function Login() {
         console.log("Login successful");
         localStorage.setItem("user", user.id);
         localStorage.setItem("role", user.role);
-
-        navigate("/cars");
+        user.role == "user" ? navigate("/") : navigate("/profile-admin");
       } else {
         setError("Invalid email or password");
       }

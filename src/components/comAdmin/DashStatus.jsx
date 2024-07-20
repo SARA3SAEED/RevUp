@@ -2,24 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { GrStatusGoodSmall } from "react-icons/gr";
+import Loader from "../Loader";
 
 export default function DashStatus() {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [tempId, setTempId] = useState("");
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
     const role = localStorage.getItem("role");
-  
+
     if (role === "admin") {
       axios
         .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user`)
         .then((res) => {
           const users = res.data;
-          
+
           const allRequests = [];
-  
+
           users.forEach((user) => {
             if (user.modification) {
               user.modification.forEach((mod) => {
@@ -27,7 +29,7 @@ export default function DashStatus() {
                   id: mod.id,
                   carName: mod.carName,
                   requester: user.username,
-                  userId: user.id, 
+                  userId: user.id,
                   date: mod.date,
                   status: mod.status,
                   selected: false,
@@ -35,7 +37,7 @@ export default function DashStatus() {
               });
             }
           });
-  
+
           setRequests(allRequests);
           setIsLoading(false);
         })
@@ -43,14 +45,13 @@ export default function DashStatus() {
           console.error(err);
           setIsLoading(false);
         });
-  
+
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
       setIsLoading(false);
     }
   }, []);
-  
 
   useEffect(() => {
     console.log("Requests state updated:", requests);
@@ -62,24 +63,27 @@ export default function DashStatus() {
     setRequests(updatedRequests);
   };
 
-
-
   const handleStatusChange = () => {
     const updatedRequests = requests.filter((request) => request.selected);
-  
+
     updatedRequests.forEach((request) => {
       axios
-        .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`)
+        .get(
+          `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`
+        )
         .then((res) => {
           const user = res.data;
-  
+
           const updatedModifications = user.modification.map((mod) =>
             mod.id === request.id ? { ...mod, status: "Done" } : mod
           );
-  
-          return axios.put(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`, {
-            modification: updatedModifications,
-          });
+
+          return axios.put(
+            `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${request.userId}`,
+            {
+              modification: updatedModifications,
+            }
+          );
         })
         .then(() => {
           console.log(`Status updated for request ${request.id}`);
@@ -90,19 +94,25 @@ export default function DashStatus() {
           );
         })
         .catch((err) => {
-          console.error(`Error updating status for request ${request.id}:`, err);
+          console.error(
+            `Error updating status for request ${request.id}:`,
+            err
+          );
         });
     });
   };
-  
-  
+
   const handleDelete = (id) => {
-    const updatedRequests = requests.filter(request => request.id !== id);
-    setRequests(updatedRequests);
+    setTempId(id);
+    document.getElementById("my_modal_1").showModal();
   };
 
+  const confirmDelete = () => {
+    const updatedRequests = requests.filter((request) => request.id !== tempId);
+    setRequests(updatedRequests);
+  };
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -116,7 +126,7 @@ export default function DashStatus() {
           <thead className="w-full px-4">
             <tr className="border-b flex flex-wrap md:flex-no-wrap">
               <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
-                <input type="checkbox" name="" id="" />
+                {/* <input type="checkbox" name="" id="" /> */}
               </th>
               <th className="font-semibold text-left py-3 px-1 w-96 truncate">
                 ID
@@ -185,6 +195,24 @@ export default function DashStatus() {
       >
         Change Status to Done
       </button>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Warning</h3>
+          <p className="py-4">Are you sure you want to delete this message?</p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button
+                onClick={() => confirmDelete()}
+                className="btn btn-primary mr-2"
+              >
+                Delete
+              </button>
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </>
   );
 }

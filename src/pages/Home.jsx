@@ -9,6 +9,7 @@ import Header3 from "../components/comHome/Header3";
 import SectionFooter from "../components/SectionFooter";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import Loader from "../components/Loader";
 
 export default function Home() {
   const [featureRef, featureInView] = useInView({ triggerOnce: true });
@@ -16,6 +17,7 @@ export default function Home() {
   const [header2Ref, header2InView] = useInView({ triggerOnce: true });
   const [bannerRef, bannerInView] = useInView({ triggerOnce: true });
   const [brandRef, brandInView] = useInView({ triggerOnce: true });
+  const [isLoading, setIsLoading] = useState(true);
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -34,13 +36,15 @@ export default function Home() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
+    setIsLoading(false);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Header />
 

@@ -159,8 +159,8 @@ export default function Details() {
           bgColor == "black"
             ? `rgba(0, 0, 0, 0.2)`
             : bgColor == "white"
-              ? `rgba(255, 255, 255,0.2)`
-              : // background: `radial-gradient(circle, #ffffff, ${bgColor})`
+            ? `rgba(255, 255, 255,0.2)`
+            : // background: `radial-gradient(circle, #ffffff, ${bgColor})`
               // `radial-gradient(circle at 50%, #fff, #fff 20%, ${bgColor} 75%, ${bgColor} 75%)`,
               `rgba(${parseInt(bgColor.slice(1, 3), 16)}, ${parseInt(
                 bgColor.slice(3, 5),
@@ -187,24 +187,24 @@ export default function Details() {
                               tabIndex == 1
                                 ? bodyColorChanger(item)
                                 : tabIndex == 2
-                                  ? rimColorChanger(item)
-                                  : tabIndex == 3
-                                    ? interiorColorChanger(item)
-                                    : "";
+                                ? rimColorChanger(item)
+                                : tabIndex == 3
+                                ? interiorColorChanger(item)
+                                : "";
                               setBgColor(item);
                             }}
                             className={
                               index == slideIndex
                                 ? item === "black" || item == "white"
                                   ? "w-14 h-14 rounded-full ml-3 shadow-md bg-" +
-                                  item
+                                    item
                                   : "w-14 h-14 rounded-full ml-3 shadow-md slide-active bg-[" +
-                                  item +
-                                  "]"
+                                    item +
+                                    "]"
                                 : item === "black" || item == "white"
-                                  ? "w-10 h-10 ease-in-out duration-300 rounded-full ml-3 shadow-md bg-" +
+                                ? "w-10 h-10 ease-in-out duration-300 rounded-full ml-3 shadow-md bg-" +
                                   item
-                                  : "w-10 h-10 ease-in-out duration-300 rounded-full ml-3 shadow-md bg-[" +
+                                : "w-10 h-10 ease-in-out duration-300 rounded-full ml-3 shadow-md bg-[" +
                                   item +
                                   "]"
                             }
@@ -252,10 +252,10 @@ export default function Details() {
                                 ? tabIndex == 1
                                   ? bodyColorChanger(e.target.value)
                                   : tabIndex == 2
-                                    ? rimColorChanger(e.target.value)
-                                    : tabIndex == 3
-                                      ? interiorColorChanger(e.target.value)
-                                      : ""
+                                  ? rimColorChanger(e.target.value)
+                                  : tabIndex == 3
+                                  ? interiorColorChanger(e.target.value)
+                                  : ""
                                 : navigate("../subscribe");
                               handleColorChange;
                               setBgColor(e.target.value);
@@ -386,7 +386,7 @@ export default function Details() {
                   </li> */}
                   <li>
                     <Link
-                      to={'../checkout'}
+                      to={"../checkout"}
                       className="tooltip tooltip-left"
                       data-tip="Checkout"
                     >
