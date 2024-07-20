@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BiSolidRename } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { reseter } from "../../redux/Slices/ColorsSlice";
 
 export default function Pay() {
   // useStates and useNavigate consts
@@ -21,6 +22,7 @@ export default function Pay() {
     chairColor: useSelector((state) => state.carColors.InteriorColor),
     wheelColor: useSelector((state) => state.carColors.rimColor),
   });
+  const dispatch = useDispatch();
 
   // other varibles
   // const carName = useSelector((state) => state.carColors.carName);
@@ -88,6 +90,7 @@ export default function Pay() {
         )
         .then(function () {
           toast.success("order Booked successfuly!");
+          dispatch(reseter());
           navigate("/order");
         });
     }
