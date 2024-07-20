@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import Profile from "../components/comProfile/Profile";
 import Footer from "../components/Footer";
 // import CardStatus from "../components/comProfile/CardStatus";
+import ProfileVideo from "../assets/ProfileVideo.mp4";
 import CardPro from "../components/comProfile/CardPro";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
@@ -28,14 +29,26 @@ export default function ProfileUser() {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-between items-center">
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-      {/* <div className=""> */}
-      {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />}
-      {/* <CardStatus /> */}
-      {/* </div> */}
-      {/* <Profile /> */}
-      <Footer />
-    </div>
+    <>
+      <div className="relative h-screen flex flex-col justify-between items-center">
+        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+        {/* <div className=""> */}
+
+        <video
+          className="h-screen -z-50 w-full object-cover	"
+          type="video/mp4"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={ProfileVideo} />
+        </video>
+        {showProfile ? <Profile /> : <CardPro onEditClick={handleEditClick} />}
+        {/* <CardStatus /> */}
+        {/* </div> */}
+        {/* <Profile /> */}
+        {/* <Footer /> */}
+      </div>
+    </>
   );
 }
