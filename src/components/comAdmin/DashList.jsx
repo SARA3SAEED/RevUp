@@ -50,7 +50,7 @@ export default function DashList() {
     try {
       const updatedRequests = requests.map((request) => {
         if (request.selected) {
-          return { ...request, status: "Done" };
+          return { ...request, status: "done" };
         }
         return request;
         setIsLoading(false);
@@ -64,7 +64,7 @@ export default function DashList() {
               `https://66980ca602f3150fb66fe5dc.mockapi.io/contact/${request.id}`,
               {
                 ...request,
-                status: "Done",
+                status: "done",
               }
             )
           )
@@ -139,7 +139,7 @@ export default function DashList() {
                   <div className="ml-auto relative group">
                     <GrStatusGoodSmall
                       size={18}
-                      color={request.status === "Done" ? "#7BFC2C" : "#FFFF1F"}
+                      color={request.status === "done" ? "#7BFC2C" : "#FFFF1F"}
                     />
                   </div>
                 </td>
