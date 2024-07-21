@@ -128,10 +128,10 @@ export default function DashStatus() {
               <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
                 {/* <input type="checkbox" name="" id="" /> */}
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-96 truncate">
+              <th className="font-semibold text-left py-3 px-1 w-36 truncate">
                 ID
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-44 max-w-xs xl:max-w-lg truncate">
+              <th className="font-semibold text-left py-3 px-1 w-36 max-w-xs xl:max-w-lg truncate">
                 Car Name
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
@@ -168,8 +168,8 @@ export default function DashStatus() {
                     />
                   </div>
                 </td>
-                <td className="py-3 px-1 w-96">{request.id}</td>
-                <td className="py-3 px-1 w-44 max-w-xs xl:max-w-lg">
+                <td className="py-3 px-1 w-36">{request.id}</td>
+                <td className="py-3 px-1 w-36 max-w-xs xl:max-w-lg">
                   <div className="relative group ">
                     <p className=" truncate">{request.carName}</p>
                   </div>

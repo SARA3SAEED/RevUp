@@ -92,11 +92,11 @@ export default function DashList() {
               <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
                 {/* <input type="checkbox" name="" id="" /> */}
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-96 truncate">
+              <th className="font-semibold text-left py-3 px-1 w-20 truncate">
                 ID
               </th>
               <th className="font-semibold text-left py-3 px-1 w-44 max-w-xs xl:max-w-lg truncate">
-                Requester
+              Massage
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Email
@@ -105,7 +105,8 @@ export default function DashList() {
                 Status Request
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-                Massage
+              Requester
+
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Delete
@@ -132,15 +133,15 @@ export default function DashList() {
                     />
                   </div>
                 </td>
-                <td className="py-3 px-1 w-96">{request.id}</td>
+                <td className="py-3 px-1 w-20">{request.id}</td>
                 <td className="py-3 px-1 w-44 max-w-xs xl:max-w-lg">
                   <div className="relative group ">
-                    <p className="truncate">{request.fullName}</p>
+                    <p className="truncate">{request.message}</p>
                   </div>
                 </td>
                 <td className="py-3 px-1 flex-1 truncate">{request.email}</td>
                 <td className="py-3 px-1 flex-1 truncate">{request.status}</td>
-                <td className="py-3 px-1 flex-1 truncate">{request.message}</td>
+                <td className="py-3 px-1 flex-1 truncate">{request.fullName}</td>
                 <td className="py-3 px-1 flex-1 truncate">
                   <button onClick={() => handleDelete(request.id)}>
                     <MdDeleteForever size={23} color="red" />
