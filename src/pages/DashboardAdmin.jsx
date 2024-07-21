@@ -66,7 +66,7 @@ export default function DashboardAdmin() {
         }}
       />
       {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-      <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white">
+      <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white ">
         <div className="flex-1 flex flex-col ">
           <div className="flex justify-between">
             <header
@@ -85,7 +85,7 @@ export default function DashboardAdmin() {
             </button>
           </div>
 
-          <main className="flex-grow flex min-h-0 border-t">
+          <main className="flex-grow flex min-h-0 border-t p-2">
             <section
               aria-label="main content"
               className="flex min-h-0 flex-col flex-auto border-l"

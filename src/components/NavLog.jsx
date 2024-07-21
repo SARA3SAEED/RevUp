@@ -67,9 +67,9 @@ export default function NavLog({ role }) {
             </div>
           )}
           <Link
-            to={
-              localStorage.getItem("role") == "admin" ? "/profile-admin" : "/"
-            }
+            // to={
+            //   localStorage.getItem("role") == "admin" ? "/profile-admin" : "/"
+            // }
             className="flex flex-row justify-center items-center h-full"
           >
             <img src={img} className="w-16" />

@@ -10,6 +10,8 @@ export default function DashStatus() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [tempId, setTempId] = useState("");
   const [requests, setRequests] = useState([]);
+  const [selectedRequest, setSelectedRequest] = useState(null); 
+
 
   useEffect(() => {
     const role = localStorage.getItem("role");
@@ -111,6 +113,14 @@ export default function DashStatus() {
     const updatedRequests = requests.filter((request) => request.id !== tempId);
     setRequests(updatedRequests);
   };
+
+  const handleShow = (id) => {
+    const request = requests.find((req) => req.id === id);
+    setSelectedRequest(request);
+    document.getElementById("my_modal_1-details").showModal();
+  };
+
+
   if (isLoading) {
     return <Loader />;
   }
@@ -125,13 +135,13 @@ export default function DashStatus() {
         >
           <thead className="w-full px-4">
             <tr className="border-b flex flex-wrap md:flex-no-wrap">
-              <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
+              <th className="font-semibold text-left py-3 pl-3 pr-1 w-16 lg:w-14">
                 {/* <input type="checkbox" name="" id="" /> */}
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-36 truncate">
+              <th className="font-semibold text-left py-3 px-1 w-14 lg:w-44 truncate">
                 ID
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-36 max-w-xs xl:max-w-lg truncate">
+              <th className="font-semibold text-left py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg truncate">
                 Car Name
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
@@ -145,6 +155,9 @@ export default function DashStatus() {
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Delete
+              </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Details
               </th>
             </tr>
           </thead>
@@ -168,8 +181,8 @@ export default function DashStatus() {
                     />
                   </div>
                 </td>
-                <td className="py-3 px-1 w-36">{request.id}</td>
-                <td className="py-3 px-1 w-36 max-w-xs xl:max-w-lg">
+                <td className="py-3 px-1 w-14 md:w-36">{request.id}</td>
+                <td className="py-3 px-1  w-28 lg:w-44">
                   <div className="relative group ">
                     <p className=" truncate">{request.carName}</p>
                   </div>
@@ -184,6 +197,12 @@ export default function DashStatus() {
                     <MdDeleteForever size={23} color="red" />
                   </button>
                 </td>
+                <td className="py-3  flex-1 truncate ">
+                  <button className="w-10 lg:w-16 h-9 bg-blue-500 text-white rounded" 
+                  onClick={() => handleShow(request.id)}>
+                    Show
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -195,6 +214,25 @@ export default function DashStatus() {
       >
         Change Status to Done
       </button>
+
+      <dialog id="my_modal_1-details" className="modal-details lg:w-[50%] rounded-xl bg-base-100">
+        <div className="p-14">
+             <h3 className="font-bold text-lg">Request Details</h3>
+          {selectedRequest && (
+            <div>
+              <p className="py-4"><strong>Car Name:</strong> {selectedRequest.carName}</p>
+              <p className="py-4"><strong>Requester:</strong> {selectedRequest.requester}</p>
+              <p className="py-4"><strong>Status:</strong> {selectedRequest.status}</p>
+            </div>
+          )}
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Warning</h3>

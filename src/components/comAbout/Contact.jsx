@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
 import axios from "axios";
 
 export default function Contact() {
@@ -9,7 +11,6 @@ export default function Contact() {
     status: "in progress" 
   });
 
-  const [successMessage, setSuccessMessage] = useState("");
   const [role, setRole] = useState("");
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function Contact() {
     try {
       const response = await axios.post('https://66980ca602f3150fb66fe5dc.mockapi.io/contact', formData);
       console.log(response.data);
-      setSuccessMessage("Your message has been sent successfully!");
+      toast.success("Your message has been sent successfully!");
       setFormData({
         fullName: "",
         email: "",
@@ -101,9 +102,10 @@ export default function Contact() {
               >
                 Submit
               </button>
-              {successMessage && (
+              <ToastContainer position="top-left" theme="light" />
+              {/* {successMessage && (
                 <p className="text-green-600 mt-4 text-center">{successMessage}</p>
-              )}
+              )} */}
             </form>
           </div>
         </div>

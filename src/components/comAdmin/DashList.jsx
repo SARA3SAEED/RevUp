@@ -8,6 +8,8 @@ export default function DashList() {
   const [requests, setRequests] = useState([]);
   const [tempId, setTempId] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedRequest, setSelectedRequest] = useState(null); 
+
 
   useEffect(() => {
     const fetchRequests = async () => {
@@ -76,6 +78,13 @@ export default function DashList() {
       setIsLoading(false);
     }
   };
+
+  const handleShow = (id) => {
+    const request = requests.find((req) => req.id === id);
+    setSelectedRequest(request);
+    document.getElementById("my_modal_1-details").showModal();
+  };
+
   if (isLoading) {
     return <Loader />;
   }
@@ -89,13 +98,13 @@ export default function DashList() {
         >
           <thead className="w-full px-4">
             <tr className="border-b flex flex-wrap md:flex-no-wrap">
-              <th className="font-semibold text-left py-3 pl-3 pr-1 w-24">
+              <th className="font-semibold text-left py-3 pl-3 pr-1 w-16 lg:w-14">
                 {/* <input type="checkbox" name="" id="" /> */}
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-20 truncate">
+              <th className="font-semibold text-left py-3 px-1 w-14 lg:w-30 truncate">
                 ID
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-44 max-w-xs xl:max-w-lg truncate">
+              <th className="font-semibold text-left py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg truncate">
               Massage
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
@@ -111,6 +120,9 @@ export default function DashList() {
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Delete
               </th>
+              <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
+                Details
+              </th>
             </tr>
           </thead>
 
@@ -120,7 +132,7 @@ export default function DashList() {
                 key={request.id}
                 className="border-b flex flex-wrap md:flex-no-wrap"
               >
-                <td className="py-3 pl-3 pr-1 w-24 flex items-start">
+                <td className="py-3 pl-3 pr-1 w-16 flex items-start">
                   <input
                     type="checkbox"
                     checked={request.selected || false}
@@ -133,8 +145,8 @@ export default function DashList() {
                     />
                   </div>
                 </td>
-                <td className="py-3 px-1 w-20">{request.id}</td>
-                <td className="py-3 px-1 w-44 max-w-xs xl:max-w-lg">
+                <td className="py-3 px-1 w-14 lg:36">{request.id}</td>
+                <td className="py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg">
                   <div className="relative group ">
                     <p className="truncate">{request.message}</p>
                   </div>
@@ -145,6 +157,12 @@ export default function DashList() {
                 <td className="py-3 px-1 flex-1 truncate">
                   <button onClick={() => handleDelete(request.id)}>
                     <MdDeleteForever size={23} color="red" />
+                  </button>
+                </td>
+                <td className="py-3 px-2  flex-1 truncate ">
+                  <button className="W-9 lg:w-16 h-9   bg-blue-500 text-white rounded" 
+                  onClick={() => handleShow(request.id)}>
+                    Show
                   </button>
                 </td>
               </tr>
@@ -158,6 +176,26 @@ export default function DashList() {
       >
         Change Status to Done
       </button>
+
+
+      <dialog id="my_modal_1-details" className="modal-details lg:w-[50%] rounded-xl bg-base-100">
+        <div className="p-14">
+             <h3 className="font-bold text-lg">Request Details</h3>
+          {selectedRequest && (
+            <div>
+              <p className="py-4"><strong>Email:</strong> {selectedRequest.email}</p>
+              <p className="py-4"><strong>Status:</strong> {selectedRequest.status}</p>
+              <p className="py-4"><strong>Message:</strong> {selectedRequest.message}</p>
+            </div>
+          )}
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Warning</h3>
