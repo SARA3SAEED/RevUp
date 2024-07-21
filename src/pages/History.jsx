@@ -59,7 +59,7 @@ export default function History() {
               Check the status of recent orders, manage returns{" "}
             </p>
 
-            <div className="main-box border border-accent rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
+            <div className="flex flex-col-reverse main-box border border-accent rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
               {user.modification && user.modification.length > 0 ? (
                 user.modification.map((item) => (
                   <div

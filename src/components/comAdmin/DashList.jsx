@@ -8,8 +8,7 @@ export default function DashList() {
   const [requests, setRequests] = useState([]);
   const [tempId, setTempId] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedRequest, setSelectedRequest] = useState(null); 
-
+  const [selectedRequest, setSelectedRequest] = useState(null);
 
   useEffect(() => {
     const fetchRequests = async () => {
@@ -105,7 +104,7 @@ export default function DashList() {
                 ID
               </th>
               <th className="font-semibold text-left py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg truncate">
-              Massage
+                Massage
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Email
@@ -114,8 +113,7 @@ export default function DashList() {
                 Status Request
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
-              Requester
-
+                Requester
               </th>
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Delete
@@ -153,15 +151,19 @@ export default function DashList() {
                 </td>
                 <td className="py-3 px-1 flex-1 truncate">{request.email}</td>
                 <td className="py-3 px-1 flex-1 truncate">{request.status}</td>
-                <td className="py-3 px-1 flex-1 truncate">{request.fullName}</td>
+                <td className="py-3 px-1 flex-1 truncate">
+                  {request.fullName}
+                </td>
                 <td className="py-3 px-1 flex-1 truncate">
                   <button onClick={() => handleDelete(request.id)}>
                     <MdDeleteForever size={23} color="red" />
                   </button>
                 </td>
                 <td className="py-3 px-2  flex-1 truncate ">
-                  <button className="W-9 lg:w-16 h-9   bg-blue-500 text-white rounded" 
-                  onClick={() => handleShow(request.id)}>
+                  <button
+                    className="W-9 lg:w-16 h-9   bg-blue-500 text-white rounded"
+                    onClick={() => handleShow(request.id)}
+                  >
                     Show
                   </button>
                 </td>
@@ -177,15 +179,23 @@ export default function DashList() {
         Change Status to Done
       </button>
 
-
-      <dialog id="my_modal_1-details" className="modal-details lg:w-[50%] rounded-xl bg-base-100">
+      <dialog
+        id="my_modal_1-details"
+        className="modal-details lg:w-[50%] rounded-xl bg-base-100"
+      >
         <div className="p-14">
-             <h3 className="font-bold text-lg">Request Details</h3>
+          <h3 className="font-bold text-lg">Request Details</h3>
           {selectedRequest && (
             <div>
-              <p className="py-4"><strong>Email:</strong> {selectedRequest.email}</p>
-              <p className="py-4"><strong>Status:</strong> {selectedRequest.status}</p>
-              <p className="py-4"><strong>Message:</strong> {selectedRequest.message}</p>
+              <p className="py-4">
+                <strong>Email:</strong> {selectedRequest.email}
+              </p>
+              <p className="py-4">
+                <strong>Status:</strong> {selectedRequest.status}
+              </p>
+              <p className="py-4">
+                <strong>Message:</strong> {selectedRequest.message}
+              </p>
             </div>
           )}
           <div className="modal-action">
