@@ -53,7 +53,7 @@ export default function NewDetails() {
     beforeChange: (current, next) => setSlideIndex(next),
     className: "center",
     infinite: true,
-    lazyLoad: true,
+    // lazyLoad: true,
     centerPadding: 0,
     slidesToShow: 3,
     slideToScroll: 1,

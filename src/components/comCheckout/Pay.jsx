@@ -11,6 +11,7 @@ import { reseter } from "../../redux/Slices/ColorsSlice";
 export default function Pay() {
   // useStates and useNavigate consts
   const navigate = useNavigate();
+  const [userBefore, setUserBefore] = useState({});
   const [user, setUser] = useState({
     fullName: "",
     mobile: "",
@@ -40,24 +41,23 @@ export default function Pay() {
   // const wheelColor = useSelector((state) => state.carColors.rimColor);
 
   // useEffect
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
-  //         "user"
-  //       )}`
-  //     )
-  //     .then(function (res) {
-  //       setUser(res.data.em);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUserBefore(res.data);
+      });
+  }, []);
 
   // functions
   const bookAppoinment = () => {
-    const newArr = user.modification;
+    const newArr = userBefore.modification;
     const moblieValide = /^5[0-9]{8}$/;
     if (
-      user.email === "" ||
       user.fullName === "" ||
       user.mobile === "" ||
       user.address === "" ||

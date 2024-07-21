@@ -189,7 +189,7 @@ export default function History() {
                                   <div className="flex flex-col ">
                                     <p className="font-medium text-base leading-7 text-neutral pr-4 mr-4 border-r border-accent">
                                       Total Price:{" "}
-                                      <span className="text-info"> 1500$</span>
+                                      <span className="text-info"> 2250$</span>
                                     </p>
                                     <p className="font-medium text-base leading-7 text-neutral ">
                                       Status:{" "}
