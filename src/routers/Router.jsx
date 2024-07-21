@@ -12,8 +12,8 @@ import NotFound from "../pages/NotFound";
 import ProfileAdmin from "../pages/ProfileAdmin";
 import ProfileUser from "../pages/ProfileUser";
 import Subscribe from "../pages/Subscribe";
-import DashboardAdmin from '../pages/DashboardAdmin';
-import ListUser from '../pages/ListUser';
+import DashboardAdmin from "../pages/DashboardAdmin";
+import ListUser from "../pages/ListUser";
 import NewDetails from "../pages/NewDetails";
 
 export default function Router() {
@@ -21,14 +21,29 @@ export default function Router() {
     { path: "/", element: <Home /> },
     { path: "/singup", element: <Singup /> },
     { path: "/login", element: <Login /> },
-    { path: "/cars", element: <Cars /> },
+    {
+      path: "/cars",
+      element: <Cars />,
+    },
     // { path: "/det/:carid", element: <Details /> },
     { path: "/det/:carid", element: <NewDetails /> },
-    { path: "/checkout", element: <Checkout /> },
+    localStorage.getItem("user") != undefined && {
+      path: "/checkout",
+      element: <Checkout />,
+    },
     { path: "/order", element: <History /> },
-    { path: "/profile-admin", element: <ProfileAdmin /> },
-    { path: "/dashboard-admin", element: <DashboardAdmin /> },
-    { path: "/list-user", element: <ListUser /> },
+    localStorage.getItem("role") == "Admin" && {
+      path: "/profile-admin",
+      element: <ProfileAdmin />,
+    },
+    localStorage.getItem("role") == "Admin" && {
+      path: "/dashboard-admin",
+      element: <DashboardAdmin />,
+    },
+    {
+      path: "/list-user",
+      element: <ListUser />,
+    },
     { path: "/profile-user", element: <ProfileUser /> },
     { path: "/subscribe", element: <Subscribe /> },
     { path: "/about", element: <About /> },
