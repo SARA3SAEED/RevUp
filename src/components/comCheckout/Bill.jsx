@@ -23,7 +23,7 @@ export default function Bill() {
     <>
       <div className="px-4 pt-0 h-full">
         <p className="text-xl font-medium">Order Summary</p>
-        <div className="mt-8 space-y-3 rounded-lg border bg-base-100 px-2 py-4 sm:px-6">
+        <div className="mt-8 space-y-3 w-full rounded-lg border bg-base-100 px-2 py-4 sm:px-6">
           {/* <img className="mb-4" src={Nissan} alt={Nissan} /> */}
           <Canvas
             camera={{
