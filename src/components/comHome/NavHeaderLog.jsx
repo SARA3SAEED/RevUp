@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import img from "../../assets/car-logo1.png";
 
 export default function NavHeaderLog({ role }) {
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUser(res.data);
+      });
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -21,9 +39,7 @@ export default function NavHeaderLog({ role }) {
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.clear();
-  };
+ 
 
   return (
     <>
@@ -94,10 +110,14 @@ export default function NavHeaderLog({ role }) {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={role === "admin" ? "/profile-admin" : "/profile-user"}
-           className="menu  px-1 text-base-100 mx-2">
-            Profile
-          </Link>
+        {localStorage.getItem("role") == "admin" ? null : (
+            <p
+              // to={role === "admin" ? "/profile-admin" : "/profile-user"}
+              className="menu  px-1 text-base-100 mx-2 font-bold"
+            >
+              {user.username}
+            </p>
+          )}
           <Link
             to="/login"
             className="menu px-1 text-base-100 mx-2"
