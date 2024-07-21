@@ -32,11 +32,11 @@ export default function Router() {
       element: <Checkout />,
     },
     { path: "/order", element: <History /> },
-    localStorage.getItem("role") == "Admin" && {
+    localStorage.getItem("role") == "admin" && {
       path: "/profile-admin",
       element: <ProfileAdmin />,
     },
-    localStorage.getItem("role") == "Admin" && {
+    localStorage.getItem("role") == "admin" && {
       path: "/dashboard-admin",
       element: <DashboardAdmin />,
     },
