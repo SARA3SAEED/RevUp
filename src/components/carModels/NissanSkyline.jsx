@@ -1053,7 +1053,7 @@ export function NissanSkyline(props) {
               <mesh
                 geometry={nodes.Object_4.geometry}
                 //seat
-                material={materials.seat}
+                material={interiorColor}
                 position={[-0.096, 0, 0]}
               />
               <mesh
@@ -1105,7 +1105,7 @@ export function NissanSkyline(props) {
               <mesh
                 geometry={nodes.Object_4001.geometry}
                 //seat
-                material={materials["seat.001"]}
+                material={interiorColor}
               />
               <mesh
                 geometry={nodes.Object_5001.geometry}
