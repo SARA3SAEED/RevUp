@@ -11,7 +11,7 @@ import pursh from "../assets/porsche.png";
 import genesis from "../assets/Lotus-Emira.png";
 import carMoves from "../assets/carMoves.gif";
 import videoCar from "../assets/videoCar.mp4";
-import Lamborghini from "../assets/Lamborghini.png";
+import ToyotaSupra from "../assets/ToyotaSupra.png";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../App.css";
@@ -24,7 +24,7 @@ export default function Cars() {
     { id: 1, name: "Nissan-GTR", src: nessan },
     { id: 2, name: "Pursche 911", src: pursh },
     { id: 3, name: "Lotus-Emira", src: genesis },
-    { id: 4, name: "Lamborghini", src: Lamborghini },
+    { id: 4, name: "ToyotaSupra", src: ToyotaSupra },
   ];
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -53,6 +53,7 @@ export default function Cars() {
     speed: 500,
     beforeChange: (current, next) => setSlideIndex(next),
     className: "center",
+    focusOnSelect: true,
     infinite: true,
     lazyLoad: true,
     centerPadding: 0,
@@ -123,37 +124,22 @@ export default function Cars() {
         </h1>
         <div
           id="carsContainer"
-          className={
-            isVisible
-              ? "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 visible"
-              : "relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0"
-          }
-        >
+          className={`relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 ${isVisible && 'visible'}`}>
           <Slider {...settings}>
             {arrayOfImages.map((item, index) => (
-              <button
+              <div
                 key={index}
-                onClick={() => handleClick(item)}
-                className={
-                  index == slideIndex
-                    ? "slide slide-active flex flex-col items-center justify-center rounded-lg p-2 "
-                    : "slide flex flex-col items-center justify-center rounded-lg p-2 "
-                }
+                className={`slide flex flex-col items-center text-center justify-center rounded-lg p-2 ${index == slideIndex ? 'slide-active' : ''}`}
               >
                 <img src={item.src} alt={item} />
-                <h1
-                  // style={{ cursor: "pointer" }}
-                  // onClick={() => navigate("/det")}
-                  className="text-xl font-semibold text-center py-3"
-                >
-                  {item.name}
-                </h1>
-              </button>
+                <button className="text-xl font-semibold text-center" onClick={() => handleClick(item)}>{item.name}</button>
+              </div>
+
             ))}
           </Slider>
-        </div>
-      </div>
+        </div >
+      </div >
       <Footer />
-    </div>
+    </div >
   );
 }

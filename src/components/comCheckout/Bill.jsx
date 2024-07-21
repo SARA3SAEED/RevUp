@@ -10,6 +10,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useParams } from "react-router-dom";
 import { Porsche911 } from "../carModels/Porsche911";
 import { ToyotaSupra } from "../carModels/ToyotaSupra";
+import { LotusEmira } from "../carModels/LotusEmira";
 
 export default function Bill() {
   const carName = localStorage.getItem("displayName");
@@ -37,7 +38,8 @@ export default function Bill() {
             {/* the car model */}
             {carid == 1 && <NissanSkyline />}
             {carid == 2 && <Porsche911 />}
-            {carid == 3 && <ToyotaSupra />}
+            {carid == 3 && <LotusEmira />}
+            {carid == 4 && <ToyotaSupra />}
             <OrbitControls
               autoRotate={true}
               enableZoom={false}
