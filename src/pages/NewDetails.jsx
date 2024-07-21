@@ -127,15 +127,17 @@ export default function NewDetails() {
     }
   };
   useEffect(() => {
-    axios
-      .get(
-        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
-          "user"
-        )}`
-      )
-      .then(function (res) {
-        setUser(res.data);
-      });
+    localStorage.getItem("user")
+      ? axios
+          .get(
+            `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+              "user"
+            )}`
+          )
+          .then(function (res) {
+            setUser(res.data);
+          })
+      : null;
     const userId = localStorage.getItem("user");
     const role = localStorage.getItem("role");
     if (userId) {
@@ -163,7 +165,6 @@ export default function NewDetails() {
         {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       </div>
       <div className="flex flex-col w-full items-center flex-1 h-full bg-accent">
-
         <div className="flex flex-1 justify-center w-full h-full">
           <div className=" absolute top-0 left-0 flex flex-1 w-full h-full">
             <CameraSetting />
@@ -210,10 +211,10 @@ export default function NewDetails() {
                         tabIndex == 1
                           ? bodyColorChanger(item)
                           : tabIndex == 2
-                            ? rimColorChanger(item)
-                            : tabIndex == 3
-                              ? interiorColorChanger(item)
-                              : "";
+                          ? rimColorChanger(item)
+                          : tabIndex == 3
+                          ? interiorColorChanger(item)
+                          : "";
                     }}
                     className={`w-14 h-14 rounded-full shadow-md `}
                     style={{ backgroundColor: item, opacity: 1 }}
@@ -223,7 +224,9 @@ export default function NewDetails() {
                   className="w-14 h-14  rounded-full shadow-md bg-center bg-cover"
                   style={{ backgroundImage: `url(${Colorwheel})` }}
                   onClick={() =>
-                    user.isVIP == true ? togglePicker() : navigate("../subscribe")
+                    user.isVIP == true
+                      ? togglePicker()
+                      : navigate("../subscribe")
                   }
                 >
                   <div className="badge badge-sm badge-secondary">VIP</div>
@@ -236,10 +239,10 @@ export default function NewDetails() {
                           tabIndex == 1
                             ? bodyColorChanger(e.target.value)
                             : tabIndex == 2
-                              ? rimColorChanger(e.target.value)
-                              : tabIndex == 3
-                                ? interiorColorChanger(e.target.value)
-                                : "";
+                            ? rimColorChanger(e.target.value)
+                            : tabIndex == 3
+                            ? interiorColorChanger(e.target.value)
+                            : "";
                       }}
                       type="color"
                       className="w-14 h-14 appearance-none opacity-0"
@@ -337,7 +340,7 @@ export default function NewDetails() {
               </li>
               <li className="max-sm:ml-auto sm:border-t border-info max-sm:border-l">
                 <Link
-                  to={"../checkout"}
+                  to={localStorage.getItem("user") ? "../checkout" : "../login"}
                   className="tooltip tooltip-left text-primary sm:px-0 flex flex-col items-center justify-center"
                   data-tip="Checkout"
                 >
