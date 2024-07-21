@@ -4,7 +4,6 @@ import img from "../assets/car-logo1.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,17 +28,15 @@ export default function Login() {
         user.role == "user" ? navigate("/") : navigate("/profile-admin");
       } else {
         toast.error("Invalid email or password");
-
       }
     } catch (error) {
       toast.error("Error logging in. Please try again.");
-
     }
   };
 
   return (
     <>
-      <div className="my-12 ">
+      <div className="flex flex-col items-center justify-center h-full">
         <main className="w-full h-screen flex flex-col items-center justify-center sm:px-4">
           <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
             <div className="text-center">
@@ -50,20 +47,11 @@ export default function Login() {
                 <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
                   Welcome ..
                 </h3>
-                <p className="">
-                  Don't have an account?{" "}
-                  <Link
-                    to="/singup"
-                    className="font-medium text-primary hover:text-primary"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
               </div>
             </div>
             <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
               <form onSubmit={handleLogin} className="space-y-5">
-              <ToastContainer position="top-left" theme="light" />
+                <ToastContainer position="top-left" theme="light" />
                 <div>
                   <label className="font-medium">Email</label>
                   <input
@@ -93,6 +81,15 @@ export default function Login() {
                 >
                   Login
                 </button>
+                <p className="">
+                  Don't have an account?{" "}
+                  <Link
+                    to="/singup"
+                    className="font-medium text-primary hover:text-primary"
+                  >
+                    Sign Up
+                  </Link>
+                </p>
               </form>
             </div>
           </div>

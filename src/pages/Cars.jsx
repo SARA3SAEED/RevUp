@@ -55,7 +55,7 @@ export default function Cars() {
     className: "center",
     focusOnSelect: true,
     infinite: true,
-    lazyLoad: true,
+    // lazyLoad: true,
     centerPadding: 0,
     slidesToShow: 3,
     slideToScroll: 1,
@@ -124,22 +124,31 @@ export default function Cars() {
         </h1>
         <div
           id="carsContainer"
-          className={`relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 ${isVisible && 'visible'}`}>
+          className={`relative slider-container w-[90vw] h-1/2 my-auto max-sm:my-0 ${
+            isVisible && "visible"
+          }`}
+        >
           <Slider {...settings}>
             {arrayOfImages.map((item, index) => (
               <div
                 key={index}
-                className={`slide flex flex-col items-center text-center justify-center rounded-lg p-2 ${index == slideIndex ? 'slide-active' : ''}`}
+                className={`slide flex flex-col items-center text-center justify-center rounded-lg p-2 ${
+                  index == slideIndex ? "slide-active" : ""
+                }`}
               >
                 <img src={item.src} alt={item} />
-                <button className="text-xl font-semibold text-center" onClick={() => handleClick(item)}>{item.name}</button>
+                <button
+                  className="text-xl font-semibold text-center"
+                  onClick={() => handleClick(item)}
+                >
+                  {item.name}
+                </button>
               </div>
-
             ))}
           </Slider>
-        </div >
-      </div >
+        </div>
+      </div>
       <Footer />
-    </div >
+    </div>
   );
 }

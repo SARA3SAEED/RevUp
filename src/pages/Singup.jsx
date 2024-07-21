@@ -5,7 +5,6 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -32,10 +31,14 @@ export default function Signup() {
         "https://66980ca602f3150fb66fe5dc.mockapi.io/user"
       );
 
-      const emailExists = checkEmailResponse.data.find(user => user.email === email);
-      
+      const emailExists = checkEmailResponse.data.find(
+        (user) => user.email === email
+      );
+
       if (emailExists) {
-        toast.error("Email is already registered. Please use a different email.");
+        toast.error(
+          "Email is already registered. Please use a different email."
+        );
         return;
       }
 
@@ -61,37 +64,27 @@ export default function Signup() {
       navigate("/login");
     } catch (error) {
       toast.error("Error signing up. Please try again.");
-
     }
   };
 
   return (
     <>
-      <div className="my-12 h-full">
+      <div className="flex flex-col items-center justify-center h-full">
         <main className="w-full h-screen flex flex-col items-center justify-center sm:px-4">
           <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
             <div className="text-center">
               <Link to="/">
-                <img src={img} width={130} className="mx-auto" />
+                <img src={img} alt="Home" width={130} className="mx-auto" />
               </Link>
               <div className="mt-5 space-y-2">
                 <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
                   Create an account
                 </h3>
-                <p className="">
-                  Already have an account?{" "}
-                  <Link
-                    to="/login"
-                    className="font-medium text-primary hover:text-primary"
-                  >
-                    Log in
-                  </Link>
-                </p>
               </div>
             </div>
             <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
               <form onSubmit={handleSignup} className="space-y-5">
-              <ToastContainer position="top-left" theme="light" />
+                <ToastContainer position="top-left" theme="light" />
                 <div>
                   <label className="font-medium">Name</label>
                   <input
@@ -128,6 +121,15 @@ export default function Signup() {
                 >
                   Create account
                 </button>
+                <p className="">
+                  Already have an account?{" "}
+                  <Link
+                    to="/login"
+                    className="font-medium text-primary hover:text-primary"
+                  >
+                    Log in
+                  </Link>
+                </p>
               </form>
               {/* <div className="">
                 <button
