@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import img from "../assets/car-logo1.png";
+import axios from "axios";
 
 export default function NavLog({ role }) {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then(function (res) {
+        setUser(res.data);
+      });
+  }, []);
+
   const handleLogout = () => {
     localStorage.clear();
   };
@@ -85,12 +100,12 @@ export default function NavLog({ role }) {
         )}
         <div className="navbar-end">
           {localStorage.getItem("role") == "admin" ? null : (
-            <Link
-              to={role === "admin" ? "/profile-admin" : "/profile-user"}
-              className="menu  px-1 text-base-100 mx-2"
+            <p
+              // to={role === "admin" ? "/profile-admin" : "/profile-user"}
+              className="menu  px-1 text-base-100 mx-2 font-bold"
             >
-              Profile
-            </Link>
+              {user.username}
+            </p>
           )}
           <Link
             to="/login"
