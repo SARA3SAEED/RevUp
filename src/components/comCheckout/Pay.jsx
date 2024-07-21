@@ -11,7 +11,16 @@ import { reseter } from "../../redux/Slices/ColorsSlice";
 export default function Pay() {
   // useStates and useNavigate consts
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    fullName: "",
+    mobile: "",
+    appointmentDate: "",
+    salary: "",
+    bank: "",
+    address: "",
+    state: "",
+    zip: "",
+  });
   const [modification, setModification] = useState({
     date: new Date().toLocaleString("en-US"),
     status: "in progress",
@@ -31,17 +40,17 @@ export default function Pay() {
   // const wheelColor = useSelector((state) => state.carColors.rimColor);
 
   // useEffect
-  useEffect(() => {
-    axios
-      .get(
-        `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
-          "user"
-        )}`
-      )
-      .then(function (res) {
-        setUser(res.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://66980ca602f3150fb66fe5dc.mockapi.io/user/${localStorage.getItem(
+  //         "user"
+  //       )}`
+  //     )
+  //     .then(function (res) {
+  //       setUser(res.data.em);
+  //     });
+  // }, []);
 
   // functions
   const bookAppoinment = () => {
@@ -72,12 +81,6 @@ export default function Pay() {
             "user"
           )}`,
           {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            password: user.password,
-            role: user.role,
-            isVIP: user.isVIP,
             fullName: user.fullName,
             modification: newArr,
             mobile: user.mobile,
@@ -104,7 +107,7 @@ export default function Pay() {
           Complete your order by booking an appointment.
         </p>
         <div className="">
-          <label
+          {/* <label
             className="mt-4 mb-2 block text-sm font-medium"
             htmlFor="email"
           >
@@ -123,7 +126,7 @@ export default function Pay() {
             <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3 text-gray-400">
               @
             </div>
-          </div>
+          </div> */}
           <label
             className="mt-4 mb-2 block text-sm font-medium"
             htmlFor="card-holder"
@@ -308,16 +311,16 @@ export default function Pay() {
             <p className="text-2xl font-semibold text-neutral">$408.00</p>
           </div> */}
         </div>
-        <div className="w-full flex justify-between gap-2">
+        <div className="w-full flex justify-between items-end gap-2">
           <button
             onClick={() => navigate(-1)}
-            className="mt-4 mb-8 w-1/2 rounded-md btn btn-neutral px-6 py-3 font-medium text-base-100"
+            className="mt-4 w-1/2 rounded-md btn btn-neutral px-6 py-3 font-medium text-base-100"
           >
             back
           </button>
           <button
             onClick={() => document.getElementById("my_modal_1").showModal()}
-            className="btn mt-4 mb-8 w-1/2 rounded-md btn-primary px-6 py-3 font-medium text-base-100"
+            className="btn mt-4 w-1/2 rounded-md btn-primary px-6 py-3 font-medium text-base-100"
           >
             Book An Appointment
           </button>
