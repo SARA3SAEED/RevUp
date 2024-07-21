@@ -77,7 +77,7 @@ export default function DashStatus() {
           const user = res.data;
 
           const updatedModifications = user.modification.map((mod) =>
-            mod.id === request.id ? { ...mod, status: "Done" } : mod
+            mod.id === request.id ? { ...mod, status: "done" } : mod
           );
 
           return axios.put(
@@ -91,7 +91,7 @@ export default function DashStatus() {
           console.log(`Status updated for request ${request.id}`);
           setRequests((prevRequests) =>
             prevRequests.map((req) =>
-              req.id === request.id ? { ...req, status: "Done" } : req
+              req.id === request.id ? { ...req, status: "done" } : req
             )
           );
         })
@@ -177,7 +177,7 @@ export default function DashStatus() {
                   <div className="ml-auto relative group">
                     <GrStatusGoodSmall
                       size={18}
-                      color={request.status === "Done" ? "#7BFC2C" : "#FFFF1F"}
+                      color={request.status === "done" ? "#7BFC2C" : "#FFFF1F"}
                     />
                   </div>
                 </td>
