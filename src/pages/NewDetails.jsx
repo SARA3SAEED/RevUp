@@ -163,94 +163,94 @@ export default function NewDetails() {
         {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
       </div>
       <div className="flex flex-col w-full items-center flex-1 h-full bg-accent">
-        {isOpen ? (
-          tabIndex == 9 ? (
-            <>
-              <div
-                className={`absolute top-0 flex justify-around items-center bg-opacity-10 w-2/5 h-[4.5rem] rounded-b-xl  `}
-              >
-                <button
-                  className="w-16 h-16 bg-center bg-cover"
-                  style={{ backgroundImage: `url(${rimdefult})` }}
-                  onClick={() => {
-                    dispatch(setRimType(1));
-                  }}
-                ></button>
-                <button
-                  className="w-16 h-16 bg-center bg-cover"
-                  style={{ backgroundImage: `url(${rimdefult})` }}
-                  onClick={() => {
-                    dispatch(setRimType(1));
-                  }}
-                ></button>
-                <button
-                  className="w-16 h-16 bg-center bg-cover"
-                  style={{ backgroundImage: `url(${rimdefult})` }}
-                  onClick={() => {
-                    dispatch(setRimType(1));
-                  }}
-                ></button>
-              </div>
-            </>
-          ) : (
-            <div
-              className={`flex justify-around items-center bg-opacity-10 w-2/5 h-[4.5rem] rounded-b-xl  `}
-              style={{ backgroundColor: bgColor + "33" }}
-            >
-              {colorsArray.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setBgColor(item),
-                      tabIndex == 1
-                        ? bodyColorChanger(item)
-                        : tabIndex == 2
-                        ? rimColorChanger(item)
-                        : tabIndex == 3
-                        ? interiorColorChanger(item)
-                        : "";
-                  }}
-                  className={`w-14 h-14 rounded-full shadow-md `}
-                  style={{ backgroundColor: item, opacity: 1 }}
-                ></button>
-              ))}
-              <div
-                className="w-14 h-14  rounded-full shadow-md bg-center bg-cover"
-                style={{ backgroundImage: `url(${Colorwheel})` }}
-                onClick={() =>
-                  user.isVIP == true ? togglePicker() : navigate("../subscribe")
-                }
-              >
-                <div className="badge badge-sm badge-secondary">VIP</div>
 
-                {user.isVIP == true ? (
-                  <input
-                    ref={colorPickerRef}
-                    onChange={(e) => {
-                      setBgColor(e.target.value),
-                        tabIndex == 1
-                          ? bodyColorChanger(e.target.value)
-                          : tabIndex == 2
-                          ? rimColorChanger(e.target.value)
-                          : tabIndex == 3
-                          ? interiorColorChanger(e.target.value)
-                          : "";
-                    }}
-                    type="color"
-                    className="w-14 h-14 appearance-none opacity-0"
-                  />
-                ) : null}
-              </div>
-            </div>
-          )
-        ) : (
-          <></>
-        )}
-        <div className="flex flex-1 w-full h-full">
+        <div className="flex flex-1 justify-center w-full h-full">
           <div className=" absolute top-0 left-0 flex flex-1 w-full h-full">
             <CameraSetting />
           </div>
+          {isOpen ? (
+            tabIndex == 9 ? (
+              <>
+                <div
+                  className={`flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-b-xl  `}
+                >
+                  <button
+                    className="w-16 h-16 bg-center bg-cover"
+                    style={{ backgroundImage: `url(${rimdefult})` }}
+                    onClick={() => {
+                      dispatch(setRimType(1));
+                    }}
+                  ></button>
+                  <button
+                    className="w-16 h-16 bg-center bg-cover"
+                    style={{ backgroundImage: `url(${rimdefult})` }}
+                    onClick={() => {
+                      dispatch(setRimType(2));
+                    }}
+                  ></button>
+                  <button
+                    className="w-16 h-16 bg-center bg-cover"
+                    style={{ backgroundImage: `url(${rimdefult})` }}
+                    onClick={() => {
+                      dispatch(setRimType(3));
+                    }}
+                  ></button>
+                </div>
+              </>
+            ) : (
+              <div
+                className={`flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-b-xl  `}
+                style={{ backgroundColor: bgColor + "33" }}
+              >
+                {colorsArray.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setBgColor(item),
+                        tabIndex == 1
+                          ? bodyColorChanger(item)
+                          : tabIndex == 2
+                            ? rimColorChanger(item)
+                            : tabIndex == 3
+                              ? interiorColorChanger(item)
+                              : "";
+                    }}
+                    className={`w-14 h-14 rounded-full shadow-md `}
+                    style={{ backgroundColor: item, opacity: 1 }}
+                  ></button>
+                ))}
+                <div
+                  className="w-14 h-14  rounded-full shadow-md bg-center bg-cover"
+                  style={{ backgroundImage: `url(${Colorwheel})` }}
+                  onClick={() =>
+                    user.isVIP == true ? togglePicker() : navigate("../subscribe")
+                  }
+                >
+                  <div className="badge badge-sm badge-secondary">VIP</div>
 
+                  {user.isVIP == true ? (
+                    <input
+                      ref={colorPickerRef}
+                      onChange={(e) => {
+                        setBgColor(e.target.value),
+                          tabIndex == 1
+                            ? bodyColorChanger(e.target.value)
+                            : tabIndex == 2
+                              ? rimColorChanger(e.target.value)
+                              : tabIndex == 3
+                                ? interiorColorChanger(e.target.value)
+                                : "";
+                      }}
+                      type="color"
+                      className="w-14 h-14 appearance-none opacity-0"
+                    />
+                  ) : null}
+                </div>
+              </div>
+            )
+          ) : (
+            <></>
+          )}
           <div className="absolute right-0 translate-y-1/2 max-sm:bottom-10 max-sm:w-full justify-center flex items-center">
             <ul className="menu max-sm:menu-horizontal bg-base-200 gap-4 max-sm:w-fit rounded-box">
               <li>
