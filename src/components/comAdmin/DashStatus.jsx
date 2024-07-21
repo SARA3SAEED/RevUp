@@ -177,7 +177,7 @@ export default function DashStatus() {
                   <div className="ml-auto relative group">
                     <GrStatusGoodSmall
                       size={18}
-                      color={request.status === "Done" ? "yellow" : "red"}
+                      color={request.status === "Done" ? "#7BFC2C" : "#FFFF1F"}
                     />
                   </div>
                 </td>

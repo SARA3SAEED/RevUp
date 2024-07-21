@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
 import axios from "axios";
 
 export default function Contact() {
@@ -18,7 +17,25 @@ export default function Contact() {
     if (storedRole) {
       setRole(storedRole);
     }
+
+    const userId = localStorage.getItem('user'); 
+    if (userId) {
+      fetchUserEmail(userId);
+    }
   }, []);
+
+  const fetchUserEmail = async (userId) => {
+    try {
+      const response = await axios.get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${userId}`);
+      const userEmail = response.data.email;
+      setFormData((prevData) => ({
+        ...prevData,
+        email: userEmail
+      }));
+    } catch (error) {
+      console.error("Error fetching user email:", error);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -103,9 +120,6 @@ export default function Contact() {
                 Submit
               </button>
               <ToastContainer position="top-left" theme="light" />
-              {/* {successMessage && (
-                <p className="text-green-600 mt-4 text-center">{successMessage}</p>
-              )} */}
             </form>
           </div>
         </div>
