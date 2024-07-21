@@ -3,12 +3,13 @@ import axios from "axios";
 import img from "../assets/car-logo1.png";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -16,11 +17,13 @@ export default function Signup() {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      setError("Email must contain '@' and a '.'");
+      toast.error("Email must contain '@' and a '.'");
+
       return;
     }
     if (password.length < 8) {
-      setError("Password must be more than 8 characters");
+      toast.error("Password must be more than 8 characters");
+
       return;
     }
 
@@ -32,7 +35,7 @@ export default function Signup() {
       const emailExists = checkEmailResponse.data.find(user => user.email === email);
       
       if (emailExists) {
-        setError("Email is already registered. Please use a different email.");
+        toast.error("Email is already registered. Please use a different email.");
         return;
       }
 
@@ -57,8 +60,8 @@ export default function Signup() {
       );
       navigate("/login");
     } catch (error) {
-      console.error("Error signing up", error);
-      setError("Error signing up. Please try again.");
+      toast.error("Error signing up. Please try again.");
+
     }
   };
 
@@ -88,7 +91,7 @@ export default function Signup() {
             </div>
             <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
               <form onSubmit={handleSignup} className="space-y-5">
-                {error && <p className="text-red-500">{error}</p>}
+              <ToastContainer position="top-left" theme="light" />
                 <div>
                   <label className="font-medium">Name</label>
                   <input

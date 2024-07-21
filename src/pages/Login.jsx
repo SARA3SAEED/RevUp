@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import img from "../assets/car-logo1.png";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -23,16 +24,16 @@ export default function Login() {
       );
 
       if (user) {
-        console.log("Login successful");
         localStorage.setItem("user", user.id);
         localStorage.setItem("role", user.role);
         user.role == "user" ? navigate("/") : navigate("/profile-admin");
       } else {
-        setError("Invalid email or password");
+        toast.error("Invalid email or password");
+
       }
     } catch (error) {
-      console.error("Error logging in", error);
-      setError("Error logging in. Please try again.");
+      toast.error("Error logging in. Please try again.");
+
     }
   };
 
@@ -62,7 +63,7 @@ export default function Login() {
             </div>
             <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
               <form onSubmit={handleLogin} className="space-y-5">
-                {error && <p className="text-red-500">{error}</p>}
+              <ToastContainer position="top-left" theme="light" />
                 <div>
                   <label className="font-medium">Email</label>
                   <input
