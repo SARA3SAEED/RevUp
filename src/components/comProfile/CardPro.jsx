@@ -30,23 +30,26 @@ export default function CardPro({ onEditClick }) {
   }
 
   return (
-    <div className="absolute w-2/3 max-sm:w-11/12 translate-y-1/2 m-auto p-2">
-      <div className="rounded-lg  bg-base-100 bg-opacity-25 px-4 pt-8 pb-10 shadow-lg">
+    <div className="absolute w-2/4 max-sm:w-11/12 translate-y-1/2 m-auto p-6">
+      <div className="rounded-lg  bg-base-100 bg-opacity-75 px-4 pt-8 pb-10 shadow-lg">
         <div className="relative mx-auto rounded-full">
           {/* Uncomment the icon below if needed */}
           {/* <IoPersonOutline size={130} color="gray" /> */}
         </div>
-        <h1 className="my-1 text-center text-xl font-bold leading-8 text-neutral">
+      <div className="text-center">
+      <h1 className="my-1 text-center text-xl font-bold leading-8 text-neutral">
           {userInfo.fullName}
         </h1>
         <h3 className="font-lg text-semibold text-center leading-6 text-neutral">
           {userInfo.role}
         </h3>
-        <p className="w-96 max-sm:w-60 text-center text-sm leading-6 ">
+        <p className="  text-center text-sm  ">
           {userInfo.profile}
         </p>
+      </div>
         <ul className="mt-3 rounded bg-transparent bg-opacity-35 py-2 px-3 text-neutral shadow-sm hover:shadow">
-          <li className="flex items-center py-3 text-md">
+        <div className="flex justify-around">
+        <li className="flex items-center py-3 text-md">
             <MdEmail />
             <span className="ml-2">{userInfo.email}</span>
           </li>
@@ -54,6 +57,8 @@ export default function CardPro({ onEditClick }) {
             <FaPhone />
             <span className="ml-2">{userInfo.mobile}</span>
           </li>
+        </div>
+          <div className="flex justify-around">
           <li className="flex items-center py-3 text-md">
             <RiUserLocationFill />
             <span className="ml-2">{userInfo.address}</span>
@@ -62,6 +67,7 @@ export default function CardPro({ onEditClick }) {
             <GrStatusInfo />
             <span className="ml-2">{userInfo.isVIP ? "vip" : "basic"}</span>
           </li>
+          </div>
         </ul>
         <div className="btn w-full rounded-lg btn-primary mt-4 text-base-100 text-lg font-semibold">
           <button type="submit" className="w-full p-2" onClick={onEditClick}>
