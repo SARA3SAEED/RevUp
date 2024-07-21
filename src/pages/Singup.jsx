@@ -29,7 +29,7 @@ export default function Signup() {
         "https://66980ca602f3150fb66fe5dc.mockapi.io/user"
       );
 
-      const emailExists = checkEmailResponse.data.filter(user => user.email === email);
+      const emailExists = checkEmailResponse.data.find(user => user.email === email);
       
       if (emailExists) {
         setError("Email is already registered. Please use a different email.");
