@@ -18,7 +18,11 @@ import NewDetails from "../pages/NewDetails";
 
 export default function Router() {
   const router = createBrowserRouter([
-    { path: "/", element: <Home /> },
+    {
+      path: "/",
+      element:
+        localStorage.getItem("role") == "admin" ? <DashboardAdmin /> : <Home />,
+    },
     { path: "/singup", element: <Singup /> },
     { path: "/login", element: <Login /> },
     {
@@ -36,15 +40,15 @@ export default function Router() {
       path: "/profile-admin",
       element: <ProfileAdmin />,
     },
+    // localStorage.getItem("role") == "admin" && {
+    //   path: "/dashboard-admin",
+    //   element: <DashboardAdmin />,
+    // },
     localStorage.getItem("role") == "admin" && {
-      path: "/dashboard-admin",
-      element: <DashboardAdmin />,
-    },
-    {
       path: "/list-user",
       element: <ListUser />,
     },
-    { path: "/profile-user", element: <ProfileUser /> },
+    // { path: "/profile-user", element: <ProfileUser /> },
     { path: "/subscribe", element: <Subscribe /> },
     { path: "/about", element: <About /> },
     { path: "/*", element: <NotFound /> },

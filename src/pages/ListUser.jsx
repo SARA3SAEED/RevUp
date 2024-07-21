@@ -22,7 +22,7 @@ export default function DashboardAdmin() {
   }, []);
 
   const handleButtonClick = () => {
-    navigate("/dashboard-admin");
+    navigate("/");
   };
 
   return (
