@@ -11,6 +11,10 @@ export default function DashList() {
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   useEffect(() => {
+    func()
+  }, []);
+
+  const func = ()=>{
     const fetchRequests = async () => {
       try {
         const response = await axios.get(
@@ -25,7 +29,7 @@ export default function DashList() {
     };
 
     fetchRequests();
-  }, []);
+  }
 
   const handleCheckboxChange = (index) => {
     const newRequests = [...requests];
