@@ -14,6 +14,10 @@ export default function DashStatus() {
 
 
   useEffect(() => {
+    func()
+  }, []);
+
+  const func = ()=>{
     const role = localStorage.getItem("role");
 
     if (role === "admin") {
@@ -53,11 +57,12 @@ export default function DashStatus() {
       setIsLoggedIn(false);
       setIsLoading(false);
     }
-  }, []);
+  }
 
   useEffect(() => {
     console.log("Requests state updated:", requests);
   }, [requests]);
+
 
   const handleCheckboxChange = (index) => {
     const updatedRequests = [...requests];
