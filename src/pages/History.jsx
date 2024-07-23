@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Poesche from "../assets/porsche.png";
 // import { Loader } from "@react-three/drei";
 import Loader from "../components/Loader";
+import Nav2 from "../components/Nav2";
 
 export default function History() {
   const [user, setUser] = useState({});
@@ -48,7 +49,7 @@ export default function History() {
     <Loader />
   ) : (
     <div className="flex flex-col items-center justify-between min-h-screen">
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+      <Nav2 />
       {isLoggedIn ? (
         <section className="w-full py-24 relative">
           <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">

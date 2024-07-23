@@ -31,7 +31,7 @@ export default function Router() {
     },
     // { path: "/det/:carid", element: <Details /> },
     { path: "/det/:carid", element: <NewDetails /> },
-    localStorage.getItem("user") != undefined && {
+    {
       path: "/checkout",
       element: <Checkout />,
     },

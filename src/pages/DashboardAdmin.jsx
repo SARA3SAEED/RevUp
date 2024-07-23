@@ -3,6 +3,7 @@ import DashStatus from "../components/comAdmin/DashStatus";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
 import { useNavigate } from "react-router-dom";
+import Nav2 from "../components/Nav2";
 
 export default function DashboardAdmin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,6 +28,10 @@ export default function DashboardAdmin() {
 
   return (
     <>
+      <div className="flex justify-center">
+        <Nav2 />
+      </div>
+
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -65,13 +70,12 @@ export default function DashboardAdmin() {
           `,
         }}
       />
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-      <div className="h-full w-full flex overflow-hidden antialiased text-gray-800 bg-white ">
+      <div className="h-full w-full  flex overflow-hidden antialiased text-gray-800 bg-white ">
         <div className="flex-1 flex flex-col ">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <header
               aria-label="page caption"
-              className="flex-none flex h-16 bg-gray-100 border-t px-4 items-center"
+              className="flex-none flex h-20 bg-gray-100 border-t px-4 items-center"
             >
               <h1 id="page-caption" className="font-semibold text-lg">
                 Dashboard

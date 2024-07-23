@@ -8,6 +8,7 @@ import Team from "../components/comAbout/Team";
 import Contact from "../components/comAbout/Contact";
 import Main from "../components/comAbout/Main";
 import Loader from "../components/Loader";
+import Nav2 from "../components/Nav2";
 
 export default function About() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +32,10 @@ export default function About() {
     <Loader />
   ) : (
     <>
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+      <div className="flex justify-center ">
+        <Nav2 />
+      </div>
+
       <Main />
       <Team />
       <Contact />

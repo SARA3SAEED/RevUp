@@ -6,6 +6,7 @@ import ProfileVideo from "../assets/ProfileVideo.mp4";
 import CardPro from "../components/comProfile/CardPro";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
+import Nav2 from "../components/Nav2";
 
 export default function ProfileUser() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +32,7 @@ export default function ProfileUser() {
   return (
     <>
       <div className="relative h-screen flex flex-col justify-between items-center">
-        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+        <Nav2 />
         {/* <div className=""> */}
 
         <video

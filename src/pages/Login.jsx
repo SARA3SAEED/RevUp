@@ -25,7 +25,8 @@ export default function Login() {
       if (user) {
         localStorage.setItem("user", user.id);
         localStorage.setItem("role", user.role);
-        user.role == "user" ? navigate("/") : navigate("/profile-admin");
+        localStorage.setItem("islogged", true);
+        navigate("/");
       } else {
         toast.error("Invalid email or password");
       }
