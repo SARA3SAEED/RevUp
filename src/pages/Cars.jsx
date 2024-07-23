@@ -36,7 +36,7 @@ export default function Cars() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const isVisible = scrollTop > 20; // Adjust this threshold as needed
+      const isVisible = scrollTop > 20; 
       setIsVisible(isVisible);
       setIsLoading(false);
     };
