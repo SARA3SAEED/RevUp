@@ -1,14 +1,10 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { setCamera } from "../../redux/Slices/ColorsSlice";
 import { NissanSkyline } from "./NissanSkyline";
 import { Porsche911 } from "./Porsche911";
-import {
-  Environment,
-  OrbitControls,
-  PerspectiveCamera,
-} from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { ToyotaSupra } from "./ToyotaSupra";
 import { useParams } from "react-router-dom";
 import { LotusEmira } from "./LotusEmira";
@@ -48,8 +44,7 @@ const CameraController = () => {
   return null;
 };
 export default function CameraSetting() {
-  const { carid } = useParams()
-
+  const { carid } = useParams();
   const { fov, position, target } = useSelector(
     (state) => state.carColors.camera
   );
@@ -64,7 +59,7 @@ export default function CameraSetting() {
   }, [fov, position, target]);
 
   return (
-    <Canvas className="w-full h-full rounded-2xl ">
+    <Canvas className="drop-shadow-[0_35px_18px_rgba(0,0,0,0.6)] w-full h-full rounded-2xl ">
       <PerspectiveCamera
         camera={(cameraProps.fov, cameraProps.position)}
         gl={{ antialias: true }}
@@ -74,12 +69,10 @@ export default function CameraSetting() {
       <pointLight position={[0, 1, 0]} intensity={0.1} />
       <directionalLight intensity={2} position={(1.83, -0.25, 0.93)} />
       <directionalLight intensity={2} position={(-1.97, -0.002, -0.97)} />
-
       {carid == 1 && <NissanSkyline />}
       {carid == 2 && <Porsche911 />}
       {carid == 3 && <LotusEmira />}
       {carid == 4 && <ToyotaSupra />}
-
 
       <CameraController />
       <OrbitControls

@@ -22,8 +22,6 @@ const ColorsSlice = createSlice({
     },
     setBodyColor: (state, action) => {
       state.carBodyColor = action.payload.color;
-      state.camera.fov = action.payload.fov;
-      state.camera.position = action.payload.position;
     },
     setCamera: (state, action) => {
       state.camera.fov = action.payload.fov;
@@ -34,13 +32,9 @@ const ColorsSlice = createSlice({
     },
     setInteriorColor: (state, action) => {
       state.InteriorColor = action.payload.color;
-      state.camera.fov = action.payload.fov;
-      state.camera.position = action.payload.position;
     },
     setRimColor: (state, action) => {
       state.rimColor = action.payload.color;
-      state.camera.fov = action.payload.fov;
-      state.camera.position = action.payload.position;
     },
     setRimType: (state, action) => {
       state.rimType = action.payload;
@@ -49,9 +43,7 @@ const ColorsSlice = createSlice({
       state.rimColor = "#000000";
       state.InteriorColor = "#000000";
       state.carBodyColor = "#ffffff";
-
-
-    }
+    },
   },
 });
 
