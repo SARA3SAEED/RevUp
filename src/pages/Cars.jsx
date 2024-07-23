@@ -16,6 +16,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../App.css";
 import NavLog from "../components/NavLog";
+import Stage from "../assets/Stage.png";
+import Light from "../assets/Light.png";
 // import { Center } from "@react-three/drei";
 // import { current } from "@reduxjs/toolkit";
 
@@ -47,7 +49,6 @@ export default function Cars() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   const settings = {
     dots: true,
     speed: 500,
@@ -128,24 +129,47 @@ export default function Cars() {
             isVisible && "visible"
           }`}
         >
+          {/* <img
+            src={Light}
+            alt="Light"
+            className="h-96 absolute left-1/2 -translate-x-1/2 w-[45rem] -translate-y-[35%] z-10 m-auto"
+          /> */}
           <Slider {...settings}>
             {arrayOfImages.map((item, index) => (
               <div
                 key={index}
-                className={`slide flex flex-col items-center text-center justify-center rounded-lg p-2 ${
-                  index == slideIndex ? "slide-active" : ""
+                className={`sm:relative slide flex flex-col items-center text-center rounded-lg p-2 ${
+                  index == slideIndex ? "slide-active " : ""
                 }`}
               >
-                <img src={item.src} alt={item} />
+                <img
+                  src={item.src}
+                  // className="sm:absolute sm:z-10 "
+                  alt={item.name}
+                />
+                {/* <div className="flex flex-row gap-2 items-center justify-center mt-8"> */}
+                {/* <p className="text-xl font-semibold text-center">
+                    {item.name}
+                  </p> */}
                 <button
-                  className="text-xl font-semibold text-center"
+                  className="btn btn-accent text-xl mt-8 max-sm:mt-10 w-1/2"
                   onClick={() => handleClick(item)}
                 >
                   {item.name}
+                  &nbsp;&nbsp;<span className="">&#x27A4;</span>
                 </button>
+                {/* </div> */}
               </div>
             ))}
           </Slider>
+          <img
+            src={Stage}
+            // style={{
+            //   display: screen.width <= 600 ? "none" : "block",
+            // }}
+            alt="Stage"
+            className="drop-shadow-lg h-12 absolute left-1/2 -translate-x-1/2 w-[35rem] top-[45%] max-sm:top-[83%] -z-10 m-auto"
+          />
         </div>
       </div>
       <Footer />
