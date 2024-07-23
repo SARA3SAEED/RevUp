@@ -16,6 +16,8 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import "../App.css";
 import NavLog from "../components/NavLog";
+import Nav2 from "../components/Nav2";
+
 import Stage from "../assets/Stage.png";
 import Light from "../assets/Light.png";
 // import { Center } from "@react-three/drei";
@@ -38,7 +40,7 @@ export default function Cars() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const isVisible = scrollTop > 20; 
+      const isVisible = scrollTop > 20;
       setIsVisible(isVisible);
       setIsLoading(false);
     };
@@ -95,10 +97,9 @@ export default function Cars() {
     <Loader />
   ) : (
     <div className="min-w-screen min-h-screen flex flex-col items-center justify-between">
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
-
+      <Nav2 />
       {/* {userId ? <NavLog /> : <Nav />} */}
-      <h1 className="absolute z-30 top-1/2 text-center text-neutral font-bold text-5xl w-full p-4">
+      <h1 className="absolute z-30 top-1/3 text-center text-neutral font-bold text-5xl w-full p-4">
         Discover the new Models
       </h1>
       {/* <div className="relative"></div> */}
@@ -113,13 +114,19 @@ export default function Cars() {
       >
         <source src={videoCar} />
       </video>
-      <a
-        href="#carsContainer"
-        className="absolute btn btn-base w-14 h-14 bg-opacity-30 border-none bottom-10 text-neutral font-bold text-3xl rounded-full animate-bounce z-10 "
+      <button
+        onClick={() => {
+          window.scrollTo({
+            top: 1000,
+            behavior: "smooth",
+          });
+        }}
+        // href="#carsContainer"
+        className="absolute btn btn-base w-14 h-14 bg-opacity-30 border-none bottom-40 text-neutral font-bold text-3xl rounded-full animate-bounce z-10 "
       >
         ⯆
-      </a>
-      <div className="w-full flex flex-col items-center justify-center h-[80vh] max-sm:h-screen max-sm:justify-start">
+      </button>
+      <div className="w-full flex flex-col items-center justify-center h-[90vh] max-sm:h-screen max-sm:justify-start">
         <h1 className="text-neutral text-3xl font-bold mt-5 text-start w-[90vw] p-2">
           Car Models
         </h1>

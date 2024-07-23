@@ -10,6 +10,7 @@ import SectionFooter from "../components/SectionFooter";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import Loader from "../components/Loader";
+import Nav2 from "../components/Nav2";
 
 export default function Home() {
   const [featureRef, featureInView] = useInView({ triggerOnce: true });
@@ -95,7 +96,7 @@ export default function Home() {
         <Brand />
       </motion.div>
       <hr />
-      <SectionFooter />
+      {/* <SectionFooter /> */}
       <Footer />
     </>
   );

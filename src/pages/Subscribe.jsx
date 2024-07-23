@@ -4,6 +4,7 @@ import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
 import PayCard from "../components/comSubscribe/PayCard";
+import Nav2 from "../components/Nav2";
 
 export default function Subscribe() {
   const [showPayCard, setShowPayCard] = useState(false);
@@ -29,7 +30,7 @@ export default function Subscribe() {
 
   return (
     <>
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+      <Nav2 />
 
       <div className="bg-base-100 flex sm:px-10 lg:px-20 xl:px-32 mb-2 max-sm:my-16 max-sm:flex-col px-2 ">
         <Pricing onStartFreeTrialClick={handleStartFreeTrialClick} />

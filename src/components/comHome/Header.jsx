@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import NavHeader from "../comHome/NavHeader";
-import NavHeaderLog from '../comHome/NavHeaderLog';
+import NavHeaderLog from "../comHome/NavHeaderLog";
+import Nav2 from "../Nav2";
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState("");
 
-
   useEffect(() => {
     const userId = localStorage.getItem("user");
-    const role = localStorage.getItem("role"); 
+    const role = localStorage.getItem("role");
     if (userId) {
       setIsLoggedIn(true);
       setUserRole(role);
@@ -51,7 +51,9 @@ export default function Header() {
           </div>
         </section>
 
-       {isLoggedIn ? <NavHeaderLog role={userRole} /> : <NavHeader />}
+        <div className="flex justify-center">
+          <Nav2 />
+        </div>
       </div>
     </>
   );

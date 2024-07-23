@@ -32,6 +32,7 @@ import { BiSend } from "react-icons/bi";
 import aa from "../assets/pexels.jpg";
 import { div } from "three/examples/jsm/nodes/Nodes.js";
 import axios from "axios";
+import Nav2 from "../components/Nav2";
 
 export default function NewDetails() {
   const [tabIndex, setTabIndex] = useState(0);
@@ -47,21 +48,6 @@ export default function NewDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { carid } = useParams();
-  const settingsDet = {
-    dots: true,
-    speed: 500,
-    beforeChange: (current, next) => setSlideIndex(next),
-    className: "center",
-    infinite: true,
-    // lazyLoad: true,
-    centerPadding: 0,
-    slidesToShow: 3,
-    slideToScroll: 1,
-    autoPlay: true,
-    autoPlaySpeed: 1000,
-    centerMode: true,
-    arrows: false,
-  };
 
   const bodyColorChanger = (e) => {
     dispatch(setTarget({ target: [0, 0, 0] }));
@@ -159,13 +145,14 @@ export default function NewDetails() {
     colorPickerRef.current.click();
   };
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col items-center overflow-hidden">
       {/* <div className=" flex flex-col h-full justify-between"> */}
-      <div className="flex-none ">
-        {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+
+      <div className="flex justify-center   ">
+        <Nav2 />
       </div>
       <div className="flex flex-col w-full items-center flex-1 h-full bg-accent">
-        <div className="flex flex-1 justify-center w-full h-full">
+        <div className="flex flex-1 relative justify-center w-full h-full">
           <div className=" absolute top-0 left-0 flex flex-1 w-full h-full">
             <CameraSetting />
           </div>
@@ -173,7 +160,7 @@ export default function NewDetails() {
             tabIndex == 9 ? (
               <>
                 <div
-                  className={`flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-b-xl  `}
+                  className={`absolute top-20 flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-3xl`}
                 >
                   <button
                     className="w-16 h-16 bg-center bg-cover"
@@ -200,7 +187,7 @@ export default function NewDetails() {
               </>
             ) : (
               <div
-                className={`flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-b-xl  `}
+                className={`absolute top-20 flex z-10 justify-around items-center bg-opacity-10 w-2/5 max-sm:w-full h-[4.5rem] rounded-3xl  `}
                 style={{ backgroundColor: bgColor + "33" }}
               >
                 {colorsArray.map((item, index) => (
@@ -221,7 +208,7 @@ export default function NewDetails() {
                   ></button>
                 ))}
                 <div
-                  className="w-14 h-14  rounded-full shadow-md bg-center bg-cover"
+                  className="w-14 h-14 rounded-full shadow-md bg-center bg-cover"
                   style={{ backgroundImage: `url(${Colorwheel})` }}
                   onClick={() =>
                     user.isVIP == true

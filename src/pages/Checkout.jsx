@@ -6,6 +6,7 @@ import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
 import Bannar from "../components/Bannar";
 import Loader from "../components/Loader";
+import Nav2 from "../components/Nav2";
 
 export default function Checkout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,14 +15,14 @@ export default function Checkout() {
 
   useEffect(() => {
     const userId = localStorage.getItem("user");
-    const role = localStorage.getItem("role");
-    if (userId) {
-      setIsLoggedIn(true);
-      setUserRole(role);
-    } else {
-      setIsLoggedIn(false);
-      setUserRole("");
-    }
+    // const role = localStorage.getItem("role");
+    // if (userId) {
+    //   setIsLoggedIn(true);
+    //   setUserRole(role);
+    // } else {
+    //   setIsLoggedIn(false);
+    //   setUserRole("");
+    // }
     setIsLoading(false);
   }, []);
 
@@ -29,7 +30,9 @@ export default function Checkout() {
     <Loader />
   ) : (
     <>
-      {isLoggedIn ? <NavLog role={userRole} /> : <Nav />}
+      <div className="flex justify-center">
+        <Nav2 />
+      </div>
 
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-16 my-28 max-sm:my-16 gap-4 ">
         <Bill />

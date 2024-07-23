@@ -4,7 +4,7 @@ export default function Header2() {
   return (
     <>
       <div className="relative flex flex-col-reverse px-4 py-16 mx-auto lg:block lg:flex-col lg:py-32 xl:py-48 md:px-8 sm:max-w-xl md:max-w-full">
-        <div className="z-0 flex justify-center h-full -mx-4 overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center p-2">
+        <div className="z-0 flex justify-center h-full -mx-4 overflow-hidden lg:pt-24 lg:pb-24 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center ">
           <img
             src="https://images.pexels.com/photos/5733726/pexels-photo-5733726.jpeg"
             className="object-cover object-right w-full h-auto lg:w-[98%] lg:h-full rounded-xl "
