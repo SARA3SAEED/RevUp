@@ -3,10 +3,17 @@ import axios from "axios";
 import Nav from "../components/Nav";
 import NavLog from "../components/NavLog";
 import Footer from "../components/Footer";
-import Poesche from "../assets/porsche.png";
+// import Poesche from "../assets/porsche.png";
 // import { Loader } from "@react-three/drei";
 import Loader from "../components/Loader";
 import Nav2 from "../components/Nav2";
+import {
+  SiHonda,
+  SiToyota,
+  SiNissan,
+  SiMercedes,
+  SiPorsche,
+} from "react-icons/si";
 
 export default function History() {
   const [user, setUser] = useState({});
@@ -106,8 +113,23 @@ export default function History() {
                     {orderDetailsVisibility[item.id] && (
                       <div className="w-full px-3 min-[400px]:px-6 mt-6">
                         <div className="flex flex-col lg:flex-row items-center py-6 border-b border-accent gap-6 w-full">
-                          <div className="img-box w-1/3">
-                            <img className="mb-4" src={Poesche} alt="Poesche" />
+                          <div className="img-box w-1/4 flex items-center">
+                            {item.carName == "Nissan-GTR" ? (
+                              <SiNissan size={100} color="black" />
+                            ) : item.carName == "Pursche 911" ? (
+                              <SiPorsche size={100} color="black" />
+                            ) : item.carName == "Lotus-Emira" ? (
+                              <img
+                                src="https://seeklogo.com/images/L/Lotus-logo-7E5B29D0CE-seeklogo.com.png"
+                                className="w-[100px] h-[100px]"
+                              />
+                            ) : item.carName == "ToyotaSupra" ? (
+                              <SiToyota size={100} color="black" />
+                            ) : (
+                              ""
+                            )}
+
+                            {/* <img className="mb-4" src={} alt="Poesche" /> */}
                           </div>
                           <div className="flex flex-row items-center w-full ">
                             <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
@@ -173,6 +195,12 @@ export default function History() {
                                             disabled
                                           />
                                         </div>
+                                      </span>
+                                    </div>
+                                    <div className="flex font-medium text-base leading-7 text-neutral ">
+                                      <p>Wheel Type: </p>
+                                      <span className="text-info font-normal mt-1 mx-6 ">
+                                        Rim-No.{item.rimType}
                                       </span>
                                     </div>
                                   </div>

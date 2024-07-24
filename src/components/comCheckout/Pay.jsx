@@ -31,7 +31,9 @@ export default function Pay() {
     bodyColor: useSelector((state) => state.carColors.carBodyColor),
     chairColor: useSelector((state) => state.carColors.InteriorColor),
     wheelColor: useSelector((state) => state.carColors.rimColor),
+    rimType: useSelector((state) => state.carColors.rimType),
   });
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   // other varibles
@@ -47,6 +49,7 @@ export default function Pay() {
       .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${userId}`)
       .then(function (res) {
         setUserBefore(res.data);
+        setIsLoading(false);
       });
   }, []);
 
@@ -92,6 +95,7 @@ export default function Pay() {
           toast.success("order Booked successfuly!");
           dispatch(reseter());
           navigate("/order");
+          setIsLoading(false);
         });
     }
   };
