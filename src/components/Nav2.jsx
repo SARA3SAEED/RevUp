@@ -46,7 +46,7 @@ export default function Nav2() {
               ? "bg-neutral"
               : "bg-transparent"
             : "bg-neutral"
-        } rounded-3xl text-base-100 fixed top-2 w-1/2 max-sm:w-full transition-colors duration-300 z-50 p-0`}
+        } rounded-xl text-base-100 fixed top-2 w-1/2 max-sm:w-full transition-colors duration-300 z-50 p-0`}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -120,13 +120,13 @@ export default function Nav2() {
         <div className="navbar-end">
           {localStorage.getItem("islogged") == "true" ? (
             <>
-              <span>{user.username}</span>
+              <span className="font-bold text-base-100">{user.username}</span>
               <Link
                 to="/login"
-                className="menu px-1 text-base-100 mx-2"
+                className="menu px-1 text-red-500 mx-2"
                 onClick={handleLogout}
               >
-                Log Out
+                Logout
               </Link>
             </>
           ) : (
