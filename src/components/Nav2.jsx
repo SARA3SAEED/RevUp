@@ -100,17 +100,26 @@ export default function Nav2() {
           {localStorage.getItem("role") !== "admin" && (
             <ul className={`menu menu-horizontal px-1  text-base-100 `}>
               <li>
-                <Link to="/cars" className={`  text-base-100 `}>
+                <Link
+                  to="/cars"
+                  className={` hover:bg-base-100 text-base-100 hover:text-neutral `}
+                >
                   Collections
                 </Link>
               </li>
               <li>
-                <Link to="/order" className={`  text-base-100 `}>
+                <Link
+                  to="/order"
+                  className={` hover:bg-base-100 text-base-100 hover:text-neutral `}
+                >
                   Order History
                 </Link>
               </li>
               <li>
-                <Link to="/about" className={`  text-base-100 `}>
+                <Link
+                  to="/about"
+                  className={`  hover:bg-base-100 text-base-100 hover:text-neutral `}
+                >
                   Contact Us
                 </Link>
               </li>
@@ -123,7 +132,7 @@ export default function Nav2() {
               <span className="font-bold text-base-100">{user.username}</span>
               <Link
                 to="/login"
-                className="menu px-1 text-red-500 mx-2"
+                className="menu px-2 text-red-500 mx-2 hover:bg-red-500 hover:text-base-100 rounded-lg"
                 onClick={handleLogout}
               >
                 Logout

@@ -24,7 +24,7 @@ export default function Pay() {
   });
   const [modification, setModification] = useState({
     date: new Date().toLocaleString("en-US"),
-    status: "in progress",
+    status: "Waitting for Apponitment",
     appointmentDate: "",
     id: uuidv4(),
     carName: useSelector((state) => state.carColors.carName),
