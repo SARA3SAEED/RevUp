@@ -30,7 +30,9 @@ export default function Subscribe() {
 
   return (
     <>
-      <Nav2 />
+      <div className="flex justify-center">
+        <Nav2 />
+      </div>
 
       <div className="bg-base-100 flex sm:px-10 lg:px-20 xl:px-32 mb-2 max-sm:my-16 max-sm:flex-col px-2 ">
         <Pricing onStartFreeTrialClick={handleStartFreeTrialClick} />
