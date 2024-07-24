@@ -44,7 +44,7 @@ export default function Pay() {
   useEffect(() => {
     const userId = localStorage.getItem("user");
     axios
-      .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${userId}}`)
+      .get(`https://66980ca602f3150fb66fe5dc.mockapi.io/user/${userId}`)
       .then(function (res) {
         setUserBefore(res.data);
       });
