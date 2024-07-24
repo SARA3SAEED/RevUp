@@ -9,15 +9,16 @@ export default function DashStatus() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [tempId, setTempId] = useState("");
+  const [orderStatus, setOrderStatus] = useState("");
   const [requests, setRequests] = useState([]);
-  const [selectedRequest, setSelectedRequest] = useState(null); 
+  const [selectedRequest, setSelectedRequest] = useState(null);
 
-
+  console.log(orderStatus);
   useEffect(() => {
-    func()
+    func();
   }, []);
 
-  const func = ()=>{
+  const func = () => {
     const role = localStorage.getItem("role");
 
     if (role === "admin") {
@@ -57,12 +58,11 @@ export default function DashStatus() {
       setIsLoggedIn(false);
       setIsLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     console.log("Requests state updated:", requests);
   }, [requests]);
-
 
   const handleCheckboxChange = (index) => {
     const updatedRequests = [...requests];
@@ -124,7 +124,6 @@ export default function DashStatus() {
     setSelectedRequest(request);
     document.getElementById("my_modal_1-details").showModal();
   };
-
 
   if (isLoading) {
     return <Loader />;
@@ -202,9 +201,26 @@ export default function DashStatus() {
                     <MdDeleteForever size={23} color="red" />
                   </button>
                 </td>
-                <td className="py-3  flex-1 truncate ">
-                  <button className="w-10 lg:w-16 h-9 bg-blue-500 text-white rounded" 
-                  onClick={() => handleShow(request.id)}>
+                <td className="py-3 flex items-center gap-2 justify-center flex-1 truncate ">
+                  <select
+                    className="w-14 lg:w-20 h-9 bg-blue-500 text-white rounded"
+                    name=""
+                    id=""
+                    defaultValue={"Waitting for Clint"}
+                    onChange={(e) => setOrderStatus(e.target.value)}
+                  >
+                    <option value="Waitting for Clint">
+                      Waitting for Clint
+                    </option>
+                    <option value="Working on the Car">
+                      Working on the Car
+                    </option>
+                    <option value="Done">Done</option>
+                  </select>
+                  <button
+                    className="w-10 lg:w-16 h-9 bg-blue-500 text-white rounded"
+                    onClick={() => handleShow(request.id)}
+                  >
                     Show
                   </button>
                 </td>
@@ -220,14 +236,23 @@ export default function DashStatus() {
         Change Status to Done
       </button>
 
-      <dialog id="my_modal_1-details" className="modal-details lg:w-[50%] rounded-xl bg-base-100">
+      <dialog
+        id="my_modal_1-details"
+        className="modal-details lg:w-[50%] rounded-xl bg-base-100"
+      >
         <div className="p-14">
-             <h3 className="font-bold text-lg">Request Details</h3>
+          <h3 className="font-bold text-lg">Request Details</h3>
           {selectedRequest && (
             <div>
-              <p className="py-4"><strong>Car Name:</strong> {selectedRequest.carName}</p>
-              <p className="py-4"><strong>Requester:</strong> {selectedRequest.requester}</p>
-              <p className="py-4"><strong>Status:</strong> {selectedRequest.status}</p>
+              <p className="py-4">
+                <strong>Car Name:</strong> {selectedRequest.carName}
+              </p>
+              <p className="py-4">
+                <strong>Requester:</strong> {selectedRequest.requester}
+              </p>
+              <p className="py-4">
+                <strong>Status:</strong> {selectedRequest.status}
+              </p>
             </div>
           )}
           <div className="modal-action">
