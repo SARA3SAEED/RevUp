@@ -29,7 +29,7 @@ export default function Bill() {
           {/* <img className="mb-4" src={Nissan} alt={Nissan} /> */}
           <Canvas
             camera={{
-              fov: 30,
+              fov: 22,
               position: [4.5, 1.6, 4.3],
             }}
           >
@@ -46,7 +46,7 @@ export default function Bill() {
               autoRotate={true}
               enableZoom={false}
               enableRotate={false}
-              autoRotateSpeed={1}
+              autoRotateSpeed={1.2}
             />
           </Canvas>
           <h1 className="text-center text-xl font-semibold">{carName}</h1>
