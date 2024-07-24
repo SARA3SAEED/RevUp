@@ -181,7 +181,7 @@ export default function DashStatus() {
                   <div className="ml-auto relative group">
                     <GrStatusGoodSmall
                       size={18}
-                      color={request.status === "done" ? "#7BFC2C" : "#FFFF1F"}
+                      color={request.status === "Done" ? "#7BFC2C" : "#FFFF1F"}
                     />
                   </div>
                 </td>
@@ -201,24 +201,27 @@ export default function DashStatus() {
                     <MdDeleteForever size={23} color="red" />
                   </button>
                 </td>
-                <td className="py-3 flex items-center gap-2 justify-center flex-1 truncate ">
+                <td className="py-3 flex items-center gap-2 justify-start flex-1 truncate ">
                   <select
-                    className="w-14 lg:w-20 h-9 bg-blue-500 text-white rounded"
+                    className="h-9 px-2 bg-base-100 text-primary rounded"
                     name=""
                     id=""
                     defaultValue={"Waitting for Clint"}
                     onChange={(e) => setOrderStatus(e.target.value)}
                   >
-                    <option value="Waitting for Clint">
-                      Waitting for Clint
+                    <option value="Waitting for Apponitment">
+                      Waitting for Apponitment
                     </option>
                     <option value="Working on the Car">
                       Working on the Car
                     </option>
+                    <option value="Waitting for Client">
+                      Waitting for Client
+                    </option>
                     <option value="Done">Done</option>
                   </select>
                   <button
-                    className="w-10 lg:w-16 h-9 bg-blue-500 text-white rounded"
+                    className="w-10 lg:w-16 h-9 bg-primary text-base-100 rounded"
                     onClick={() => handleShow(request.id)}
                   >
                     Show
@@ -231,7 +234,7 @@ export default function DashStatus() {
       </div>
       <button
         onClick={handleStatusChange}
-        className="mt-4 mx-auto w-80 bg-blue-500 text-white py-2 px-4 rounded"
+        className="mt-4 mx-auto w-80 bg-primary text-base-100 py-2 px-4 rounded"
       >
         Change Status to Done
       </button>
@@ -256,7 +259,9 @@ export default function DashStatus() {
             </div>
           )}
           <div className="modal-action">
-            <button className="btn">Close</button>
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
           </div>
         </div>
       </dialog>

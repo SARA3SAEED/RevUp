@@ -11,10 +11,10 @@ export default function DashList() {
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   useEffect(() => {
-    func()
+    func();
   }, []);
 
-  const func = ()=>{
+  const func = () => {
     const fetchRequests = async () => {
       try {
         const response = await axios.get(
@@ -29,7 +29,7 @@ export default function DashList() {
     };
 
     fetchRequests();
-  }
+  };
 
   const handleCheckboxChange = (index) => {
     const newRequests = [...requests];
@@ -107,9 +107,9 @@ export default function DashList() {
               <th className="font-semibold text-left py-3 px-1 w-14 lg:w-30 truncate">
                 ID
               </th>
-              <th className="font-semibold text-left py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg truncate">
+              {/* <th className="font-semibold text-left py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg truncate">
                 Massage
-              </th>
+              </th> */}
               <th className="font-semibold text-left py-3 px-1 flex-1 truncate">
                 Email
               </th>
@@ -148,11 +148,11 @@ export default function DashList() {
                   </div>
                 </td>
                 <td className="py-3 px-1 w-14 lg:36">{request.id}</td>
-                <td className="py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg">
+                {/* <td className="py-3 px-1 w-28 lg:w-36 max-w-xs xl:max-w-lg">
                   <div className="relative group ">
                     <p className="truncate">{request.message}</p>
                   </div>
-                </td>
+                </td> */}
                 <td className="py-3 px-1 flex-1 truncate">{request.email}</td>
                 <td className="py-3 px-1 flex-1 truncate">{request.status}</td>
                 <td className="py-3 px-1 flex-1 truncate">
