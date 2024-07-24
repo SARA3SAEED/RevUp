@@ -60,13 +60,13 @@ export default function Cars() {
     infinite: true,
     // lazyLoad: true,
     centerPadding: 0,
-    slidesToShow: 3,
+    slidesToShow: isSmall ? 1 : 3,
     slideToScroll: 1,
     autoPlay: true,
     autoPlaySpeed: 1000,
     centerMode: true,
-    vertical: isSmall,
-    verticalSwiping: isSmall,
+    // vertical: isSmall,
+    // verticalSwiping: isSmall,
     arrows: false,
     // prevArrow: "►",
   };
@@ -126,7 +126,7 @@ export default function Cars() {
       >
         ⯆
       </button>
-      <div className="w-full flex flex-col items-center justify-center h-[90vh] max-sm:h-screen max-sm:justify-start">
+      <div className="w-full flex flex-col items-center justify-center h-[90vh] max-sm:h-[50vh] max-sm:justify-start">
         <h1 className="text-neutral text-3xl font-bold mt-5 text-start w-[90vw] p-2">
           Car Models
         </h1>
@@ -175,7 +175,7 @@ export default function Cars() {
             //   display: screen.width <= 600 ? "none" : "block",
             // }}
             alt="Stage"
-            className="drop-shadow-lg h-12 absolute left-1/2 -translate-x-1/2 w-[35rem] top-[40%] max-sm:translate-y-56 -z-10 m-auto"
+            className="drop-shadow-lg h-12 absolute left-1/2 -translate-x-1/2 w-[35rem] top-[40%] max-sm:translate-y-12 -z-10 m-auto"
           />
         </div>
       </div>
