@@ -159,7 +159,7 @@ export default function Cars() {
                     {item.name}
                   </p> */}
                 <button
-                  className="btn btn-accent text-xl mt-8 max-sm:mt-10 w-1/2"
+                  className="btn btn-accent text-xl mt-8 max-sm:mt-10 w-1/2 max-sm:w-2/3"
                   onClick={() => handleClick(item)}
                 >
                   {item.name}
@@ -175,7 +175,7 @@ export default function Cars() {
             //   display: screen.width <= 600 ? "none" : "block",
             // }}
             alt="Stage"
-            className="drop-shadow-lg h-12 absolute left-1/2 -translate-x-1/2 w-[35rem] top-[45%] max-sm:top-[83%] -z-10 m-auto"
+            className="drop-shadow-lg h-12 absolute left-1/2 -translate-x-1/2 w-[35rem] top-[40%] max-sm:translate-y-56 -z-10 m-auto"
           />
         </div>
       </div>

@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { Porsche911 } from "../carModels/Porsche911";
 import { ToyotaSupra } from "../carModels/ToyotaSupra";
 import { LotusEmira } from "../carModels/LotusEmira";
+import rimdefult from "../../assets/rimDefult.png";
 
 export default function Bill() {
   const carName = localStorage.getItem("displayName");
@@ -18,6 +19,7 @@ export default function Bill() {
   const bodyColor = useSelector((state) => state.carColors.carBodyColor);
   const chairColor = useSelector((state) => state.carColors.InteriorColor);
   const wheelColor = useSelector((state) => state.carColors.rimColor);
+  const rimType = useSelector((state) => state.carColors.rimType);
 
   return (
     <>
@@ -92,6 +94,11 @@ export default function Bill() {
                       disabled
                       value={chairColor}
                     />
+                  </div>
+                  -
+                  <div className="flex gap-2 items-center">
+                    <img src={rimdefult} className="w-[30px] h-[30px]" />
+                    <p className="text-sm">Rim-No.{rimType}</p>
                   </div>
                 </div>
                 <span className="font-bold">500$</span>
