@@ -82,7 +82,7 @@ export default function DashStatus() {
           const user = res.data;
 
           const updatedModifications = user.modification.map((mod) =>
-            mod.id === request.id ? { ...mod, status: "done" } : mod
+            mod.id === request.id ? { ...mod, status: orderStatus } : mod
           );
 
           return axios.put(
@@ -96,7 +96,7 @@ export default function DashStatus() {
           console.log(`Status updated for request ${request.id}`);
           setRequests((prevRequests) =>
             prevRequests.map((req) =>
-              req.id === request.id ? { ...req, status: "done" } : req
+              req.id === request.id ? { ...req, status: orderStatus } : req
             )
           );
         })
@@ -256,30 +256,21 @@ export default function DashStatus() {
             </div>
           )}
           <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
+            <button className="btn">Close</button>
           </div>
         </div>
       </dialog>
-
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Warning</h3>
-          <p className="py-4">Are you sure you want to delete this message?</p>
+        <form method="dialog" className="modal-box">
+          <h3 className="font-bold text-lg">Confirm Deletion</h3>
+          <p className="py-4">Are you sure you want to delete this request?</p>
           <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button
-                onClick={() => confirmDelete()}
-                className="btn btn-primary mr-2"
-              >
-                Delete
-              </button>
-              <button className="btn">Close</button>
-            </form>
+            <button className="btn" onClick={confirmDelete}>
+              Yes
+            </button>
+            <button className="btn">No</button>
           </div>
-        </div>
+        </form>
       </dialog>
     </>
   );
