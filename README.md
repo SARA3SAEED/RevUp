@@ -1,3 +1,4 @@
+![Screenshot1](https://github.com/user-attachments/assets/1530843b-deb8-41a2-9d46-8ffaf08d6eaa)
 # RevUp
 
 ## Description
@@ -48,4 +49,11 @@ Discover the future of car shopping with our immersive 3D car website, where you
 - Schedule an appointment date for you to see the car
   
 ## Screenshots
+![Screenshot1](https://github.com/user-attachments/assets/81233c1e-dc93-4f39-9e6b-91554632d09e)
+![Screenshot2](https://github.com/user-attachments/assets/e68c617b-6790-4dca-97b9-0396a97c0c84)
+![Screenshot3](https://github.com/user-attachments/assets/455591e7-1aac-4a8a-bb63-d0bf07715df7)
+![Screenshot4](https://github.com/user-attachments/assets/932d2b9c-27ce-4af6-81d0-114b9a4e36b4)
+![Screenshot7](https://github.com/user-attachments/assets/ec5172d5-3b43-4b05-a96d-a42220373c43)
+![Screenshot5](https://github.com/user-attachments/assets/6ce4579f-9e29-4ccb-ae1b-55d34d2b580a)
+![Screenshot6](https://github.com/user-attachments/assets/5c909b97-4434-460d-b97e-6120f4c7474d)
 
