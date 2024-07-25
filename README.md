@@ -48,6 +48,15 @@ Discover the future of car shopping with our immersive 3D car website, where you
 - start editing and send us your request by checking out.
 - Schedule an appointment date for you to see the car
   
+## Tools We Used
+- React
+- Redux
+- Three js
+- Tailwid
+- Webgi
+  
+
+
 ## Screenshots
 ![Screenshot1](https://github.com/user-attachments/assets/81233c1e-dc93-4f39-9e6b-91554632d09e)
 ![Screenshot2](https://github.com/user-attachments/assets/e68c617b-6790-4dca-97b9-0396a97c0c84)
